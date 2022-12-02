@@ -3,3 +3,6 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+body {
+  @apply dark:bg-black tracking-[-0.011em]
+}
