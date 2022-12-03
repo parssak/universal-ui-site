@@ -1,12 +1,8 @@
-import { Button, Text, UniversalUIConfigProvider } from "@parssa/universal-ui";
+import { Text } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
-import { Sidebar } from "components/docs/Sidebar";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 
-import Link from "next/link";
-
-
-export default function Docs() {
+export default function Customization() {
   return (
     <DocsLayout>
       <Text variant="h1">Customization</Text>
@@ -33,8 +29,8 @@ export default function Docs() {
         <Text variant="code" size="sm">
           UniversalUIProvider
         </Text>{" "}
-        is a React Context Provider that allows you to customize the look and feel of Universal UI
-        by overriding the behavior of all components.
+        allows you to customize the look and feel of Universal UI by overriding the behavior of all
+        components.
       </Text>
 
       <CodeBlock className="my-size-2y">
@@ -55,7 +51,7 @@ const App = () => {
 }`}
       </CodeBlock>
       <Text className="mt-size-y">
-        Above is an example of how to override the default shadow on all buttons. The keys of the{" "}
+        Example of how to override the default shadow on all buttons. The keys of the{" "}
         <Text variant="code" size="sm">
           components
         </Text>{" "}
@@ -64,7 +60,7 @@ const App = () => {
         props passed to it.
       </Text>
 
-      <CodeBlock className="my-size-2y">
+      <CodeBlock className="mt-size-4y">
         {`const config = {
   components: {
     text: ({ variant }) =>
@@ -75,6 +71,15 @@ const App = () => {
   }
 };`}
       </CodeBlock>
+      <Text className="mt-size-y">
+        Example of how to override the default shadow on all buttons. The keys of the{" "}
+        <Text variant="code" size="sm">
+          components
+        </Text>{" "}
+        are either strings, or functions that provide the props of the component, and should return
+        a string. This is useful when needing to override the behavior of a component based on the
+        props passed to it.
+      </Text>
 
       <Text className="mt-size-4y w-max" variant="code" size="xl" as="h2">
         tailwind.config.js
@@ -116,9 +121,9 @@ const App = () => {
 }`}
       </CodeBlock>
 
-      <Text className="mt-size-2y">
-        Above is an example of how to override the{" "}
-        <Text variant="code" size="sm">
+      <Text className="mt-size-y" size="sm">
+        Example of how to override the{" "}
+        <Text variant="code" size="xs">
           brand
         </Text>{" "}
         theme with a green pallette. The pallette is generated using{" "}

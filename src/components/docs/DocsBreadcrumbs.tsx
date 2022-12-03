@@ -13,27 +13,26 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
   const path = router.asPath;
 
   const activeSection = useMemo(() => {
-    const [_, ...section] = path.split("/");
-
     const activeSection = NAV_SECTIONS.find((item) => {
       return item.items.some((item) => item.href === path);
     });
 
     console.debug("activeSection", activeSection);
 
+    if (!activeSection) return null;
+
     const activeRoute = {
       title: activeSection.title,
       child: activeSection.items.find((item) => item.href === path)
     };
 
-
-    return activeRoute
+    return activeRoute;
   }, [path]);
 
-  console.log(activeSection)
+  console.log(activeSection);
 
   return (
-    <div {...props} className={cx('flex items-center', props.className)}>
+    <div {...props} className={cx("flex items-center", props.className)}>
       <Button
         variant="ghost"
         className="pl-0 pr-0 pt-0 pb-0 hover:bg-theme-pure ml-[-6px]"

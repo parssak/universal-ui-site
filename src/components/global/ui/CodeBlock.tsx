@@ -37,11 +37,11 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
     <ThemeProvider
       theme='neutral'
       className={cx(
-        "rounded-md overflow-hidden border border-theme-active/50 relative bg-theme-active/50 dark:bg-theme-pure/25 backdrop-blur-lg",
+        "rounded-md overflow-hidden border border-theme-active/50 relative bg-theme-base/20 dark:bg-theme-base/30 backdrop-blur-lg",
         props.className
       )}
     >
-      <pre {...props} className={cx("px-4 py-3 text-sm text-theme-base")}>
+      <pre {...props} className={cx("px-4 py-3 text-sm text-theme-base overflow-auto")}>
         <code ref={codeRef} className="language-jsx">
           {props.children}
         </code>

@@ -1,11 +1,10 @@
 import { Card, Text } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
-import { Sidebar } from "components/docs/Sidebar";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 
 import Link from "next/link";
 
-export default function Docs() {
+export default function GettingStarted() {
   return (
     <DocsLayout>
       <Text variant="h1">Getting Started</Text>
@@ -25,7 +24,10 @@ export default function Docs() {
           UniversalUIProvider
         </Text>{" "}
         to provide global theming. More on how to{" "}
-        <Link className='link' href="/docs/customization">customize Universal UI here</Link>.
+        <Link className="link" href="/docs/customization">
+          customize Universal UI here
+        </Link>
+        .
       </Text>
 
       <CodeBlock className="my-size-2y">
@@ -45,14 +47,14 @@ const App = () => {
 }`}
       </CodeBlock>
 
-      <Card size="sm" theme="warning" className="my-size-2y">
+      <Card size="sm" theme="warning" className="my-size-2y backdrop-blur-md">
         <Card.Content>
           <Text>
-            if you're using Next.js, you should pass in the{" "}
+            If you are using Next.js, pass in the{" "}
             <Text variant="code" size="xs">
               ssr: true
             </Text>{" "}
-            prop to ensure that the styles are rendered on the server.
+            prop to ensure styles are rendered on the server properly.
           </Text>
         </Card.Content>
       </Card>
@@ -78,7 +80,7 @@ const App = () => {
 }`}
       </CodeBlock>
 
-      <Text className="mt-size-4y">
+      <Text className="mt-size-4y font-medium">
         That's it! 🎉 You're now ready to use Universal UI in your app.
       </Text>
     </DocsLayout>

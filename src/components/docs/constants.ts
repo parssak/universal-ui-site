@@ -16,28 +16,54 @@ export const NAV_SECTIONS = [
       },
       {
         title: "Customization",
-        href: "/docs/customization"
+        href: "/docs/getting-started/customization"
       }
     ]
   },
   {
-    title: "Components",
+    title: "Inputs",
     items: [
       {
-        title: "Button",
-        href: "/docs/components/button"
+        title: "Button 🚧",
+        href: "/docs/components/inputs/button"
       },
       {
-        title: "Text",
-        href: "/docs/components/text"
+        title: "Input 🚧",
+        href: "/docs/components/inputs/input"
+      }
+    ]
+  },
+  {
+    title: "Display",
+    items: [
+      {
+        title: "Text 🚧",
+        href: "/docs/components/display/text"
       },
       {
-        title: "Input",
-        href: "/docs/components/input"
+        title: "Card 🚧",
+        href: "/docs/components/display/card"
+      }
+    ]
+  },
+  {
+    title: "Utilities",
+    items: [
+      {
+        title: "Colors",
+        href: "/docs/utilities/colors"
       },
       {
-        title: "Card",
-        href: "/docs/components/card"
+        title: "Spacing 🚧",
+        href: "/docs/utilities/spacing"
+      },
+      {
+        title: "Classes 🚧",
+        href: "/docs/utilities/classes"
+      },
+      {
+        title: "ThemeProvider 🚧",
+        href: "/docs/utilities/theme-provider"
       }
     ]
   }
