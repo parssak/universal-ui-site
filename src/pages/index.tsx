@@ -1,11 +1,13 @@
 import { Button, Card, Input, Text, ThemeProvider } from "@parssa/universal-ui";
+import { Footer } from "components/global/layout/Footer";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 import Link from "next/link";
+
 
 export default function Home() {
   return (
     <ThemeProvider className="bg-theme-pure">
-      <div className="container pt-24 md:pt-48">
+      <div className="container pt-24 md:pt-48 min-h-screen">
         <Text variant="h1">Universal UI</Text>
         <Text className="mb-size-4y" variant="h4">
           A customizable, TailwindCSS-first, React UI Library.
@@ -43,7 +45,7 @@ export default function Home() {
           </pre> */}
           <Button
             className="justify-center font-mono"
-            variant='outline'
+            variant="outline"
             trailingIcon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,8 +56,8 @@ export default function Home() {
                 aria-hidden="true"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"
                 />
               </svg>
@@ -104,6 +106,7 @@ export default function Home() {
           </Card.Content>
         </Card>
       </div>
+      <Footer />
     </ThemeProvider>
   );
 }

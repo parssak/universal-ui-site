@@ -1,19 +1,16 @@
+import React from "react";
 import { Text, ThemeProvider } from "@parssa/universal-ui";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
 import { cx, isSSR } from "utils";
 import { NAV_SECTIONS } from "./constants";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
 const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] }) => {
-  const [isActive, setIsActive] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    const location = isSSR ? "/" : window.location.pathname;
-    setIsActive(location === item.href);
-  }, []);
+  const isActive = router.asPath === item.href;
 
   return (
     <ThemeProvider theme={isActive ? "brand" : "neutral"}>

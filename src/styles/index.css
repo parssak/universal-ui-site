@@ -23,3 +23,38 @@ body {
     @apply text-blue-500 dark:text-blue-400 underline;
   }
 }
+
+/* Prism Classes */
+
+.literal-property.property {
+  @apply italic text-sky-600 dark:text-sky-400;
+}
+.number {
+  @apply  text-amber-600 dark:text-amber-400;
+}
+
+.string {
+  @apply  text-green-600 dark:text-green-500;
+}
+
+
+.keyword,
+.operator {
+  @apply  text-rose-600 dark:text-rose-400;
+}
+
+.function-variable.function {
+  @apply  text-purple-600 dark:text-purple-400;
+}
+
+.punctuation {
+  @apply  text-theme-base;
+}
+
+.comment {
+  @apply  text-green-600 dark:text-green-500;
+}
+
+.class-name {
+  @apply  text-blue-600 dark:text-blue-400;
+}

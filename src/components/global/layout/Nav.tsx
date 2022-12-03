@@ -1,16 +1,17 @@
 import { Text } from "@parssa/universal-ui";
 import { DocsBreadcrumbs } from "components/docs/DocsBreadcrumbs";
-import { useLocation } from "hooks";
+
 import Link from "next/link";
 import React from "react";
 import { cx } from "utils";
+import { FaGithub } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 type NavProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Nav = ({ ...props }: NavProps & {}) => {
-  const location = useLocation();
-
-  const isDocs = location.startsWith("/docs");
+  const router = useRouter();
+  const isDocs = router.asPath.startsWith("/docs");
 
   return (
     <nav
@@ -21,13 +22,23 @@ export const Nav = ({ ...props }: NavProps & {}) => {
       )}
     >
       <div className="container">
-        <div className="py-4">
+        <div className="py-4 flex items-center w-full">
           <Link href="/">
             <Text variant="h5">Universal UI</Text>
           </Link>
+          <div className="ml-auto">
+            <a
+              data-size="xl"
+              href="https://github.com/parssak/universal-ui"
+              target="_blank"
+              className="group"
+            >
+              <FaGithub className="text-size group-hover:text-theme-active text-theme-base group-hover:opacity-100 transition-all opacity-70" />
+            </a>
+          </div>
         </div>
         {isDocs && (
-          <div className="py-2 border-t border-theme-base lg:hidde">
+          <div className="py-2 border-t border-theme-base lg:hidden">
             <DocsBreadcrumbs />
           </div>
         )}

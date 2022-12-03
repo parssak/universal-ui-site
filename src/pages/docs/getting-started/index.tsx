@@ -1,4 +1,4 @@
-import { Text } from "@parssa/universal-ui";
+import { Card, Text } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
 import { Sidebar } from "components/docs/Sidebar";
 import { CodeBlock } from "components/global/ui/CodeBlock";
@@ -24,11 +24,8 @@ export default function Docs() {
         <Text variant="code" size="sm">
           UniversalUIProvider
         </Text>{" "}
-        to provide global styling. Note: if you're using Next.js, you should pass in the{" "}
-        <Text variant="code" size="sm" theme="warning">
-          ssr: true
-        </Text>{" "}
-        prop to ensure that the styles are rendered on the server.
+        to provide global theming. More on how to{" "}
+        <Link className='link' href="/docs/customization">customize Universal UI here</Link>.
       </Text>
 
       <CodeBlock className="my-size-2y">
@@ -37,7 +34,7 @@ export default function Docs() {
 const App = () => {
   return (
     <UniversalUIProvider 
-      value={{
+      config={{
         ssr: true, // for SSR support (Next.js)
         components: {}
       }}
@@ -47,12 +44,18 @@ const App = () => {
   )
 }`}
       </CodeBlock>
-      <Text>
-        If you want to learn more on how to theme Universal UI,{" "}
-        <Link href="/docs/customization">
-          <span className="link">go here</span>.
-        </Link>
-      </Text>
+
+      <Card size="sm" theme="warning" className="my-size-2y">
+        <Card.Content>
+          <Text>
+            if you're using Next.js, you should pass in the{" "}
+            <Text variant="code" size="xs">
+              ssr: true
+            </Text>{" "}
+            prop to ensure that the styles are rendered on the server.
+          </Text>
+        </Card.Content>
+      </Card>
 
       <Text className="mt-size-4y">
         Lastly, make sure to add the following to your{" "}

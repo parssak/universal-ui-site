@@ -6,17 +6,19 @@ import { Footer } from "components/global/layout/Footer";
 
 import "styles/index.css";
 import "highlight.js/styles/default.css";
-import "styles/prism.css";
+// import "styles/prism.css";
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        
         <title>NextJS TW</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <UniversalUIConfigProvider
-        value={{
+        config={{
           components: {
             text: ({ variant, size }) => {
               switch (variant) {
@@ -30,6 +32,12 @@ function MyApp({ Component, pageProps }: AppProps) {
                 default:
                   return "";
               }
+            },
+            button: ({ variant }) => { 
+              if (variant === "ghost") {
+                return "shadow-none";
+              }
+              return ''
             }
           }
         }}
@@ -39,7 +47,6 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Nav />
             <Component {...pageProps} />
           </div>
-          <Footer />
         </ThemeProvider>
       </UniversalUIConfigProvider>
     </>

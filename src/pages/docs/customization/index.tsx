@@ -5,6 +5,7 @@ import { CodeBlock } from "components/global/ui/CodeBlock";
 
 import Link from "next/link";
 
+
 export default function Docs() {
   return (
     <DocsLayout>
@@ -47,7 +48,7 @@ const config = {
 
 const App = () => {
   return (
-    <UniversalUIProvider value={config}>
+    <UniversalUIProvider config={config}>
       {/* ... */}
     </UniversalUIProvider>         
   )
@@ -66,17 +67,13 @@ const App = () => {
       <CodeBlock className="my-size-2y">
         {`const config = {
   components: {
-    text: ({ variant }) => {
-      if (variant === 'h1') {
-        return 'font-extrabold'
-      }
-
-      if (variant === 'h6') {
-        return 'tracking-wider uppercase'
-      }
-    }
+    text: ({ variant }) =>
+      ({
+        h1: "text-5xl",
+        h6: "tracking-widest text-xs font-mono"
+      }[variant] ?? "")
   }
-}`}
+};`}
       </CodeBlock>
 
       <Text className="mt-size-4y w-max" variant="code" size="xl" as="h2">
@@ -90,6 +87,45 @@ const App = () => {
         </Text>{" "}
         plugin that allows you to customize the look and feel of Universal UI by overriding the
         default colors and spacing.
+      </Text>
+
+      <CodeBlock className="my-size-2y">
+        {`module.exports = {
+  theme: {
+    universalUI: {
+      themes: [
+        {
+          // Used https://uicolors.app/create to generate this pallette
+          name: "brand",
+          colors: {
+            50: "#f1f8f4",
+            100: "#ddeee3",
+            200: "#bdddc9",
+            300: "#9ac8af",
+            400: "#63a482",
+            500: "#428766",
+            600: "#306b50",
+            700: "#265641",
+            800: "#204536",
+            900: "#1b392d"
+          }
+        },
+      ]
+    }
+  }
+}`}
+      </CodeBlock>
+
+      <Text className="mt-size-2y">
+        Above is an example of how to override the{" "}
+        <Text variant="code" size="sm">
+          brand
+        </Text>{" "}
+        theme with a green pallette. The pallette is generated using{" "}
+        <a target={"_blank"} href="https://uicolors.app/create" className="link">
+          uicolors.app
+        </a>
+        , which from our experience, yields the bests results.
       </Text>
     </DocsLayout>
   );

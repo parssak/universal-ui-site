@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 // import hljs from "highlight.js/lib/core";
 // import jsx from "highlight.js/lib/languages/javascript";
 import { cx, isSSR } from "utils";
-import { Button } from "@parssa/universal-ui";
+import { Button, ThemeProvider } from "@parssa/universal-ui";
 import highlight from "utils/prism";
 
 // hljs.registerLanguage("jsx", jsx);
@@ -34,20 +34,21 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
   };
 
   return (
-    <div
+    <ThemeProvider
+      theme='neutral'
       className={cx(
-        "rounded-md overflow-hidden border border-theme-active/50 relative ",
+        "rounded-md overflow-hidden border border-theme-active/50 relative bg-theme-active/50 dark:bg-theme-pure/25 backdrop-blur-lg",
         props.className
       )}
     >
-      <pre {...props} className={cx("dark:invert !px-4 !py-3 hue-rotate-180 contrast-150")}>
-        <code ref={codeRef} className="language-jsx ">
+      <pre {...props} className={cx("px-4 py-3 text-sm text-theme-base")}>
+        <code ref={codeRef} className="language-jsx">
           {props.children}
         </code>
       </pre>
       <Button
         size="sm"
-        className="absolute top-2 right-2"
+        className="absolute top-2 right-2 shadow-none"
         onClick={onCopy}
         icon={
           <svg
@@ -68,6 +69,6 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
       >
         <span className="sr-only">Copy to clipboard</span>
       </Button>
-    </div>
+    </ThemeProvider>
   );
 };
