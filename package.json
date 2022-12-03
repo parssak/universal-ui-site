@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@parssa/universal-ui": "^0.1.32",
+    "@parssa/universal-ui": "^0.1.33",
     "highlight.js": "^11.7.0",
     "next": "13.0.5",
     "react": "18.2.0",

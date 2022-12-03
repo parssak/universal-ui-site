@@ -13,6 +13,31 @@ const items = [
       {
         title: "Installation",
         href: "/docs/getting-started"
+      },
+      {
+        title: "Customization",
+        href: "/docs/customization"
+      }
+    ]
+  },
+  {
+    title: "Components",
+    items: [
+      {
+        title: "Button",
+        href: "/docs/components/button"
+      },
+      {
+        title: "Text",
+        href: "/docs/components/text"
+      },
+      {
+        title: "Input",
+        href: "/docs/components/input"
+      },
+      {
+        title: "Card",
+        href: "/docs/components/card"
       }
     ]
   }
@@ -32,7 +57,7 @@ const NavItem = ({ item }: { item: typeof items[number]["items"][number] }) => {
         href={item.href}
         className={cx(
           "block pl-size-2x py-size-qy rounded ",
-          isActive ? "bg-theme-active " : "border-transparent"
+          isActive ? "bg-theme-active " : "border-transparent transition-all hover:bg-theme-active"
         )}
       >
         <Text as="span" size="sm" className={cx("", isActive && "text-theme-active")}>
@@ -50,7 +75,7 @@ export const Sidebar = ({ ...props }: DivProps & {}) => {
     <div
       {...props}
       className={cx(
-        "px-4 py-12 w-52 xl:w-64 border-r",
+        "px-4 py-8 w-52 xl:w-64 border-r",
         "bg-neutral-50 border-neutral-300",
         "dark:bg-neutral-900 dark:border-neutral-700",
         props.className
@@ -58,10 +83,10 @@ export const Sidebar = ({ ...props }: DivProps & {}) => {
     >
       {items.map((item) => (
         <div className="flex flex-col" key={item.title}>
-          <Text className="opacity-80" variant="h6">
+          <Text className="opacity-80 mt-6" variant="h6">
             {item.title}
           </Text>
-          <div className="mt-1">
+          <div className="mt-2 space-y-1">
             {item.items.map((item) => (
               <NavItem key={item.title} item={item} />
             ))}

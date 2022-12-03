@@ -1,17 +1,26 @@
 import { useDarkMode } from "hooks/useDarkMode";
-import React from "react";
-import hljs from "highlight.js";
+import React, { useEffect } from "react";
+// import hljs from "highlight.js/lib/core";
+// import jsx from "highlight.js/lib/languages/javascript";
 import { cx, isSSR } from "utils";
 import { Button } from "@parssa/universal-ui";
+import highlight from "utils/prism";
+
+// hljs.registerLanguage("jsx", jsx);
 
 type DivProps = React.HTMLAttributes<HTMLPreElement>;
 
 export const CodeBlock = ({ ...props }: DivProps & {}) => {
   const [isDarkMode] = useDarkMode();
 
-  React.useEffect(() => {
-    hljs.highlightAll();
-  }, [isDarkMode]);
+  useEffect(() => {
+    if (isSSR) return;
+    highlight();
+  }, []);
+
+  // React.useEffect(() => {
+  //   hljs.highlightAll();
+  // }, [isDarkMode]);
 
   const codeRef = React.useRef<HTMLSpanElement>(null);
 
@@ -25,16 +34,17 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
   };
 
   return (
-    <pre
-      {...props}
+    <div
       className={cx(
-        "rounded overflow-hidden border border-theme-active/50 relative",
+        "rounded overflow-hidden border border-theme-active/50 relative ",
         props.className
       )}
     >
-      <code ref={codeRef} className="ts dark:invert !px-4 !py-3">
-        {props.children}
-      </code>
+      <pre {...props} className={cx("dark:invert !px-4 !py-3 hue-rotate-180 contrast-150")}>
+        <code ref={codeRef} className="language-jsx ">
+          {props.children}
+        </code>
+      </pre>
       <Button
         size="sm"
         className="absolute top-2 right-2"
@@ -58,6 +68,6 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
       >
         <span className="sr-only">Copy to clipboard</span>
       </Button>
-    </pre>
+    </div>
   );
 };

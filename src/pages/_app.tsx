@@ -6,6 +6,7 @@ import { Footer } from "components/global/layout/Footer";
 
 import "styles/index.css";
 import "highlight.js/styles/default.css";
+import "styles/prism.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             text: ({ variant, size }) => {
               switch (variant) {
                 case "p":
-                  if (size === "md") {
+                  if (size === undefined) {
                     return "leading-relaxed";
                   }
                   return "";
