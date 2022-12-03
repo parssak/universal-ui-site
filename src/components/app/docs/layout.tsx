@@ -34,7 +34,7 @@ const Sidebar = () => {
 
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex w-full container px-0 h-full">
+    <div className="flex w-full container px-0 h-full flex-1">
       <div className="hidden md:block w-64 bg-theme-active py-6 px-4">
         <Sidebar />
       </div>

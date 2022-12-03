@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemeProvider, UniversalUIConfigProvider } from "@parssa/universal-ui";
-import { Footer } from "components/global/Footer";
+import { Footer } from "components/global/layout/Footer";
 import { Nav } from "components/global/Nav";
 import "styles/index.css";
 

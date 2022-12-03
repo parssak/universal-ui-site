@@ -8,7 +8,7 @@ const twMerge = extendTailwindMerge({
   }
 });
 
-export const cx = (classes: Array<string | undefined | false | null>) => {
+export const cx = (...classes: Array<string | undefined | false | null>) => {
   return twMerge(
     Array.from(classes)
       .filter(Boolean)

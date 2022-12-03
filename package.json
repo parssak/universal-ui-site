@@ -8,10 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "@parssa/universal-ui": "^0.1.27",
+    "@parssa/universal-ui": "^0.1.32",
+    "highlight.js": "^11.7.0",
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-syntax-highlighter": "^15.5.0",
     "tailwind-merge": "^1.8.0"
   },
   "devDependencies": {
