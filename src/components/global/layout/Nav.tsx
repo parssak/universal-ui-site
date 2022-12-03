@@ -34,6 +34,7 @@ export const Nav = ({ ...props }: NavProps & {}) => {
               className="group"
             >
               <FaGithub className="text-size group-hover:text-theme-active text-theme-base group-hover:opacity-100 transition-all opacity-70" />
+              <span className="sr-only">Link to GitHub Project</span>
             </a>
           </div>
         </div>
