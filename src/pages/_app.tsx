@@ -17,10 +17,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       <UniversalUIConfigProvider
         value={{
           components: {
-            text: ({ variant }) => {
+            text: ({ variant, size }) => {
               switch (variant) {
                 case "p":
-                  return "leading-relaxed";
+                  if (size === "md") {
+                    return "leading-relaxed";
+                  }
+                  return "";
                 case "h6":
                   return "uppercase tracking-wider text-xs";
                 default:

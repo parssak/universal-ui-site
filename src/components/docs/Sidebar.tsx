@@ -1,7 +1,7 @@
-import { Text } from "@parssa/universal-ui";
+import { Text, ThemeProvider } from "@parssa/universal-ui";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cx, isSSR } from "utils";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
@@ -12,11 +12,36 @@ const items = [
     items: [
       {
         title: "Installation",
-        href: "/docs/installation"
+        href: "/docs/getting-started"
       }
     ]
   }
-];
+] as const;
+
+const NavItem = ({ item }: { item: typeof items[number]["items"][number] }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const location = isSSR ? "/" : window.location.pathname;
+    setIsActive(location === item.href);
+  }, []);
+
+  return (
+    <ThemeProvider theme={isActive ? "brand" : "neutral"}>
+      <Link
+        href={item.href}
+        className={cx(
+          "block pl-size-2x py-size-qy rounded ",
+          isActive ? "bg-theme-active " : "border-transparent"
+        )}
+      >
+        <Text as="span" size="sm" className={cx("", isActive && "text-theme-active")}>
+          {item.title}
+        </Text>
+      </Link>
+    </ThemeProvider>
+  );
+};
 
 export const Sidebar = ({ ...props }: DivProps & {}) => {
   const location = isSSR ? "/" : window.location.pathname;
@@ -36,11 +61,11 @@ export const Sidebar = ({ ...props }: DivProps & {}) => {
           <Text className="opacity-80" variant="h6">
             {item.title}
           </Text>
-          {item.items.map((item) => (
-            <Link key={item.title} href={item.href} className="block pl-6 py-2">
-              <Text as="span">{item.title}</Text>
-            </Link>
-          ))}
+          <div className="mt-1">
+            {item.items.map((item) => (
+              <NavItem key={item.title} item={item} />
+            ))}
+          </div>
         </div>
       ))}
     </div>
