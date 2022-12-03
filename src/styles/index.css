@@ -6,3 +6,9 @@
 body {
   @apply dark:bg-black tracking-[-0.011em]
 }
+
+@layer components {
+  .link {
+    @apply text-blue-500 dark:text-blue-400 underline;
+  }
+}

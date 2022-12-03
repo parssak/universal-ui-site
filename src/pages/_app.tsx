@@ -20,7 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             text: ({ variant }) => {
               switch (variant) {
                 case "p":
-                  return "leading-loose";
+                  return "leading-relaxed";
+                case "h6":
+                  return "uppercase tracking-wider text-xs";
                 default:
                   return "";
               }

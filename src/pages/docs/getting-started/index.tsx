@@ -2,6 +2,8 @@ import { Text } from "@parssa/universal-ui";
 import { Sidebar } from "components/docs/Sidebar";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 
+import Link from "next/link";
+
 export default function Docs() {
   return (
     <div className="flex w-full h-full flex-1">
@@ -9,6 +11,7 @@ export default function Docs() {
       <div className="w-full flex-1 ">
         <div className="container py-12">
           <Text variant="h1">Getting Started</Text>
+    
           <Text className="mt-size-4y">
             Begin by installing{" "}
             <Text size="sm" variant="code">
@@ -17,9 +20,9 @@ export default function Docs() {
             with your package manager of choice.
           </Text>
 
-          <CodeBlock className="my-size-4y">npm install @parssa/universal-ui</CodeBlock>
-          <Text>
-            Then, wrap the root of your app in the{" "}
+          <CodeBlock className="mt-size-2y">npm install @parssa/universal-ui</CodeBlock>
+          <Text className="mt-size-4y">
+            Now, wrap the root of your app in the{" "}
             <Text variant="code" size="sm">
               UniversalUIProvider
             </Text>{" "}
@@ -46,6 +49,12 @@ const App = () => {
   )
 }`}
           </CodeBlock>
+          <Text>
+            If you want to learn more on how to theme Universal UI,{" "}
+            <Link href="/docs/customization">
+              <span className="link">go here</span>.
+            </Link>
+          </Text>
         </div>
       </div>
     </div>
