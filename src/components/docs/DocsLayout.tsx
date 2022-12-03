@@ -29,9 +29,11 @@ export const DocsLayout = ({ ...props }: DivProps & {}) => {
           <ThemeProvider theme="brand" className="opacity-80">
             <div className="absolute -top-24 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
             <div className="absolute -bottom-24 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
-            {accents.map((accent, i) => (
-              <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
-            ))}
+            <div className="opacity-70">
+              {accents.map((accent, i) => (
+                <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
+              ))}
+            </div>
           </ThemeProvider>
           <div className="relative">{props.children}</div>
         </div>
