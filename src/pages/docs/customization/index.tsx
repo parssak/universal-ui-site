@@ -39,15 +39,15 @@ export default function Docs() {
       <CodeBlock className="my-size-2y">
         {`import { UniversalUIProvider } from "@parssa/universal-ui";
 
+const config = {
+  components: {
+    button: 'shadow-none'
+  }
+}
+
 const App = () => {
   return (
-    <UniversalUIProvider 
-      value={{
-        components: {
-          button: 'shadow-none'
-        }
-      }}
-    >
+    <UniversalUIProvider value={config}>
       {/* ... */}
     </UniversalUIProvider>         
   )
@@ -64,28 +64,18 @@ const App = () => {
       </Text>
 
       <CodeBlock className="my-size-2y">
-        {`import { UniversalUIProvider } from "@parssa/universal-ui";
+        {`const config = {
+  components: {
+    text: ({ variant }) => {
+      if (variant === 'h1') {
+        return 'font-extrabold'
+      }
 
-const App = () => {
-  return (
-    <UniversalUIProvider
-      value={{
-        components: {
-          text: ({ variant }) => {
-            if (variant === 'h1') {
-              return 'font-extrabold'
-            }
-
-            if (variant === 'h6') {
-              return 'tracking-wider uppercase'
-            }
-          }
-        }
-      }}
-    >
-      {/* ... */}
-    </UniversalUIProvider>
-  )
+      if (variant === 'h6') {
+        return 'tracking-wider uppercase'
+      }
+    }
+  }
 }`}
       </CodeBlock>
 
@@ -101,8 +91,6 @@ const App = () => {
         plugin that allows you to customize the look and feel of Universal UI by overriding the
         default colors and spacing.
       </Text>
-
-      
     </DocsLayout>
   );
 }
