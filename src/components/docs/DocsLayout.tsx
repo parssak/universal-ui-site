@@ -1,3 +1,4 @@
+import { Disclosure } from "@headlessui/react";
 import { ThemeProvider } from "@parssa/universal-ui";
 import { Footer } from "components/global/layout/Footer";
 import React from "react";
@@ -20,14 +21,17 @@ export const DocsLayout = ({ ...props }: DivProps & {}) => {
     <div className="flex w-full h-full flex-1 ">
       {/* <div className="fixed h-full bottom-0 top-28 bg-red-500">
       </div> */}
+
       <Sidebar className="hidden lg:block fixed h-full bottom-0 top-14 " />
       <div className="hidden lg:block w-56 xl:w-64"></div>
       <div className="w-full flex-1 overflow-hidden">
         <div className="container py-12 relative min-h-screen">
           <ThemeProvider theme="brand" className="opacity-80">
-            {accents.map((accent, i) => (
+            <div className="absolute -top-24 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
+            <div className="absolute -bottom-24 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
+            {/* {accents.map((accent, i) => (
               <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
-            ))}
+            ))} */}
           </ThemeProvider>
           <div className="relative">{props.children}</div>
         </div>

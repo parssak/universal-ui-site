@@ -17,11 +17,20 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
       <Link
         href={item.href}
         className={cx(
-          "block pl-size-2x py-size-qy rounded ",
-          isActive ? "bg-theme-active " : "border-transparent transition-all hover:bg-theme-active"
+          "block pl-size-2x py-size-hy rounded group",
+          isActive
+            ? "bg-theme-active "
+            : "border-transparent transition-all duration-100 hover:bg-theme-active"
         )}
       >
-        <Text as="span" size="sm" className={cx("", isActive && "text-theme-active")}>
+        <Text
+          as="span"
+          size="sm"
+          className={cx(
+            "transition-all duration-100",
+            isActive ? "text-theme-active" : "opacity-80 group-hover:opacity-100 text-theme-active"
+          )}
+        >
           {item.title}
         </Text>
       </Link>

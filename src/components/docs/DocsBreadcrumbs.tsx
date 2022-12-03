@@ -1,7 +1,7 @@
 import { Button } from "@parssa/universal-ui";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
-import { HiMenu } from "react-icons/hi";
+import { HiChevronRight, HiMenu } from "react-icons/hi";
 import { cx } from "utils";
 import { NAV_SECTIONS } from "./constants";
 
@@ -40,6 +40,16 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
       >
         <div className="sr-only">Toggle Sidebar</div>
       </Button>
+      {/* <HiChevronRight className="w-5 h-5 opacity-60 text-theme-base mr-size-hx" /> */}
+      {activeSection && (
+        <div className="flex items-center">
+          <div className="text-theme-base text-size-2x font-medium opacity-70">{activeSection.title}</div>
+          <HiChevronRight className="w-5 h-5 opacity-60 text-theme-base mx-size-hx" />
+          <div className="text-theme-base text-size-2x font-medium">
+            {activeSection.child.title}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

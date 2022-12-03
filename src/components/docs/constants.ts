@@ -24,11 +24,11 @@ export const NAV_SECTIONS = [
     title: "Inputs",
     items: [
       {
-        title: "Button 🚧",
+        title: "Button",
         href: "/docs/components/inputs/button"
       },
       {
-        title: "Input 🚧",
+        title: "Input",
         href: "/docs/components/inputs/input"
       }
     ]
@@ -37,11 +37,11 @@ export const NAV_SECTIONS = [
     title: "Display",
     items: [
       {
-        title: "Text 🚧",
+        title: "Text",
         href: "/docs/components/display/text"
       },
       {
-        title: "Card 🚧",
+        title: "Card",
         href: "/docs/components/display/card"
       }
     ]
@@ -54,17 +54,17 @@ export const NAV_SECTIONS = [
         href: "/docs/utilities/colors"
       },
       {
-        title: "Spacing 🚧",
+        title: "Spacing",
         href: "/docs/utilities/spacing"
       },
-      {
-        title: "Classes 🚧",
-        href: "/docs/utilities/classes"
-      },
-      {
-        title: "ThemeProvider 🚧",
-        href: "/docs/utilities/theme-provider"
-      }
+      // {
+      //   title: "Classes 🚧",
+      //   href: "/docs/utilities/classes"
+      // },
+      // {
+      //   title: "ThemeProvider 🚧",
+      //   href: "/docs/utilities/theme-provider"
+      // }
     ]
   }
 ] as ReadonlyArray<NavSection>;

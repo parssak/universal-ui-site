@@ -38,7 +38,7 @@ export const Nav = ({ ...props }: NavProps & {}) => {
           </div>
         </div>
         {isDocs && (
-          <div className="py-2 border-t border-theme-base lg:hidden">
+          <div className="py-2 border-t border-theme-base/30 lg:hidden">
             <DocsBreadcrumbs />
           </div>
         )}
