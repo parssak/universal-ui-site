@@ -4,6 +4,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+
 body {
   @apply dark:bg-black tracking-[-0.011em]
 }

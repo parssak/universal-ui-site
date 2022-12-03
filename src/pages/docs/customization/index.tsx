@@ -1,4 +1,4 @@
-import { Text } from "@parssa/universal-ui";
+import { Button, Text, UniversalUIConfigProvider } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
 import { Sidebar } from "components/docs/Sidebar";
 import { CodeBlock } from "components/global/ui/CodeBlock";

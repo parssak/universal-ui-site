@@ -3,47 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { cx, isSSR } from "utils";
+import { NAV_SECTIONS } from "./constants";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
-const items = [
-  {
-    title: "Getting Started",
-    items: [
-      {
-        title: "Installation",
-        href: "/docs/getting-started"
-      },
-      {
-        title: "Customization",
-        href: "/docs/customization"
-      }
-    ]
-  },
-  {
-    title: "Components",
-    items: [
-      {
-        title: "Button",
-        href: "/docs/components/button"
-      },
-      {
-        title: "Text",
-        href: "/docs/components/text"
-      },
-      {
-        title: "Input",
-        href: "/docs/components/input"
-      },
-      {
-        title: "Card",
-        href: "/docs/components/card"
-      }
-    ]
-  }
-] as const;
-
-const NavItem = ({ item }: { item: typeof items[number]["items"][number] }) => {
+const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] }) => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -69,24 +33,22 @@ const NavItem = ({ item }: { item: typeof items[number]["items"][number] }) => {
 };
 
 export const Sidebar = ({ ...props }: DivProps & {}) => {
-  const location = isSSR ? "/" : window.location.pathname;
-
   return (
     <div
       {...props}
       className={cx(
-        "px-4 py-8 w-52 xl:w-64 border-r",
-        "bg-neutral-50 border-neutral-300",
-        "dark:bg-neutral-900 dark:border-neutral-700",
+        "px-4 py-8 flex-shrink-0 w-56 xl:w-64 border-r",
+        "bg-neutral-50/70 border-neutral-300",
+        "dark:bg-neutral-900/70 dark:border-neutral-700",
         props.className
       )}
     >
-      {items.map((item) => (
+      {NAV_SECTIONS.map((item) => (
         <div className="flex flex-col" key={item.title}>
-          <Text className="opacity-80 mt-6" variant="h6">
+          <Text className="opacity-50 mt-6" variant="h6">
             {item.title}
           </Text>
-          <div className="mt-2 space-y-1">
+          <div className="mt-2 space-y-0.5">
             {item.items.map((item) => (
               <NavItem key={item.title} item={item} />
             ))}

@@ -36,7 +36,7 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
   return (
     <div
       className={cx(
-        "rounded overflow-hidden border border-theme-active/50 relative ",
+        "rounded-md overflow-hidden border border-theme-active/50 relative ",
         props.className
       )}
     >

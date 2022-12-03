@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   }
                   return "";
                 case "h6":
-                  return "uppercase tracking-wider text-xs";
+                  return "uppercase tracking-widest text-xs font-mono";
                 default:
                   return "";
               }
