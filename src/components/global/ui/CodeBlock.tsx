@@ -1,18 +1,11 @@
-import { useDarkMode } from "hooks/useDarkMode";
 import React, { useEffect } from "react";
-// import hljs from "highlight.js/lib/core";
-// import jsx from "highlight.js/lib/languages/javascript";
 import { cx, isSSR } from "utils";
 import { Button, ThemeProvider } from "@parssa/universal-ui";
 import highlight from "utils/prism";
 
-// hljs.registerLanguage("jsx", jsx);
-
 type DivProps = React.HTMLAttributes<HTMLPreElement>;
 
 export const CodeBlock = ({ ...props }: DivProps & {}) => {
-  const [isDarkMode] = useDarkMode();
-
   useEffect(() => {
     if (isSSR) return;
     highlight();
@@ -35,20 +28,23 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
 
   return (
     <ThemeProvider
-      theme='neutral'
+      theme="neutral"
       className={cx(
         "rounded-md overflow-hidden border border-theme-active/70 relative bg-theme-base dark:bg-theme-base/30 backdrop-blur-lg",
         props.className
       )}
     >
-      <pre {...props} className={cx("px-4 py-3 text-sm text-theme-base overflow-auto")}>
+      <pre
+        {...props}
+        className={cx("px-4 py-3 text-sm text-theme-base overflow-auto scrollbar-hide")}
+      >
         <code ref={codeRef} className="language-jsx">
           {props.children}
         </code>
       </pre>
       <Button
         size="sm"
-        className="absolute top-2 right-2 shadow-none"
+        className="absolute top-2 right-2 shadow-none cursor-copy"
         onClick={onCopy}
         icon={
           <svg

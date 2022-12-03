@@ -64,8 +64,8 @@ const App = () => {
         <Text variant="code" size="sm">
           tailwind.config.js
         </Text>{" "}
-        file. This ensures that Tailwind will compile the styles for Universal UI, and enables the
-        custom Universal UI plugin.
+        file.
+        {/* This ensures that Tailwind will compile the styles for Universal UI, and enables the custom Universal UI plugin. */}
       </Text>
 
       <CodeBlock className="my-size-2y">

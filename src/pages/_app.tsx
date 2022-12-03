@@ -12,8 +12,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>NextJS TW</title>
+        <title>Universal UI</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="A customizable, TailwindCSS-first, React UI Library." />
+        {/* og:image */}
+        <meta property="og:title" content="Universal UI" />
+        <meta property="og:description" content="A customizable, TailwindCSS-first, React UI Library." />
+        <meta property="og:image" content="https://universal-ui.vercel.app/meta.png" />
       </Head>
       <UniversalUIConfigProvider
         config={{
