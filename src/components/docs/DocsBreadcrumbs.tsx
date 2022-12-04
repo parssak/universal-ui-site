@@ -17,8 +17,6 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
       return item.items.some((item) => item.href === path);
     });
 
-    console.debug("activeSection", activeSection);
-
     if (!activeSection) return null;
 
     const activeRoute = {
@@ -29,13 +27,11 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
     return activeRoute;
   }, [path]);
 
-  console.log(activeSection);
-
   return (
     <div {...props} className={cx("flex items-center", props.className)}>
       <Button
         variant="ghost"
-        className="pl-0 pr-0 pt-0 pb-0 hover:bg-theme-pure ml-[-6px]"
+        className="pl-0 pr-0 pt-0 pb-0 hover:bg-theme-pure ml-[-6px] mr-1"
         icon={<HiMenu className="text-size w-full h-full scale-110" />}
       >
         <div className="sr-only">Toggle Sidebar</div>

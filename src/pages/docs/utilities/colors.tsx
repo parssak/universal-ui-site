@@ -28,7 +28,7 @@ export default function Colors() {
           <Text className="capitalize mb-size-2y" variant="h2">
             {theme}
           </Text>
-          <div className="py-size-2y md:py-size-4y px-size-2x md:px-size-4x mt-size-y rounded bg-theme-pure border border-theme-base flex w-full justify-between">
+          <div className="py-size-2y md:py-size-4y px-size-2x mt-size-y rounded bg-theme-pure border border-theme-base flex w-full justify-between">
             <Text className="font-medium">Pure </Text>
             <div className="ml-auto pl-4">
               <Text variant="code" size="sm">
@@ -36,7 +36,7 @@ export default function Colors() {
               </Text>
             </div>
           </div>
-          <div className="py-size-2y md:py-size-4y px-size-2x md:px-size-4x mt-size-y rounded bg-theme-base border border-theme-base flex w-full justify-between">
+          <div className="py-size-2y md:py-size-4y px-size-2x mt-size-y rounded bg-theme-base border border-theme-base flex w-full justify-between">
             <Text className="font-medium">Base </Text>
             <div className="ml-auto pl-4">
               <Text variant="code" size="sm">
@@ -44,7 +44,7 @@ export default function Colors() {
               </Text>
             </div>
           </div>
-          <div className="py-size-2y md:py-size-4y px-size-2x md:px-size-4x mt-size-y rounded bg-theme-active border border-theme-active flex w-full justify-between">
+          <div className="py-size-2y md:py-size-4y px-size-2x mt-size-y rounded bg-theme-active border border-theme-active flex w-full justify-between">
             <Text className="text-theme-active font-medium">Active </Text>
             <div className="ml-auto pl-4">
               <Text variant="code" size="sm">
@@ -52,7 +52,7 @@ export default function Colors() {
               </Text>
             </div>
           </div>
-          <div className="py-size-2y md:py-size-4y px-size-2x md:px-size-4x mt-size-y rounded bg-theme-inverted border border-theme-inverted flex w-full justify-between">
+          <div className="py-size-2y md:py-size-4y px-size-2x mt-size-y rounded bg-theme-inverted border border-theme-inverted flex w-full justify-between">
             <Text className="text-theme-inverted font-medium">Inverted </Text>
             <div className="ml-auto pl-4">
               <Text variant="code" size="sm">
