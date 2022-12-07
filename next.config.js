@@ -3,9 +3,9 @@
  */
 const nextConfig = {
   /* config options here */
-  experimental: {
-    appDir: true
-  },
+  // experimental: {
+  //   appDir: true
+  // },
   i18n: {
     locales: ["en"],
     defaultLocale: "en"

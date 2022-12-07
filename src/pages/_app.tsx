@@ -1,14 +1,17 @@
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { ThemeProvider, UniversalUIConfigProvider } from "@parssa/universal-ui";
+import {  UniversalUIConfigProvider } from "@parssa/universal-ui";
 import { Nav } from "components/global/layout/Nav";
-import { Footer } from "components/global/layout/Footer";
 
 import "styles/index.css";
-import "highlight.js/styles/default.css";
+// import "highlight.js/styles/default.css";
 // import "styles/prism.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  // if (typeof window === "undefined") {
+  //   console.log(document)
+  // }
   return (
     <>
       <Head>
@@ -19,6 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:title" content="Universal UI" />
         <meta property="og:description" content="A customizable, TailwindCSS-first, React UI Library." />
         <meta property="og:image" content="https://universal-ui.vercel.app/meta.png" />
+        {/* Prevent dark mode flicker, add data-theme="neutral-dark" if client is in dark mode */}
+        <meta name="color-scheme" content="light dark" />
+        
       </Head>
       <UniversalUIConfigProvider
         config={{
@@ -45,12 +51,12 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         }}
       >
-        <ThemeProvider className="bg-theme-pure">
+        {/* <ThemeProvider className="bg-theme-pure"> */}
           <div className="min-h-screen relative flex flex-col h-full">
             <Nav />
             <Component {...pageProps} />
           </div>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </UniversalUIConfigProvider>
     </>
   );

@@ -11,10 +11,6 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
     highlight();
   }, []);
 
-  // React.useEffect(() => {
-  //   hljs.highlightAll();
-  // }, [isDarkMode]);
-
   const codeRef = React.useRef<HTMLSpanElement>(null);
 
   const onCopy = () => {
