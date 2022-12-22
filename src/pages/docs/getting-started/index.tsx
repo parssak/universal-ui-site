@@ -24,7 +24,7 @@ export default function GettingStarted() {
           UniversalUIProvider
         </Text>{" "}
         to provide global theming. More on how to{" "}
-        <Link className="link" href="/docs/customization">
+        <Link className="link" href="/docs/getting-started/customization">
           customize Universal UI here
         </Link>
         .
