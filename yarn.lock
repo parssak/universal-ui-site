@@ -112,10 +112,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@parssa/universal-ui@^0.1.42":
-  version "0.1.42"
-  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.42.tgz#a6829a1a1423e4fa96736baf1161327bcb76b78a"
-  integrity sha512-oOTOIXmIbcL3UfTU9sqQCDBdYphaEH7gg0vewoBsLyU8YrMwrNwH3bcjo1aCE4A8nO77YJ7zM91kFUPLP84NAw==
+"@parssa/universal-ui@^0.1.48":
+  version "0.1.48"
+  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.48.tgz#f9e6426ba8ac9902bc51aa9ba22a106d047239e9"
+  integrity sha512-VTneI6VOdr2Zs7RKWsSK/VJjr6z/vBMtgzVM36D/PJgb6VGOke/dK8WVMJEfDYWzyzGtLV8XqeEklxjPBfE41Q==
   dependencies:
     "@heroicons/react" "^1.0.6"
     "@popperjs/core" "^2.11.5"
@@ -873,7 +873,12 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tailwind-merge@^1.3.0, tailwind-merge@^1.8.0:
+tailwind-merge@^1.3.0:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.8.1.tgz#0e56c8afbab2491f72e06381043ffec8b720ba04"
+  integrity sha512-+fflfPxvHFr81hTJpQ3MIwtqgvefHZFUHFiIHpVIRXvG/nX9+gu2P7JNlFu2bfDMJ+uHhi/pUgzaYacMoXv+Ww==
+
+tailwind-merge@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.8.0.tgz#41c4730b2a51ca7a905c6beebcbfe237bfb61f30"
   integrity sha512-tER/2SbYRdfPYg6m4pDWZSlbymLTmDi+dx4iCsJmgmz4UDGzgnVelOvBe3GNtGCw9Bmc4MiObfJJbKeVL+KnMQ==

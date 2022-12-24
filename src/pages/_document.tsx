@@ -7,7 +7,7 @@ class MyDocument extends Document {
   }
 
   render() {
-     const setInitialTheme = `
+    const setInitialTheme = `
     function getUserPreference() {
       if(window.localStorage.getItem('universal-ui-theme')) {
         return window.localStorage.getItem('universal-ui-theme')

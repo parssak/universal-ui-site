@@ -1,9 +1,18 @@
 import { Button, Card, Input, Text, ThemeProvider } from "@parssa/universal-ui";
 import { Footer } from "components/global/layout/Footer";
-import { CodeBlock } from "components/global/ui/CodeBlock";
 import Link from "next/link";
 
-export default function Home() {
+export const getServerSideProps = async ({ req }) => {
+  const theme = req.cookies.themeSwitch ?? "light";
+
+  return {
+    props: {
+      theme
+    } // will be passed to the page component as props
+  };
+};
+
+export default function Home(props) {
   return (
     <ThemeProvider className="bg-theme-pure relative overflow-hidden grid-pattern min-h-screen flex flex-col">
       <ThemeProvider
@@ -24,6 +33,7 @@ export default function Home() {
               </Text>
             </Card.Content>
           </Card>
+
           <Text className="text-5xl" variant="h1">
             Universal UI
           </Text>

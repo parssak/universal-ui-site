@@ -19,9 +19,6 @@ export const DocsLayout = ({ ...props }: DivProps & {}) => {
   ];
   return (
     <div className="flex w-full h-full flex-1 ">
-      {/* <div className="fixed h-full bottom-0 top-28 bg-red-500">
-      </div> */}
-
       <Sidebar className="hidden lg:block fixed h-full bottom-0 top-14 " />
       <div className="hidden lg:block w-56 xl:w-64"></div>
       <div className="w-full flex-1 overflow-hidden">

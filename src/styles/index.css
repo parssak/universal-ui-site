@@ -1,21 +1,21 @@
-@import 'https://rsms.me/inter/inter.css'; 
+@import "https://rsms.me/inter/inter.css";
 @import "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap";
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 html {
-    overflow: hidden;
-    height: 100%;
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
-    height: 100%;
-    overflow: auto;
+  height: 100%;
+  overflow: auto;
 }
 
 body {
-  @apply dark:bg-black tracking-[-0.011em]
+  @apply dark:bg-black tracking-[-0.011em];
 }
 
 @layer components {
@@ -38,35 +38,36 @@ body {
   }
 }
 
-/* Prism Classes */
+/* Start of Prism Classes */
 .literal-property.property {
   @apply italic text-sky-600 dark:text-sky-400;
 }
 .number {
-  @apply  text-amber-600 dark:text-amber-400;
+  @apply text-amber-600 dark:text-amber-400;
 }
 
 .string {
-  @apply  text-green-600 dark:text-green-500;
+  @apply text-green-600 dark:text-green-500;
 }
 
 .keyword,
 .operator {
-  @apply  text-rose-600 dark:text-rose-400;
+  @apply text-rose-600 dark:text-rose-400;
 }
 
 .function-variable.function {
-  @apply  text-purple-600 dark:text-purple-400;
+  @apply text-purple-600 dark:text-purple-400;
 }
 
 .punctuation {
-  @apply  text-theme-base;
+  @apply text-theme-base;
 }
 
 .comment {
-  @apply  text-green-600 dark:text-green-500;
+  @apply text-green-600 dark:text-green-500;
 }
 
 .class-name {
-  @apply  text-blue-600 dark:text-blue-400;
+  @apply text-blue-600 dark:text-blue-400;
 }
+/* End of Prism Classes */
