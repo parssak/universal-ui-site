@@ -2,10 +2,9 @@ import { Card, Text } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
 
 export default function TextPage() {
-
   return (
     <DocsLayout>
-      <Text variant="h1">Text</Text>
+      <DocsLayout.Header title="Text" description={<>Useful for rendering any form of text.</>} />
 
       <Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
         <Card.Content className="py-size-2y md:py-size-4y my-size-4y px-size-2x md:px-size-4x">
@@ -20,18 +19,18 @@ export default function TextPage() {
 
           <Text className="leading-loose">
             To activate the{" "}
-            <Text variant="code" size={'sm'}>
+            <Text variant="code" size={"sm"}>
               Command Pallette
             </Text>
             , press{" "}
             <span className="space-x-[3px]">
-              <Text variant="kbd" size={'sm'}>
+              <Text variant="kbd" size={"sm"}>
                 Ctrl
               </Text>
-              <Text variant="kbd" size={'sm'}>
+              <Text variant="kbd" size={"sm"}>
                 Shift
               </Text>
-              <Text variant="kbd" size={'sm'}>
+              <Text variant="kbd" size={"sm"}>
                 P
               </Text>
             </span>
@@ -43,7 +42,7 @@ export default function TextPage() {
 
           <Text className="mt-2">
             To use this component, you can simply import it from the{" "}
-            <Text variant="code" size={'sm'}>
+            <Text variant="code" size={"sm"}>
               @universal-ui/react
             </Text>{" "}
             package.
@@ -51,15 +50,15 @@ export default function TextPage() {
 
           <Text className="mt-1">
             You can also use the{" "}
-            <Text variant="code" size={'sm'}>
+            <Text variant="code" size={"sm"}>
               Text
             </Text>{" "}
             component to render{" "}
-            <Text variant="code" size={'sm'}>
+            <Text variant="code" size={"sm"}>
               code
             </Text>{" "}
             and{" "}
-            <Text variant="code" size={'sm'}>
+            <Text variant="code" size={"sm"}>
               keyboard shortcuts
             </Text>
             .

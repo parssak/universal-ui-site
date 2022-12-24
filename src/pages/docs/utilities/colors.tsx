@@ -1,4 +1,5 @@
 import { Card, Text, ThemeProvider } from "@parssa/universal-ui";
+
 import { DocsLayout } from "components/docs/DocsLayout";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 
@@ -8,7 +9,10 @@ export default function Colors() {
   const themes = ["neutral", "brand", "error", "warning", "success", "info"] as const;
   return (
     <DocsLayout>
-      <Text variant="h1">Colors</Text>
+      <DocsLayout.Header
+        title="Colors"
+        description="Universal UI provides a set of default colors that you can use in your app."
+      />
 
       <Text className="mt-size-4y">
         All the default colors provided by Universal UI are listed below. You can also override

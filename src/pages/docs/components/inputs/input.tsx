@@ -1,10 +1,18 @@
 import { Input, Card, Text } from "@parssa/universal-ui";
+
 import { DocsLayout } from "components/docs/DocsLayout";
 
 export default function InputPage() {
   return (
     <DocsLayout>
-      <Text variant="h1">Input</Text>
+      <DocsLayout.Header
+        title="Input"
+        description={
+          <>
+            A <i>slightly</i> better than native&trade; input field.
+          </>
+        }
+      />
 
       <Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
         <Card.Content className="py-size-4y my-size-4y grid place-items-center">

@@ -1,12 +1,13 @@
-import { Disclosure } from "@headlessui/react";
+import React from "react";
+
 import { ThemeProvider } from "@parssa/universal-ui";
 import { Footer } from "components/global/layout/Footer";
-import React from "react";
+import { DocsHeader } from "./DocsHeader";
 import { Sidebar } from "./Sidebar";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const DocsLayout = ({ ...props }: DivProps & {}) => {
+const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
   const accents = [
     "top-96 right-0 opacity-20 rounded-full rotate-45 from-theme-base/50 to-theme-active w-96 h-24",
     "top-48 -right-56 opacity-40 blur rounded-full -rotate-6 from-theme-active/90 to-theme-base/50 w-96 h-12",
@@ -39,3 +40,7 @@ export const DocsLayout = ({ ...props }: DivProps & {}) => {
     </div>
   );
 };
+
+export const DocsLayout = Object.assign(DocsLayoutRoot, {
+  Header: DocsHeader
+});

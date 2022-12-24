@@ -1,11 +1,16 @@
 import { Text } from "@parssa/universal-ui";
+
 import { DocsLayout } from "components/docs/DocsLayout";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 
 export default function Customization() {
   return (
     <DocsLayout>
-      <Text variant="h1">Customization</Text>
+      {/* <Text variant="h1">Customization</Text> */}
+      <DocsLayout.Header
+        title="Customization"
+        description="Customize the look and feel of Universal UI to fit your needs."
+      />
 
       <Text className="mt-size-4y">
         Universal UI provides two main ways to globally customize the look and feel of your

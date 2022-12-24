@@ -1,4 +1,5 @@
 import { Card, Text } from "@parssa/universal-ui";
+
 import { DocsLayout } from "components/docs/DocsLayout";
 import { CodeBlock } from "components/global/ui/CodeBlock";
 
@@ -7,7 +8,7 @@ import Link from "next/link";
 export default function GettingStarted() {
   return (
     <DocsLayout>
-      <Text variant="h1">Getting Started</Text>
+      <DocsLayout.Header title="Getting Started" description="Get started with Universal UI in minutes." />
 
       <Text className="mt-size-4y">
         Begin by installing{" "}

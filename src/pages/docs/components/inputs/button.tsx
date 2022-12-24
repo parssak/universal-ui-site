@@ -1,10 +1,14 @@
 import { Button, Card, Text } from "@parssa/universal-ui";
+
 import { DocsLayout } from "components/docs/DocsLayout";
 
 export default function ButtonPage() {
   return (
     <DocsLayout>
-      <Text variant="h1">Button</Text>
+      <DocsLayout.Header
+        title="Button"
+        description="Used to trigger actions and events. Y'know, like a button."
+      />
 
       <Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
         <Card.Content className="py-size-4y my-size-4y grid place-items-center">
