@@ -30,7 +30,7 @@ export default function Spacing() {
         <div key={size} className="mt-size-2y">
           <div data-size={size} className="flex items-center gap-size-x">
             <Text className="font-mono">size-{size}</Text>
-            <div className="bg-theme-base h-size-4y w-size-4x rounded-sm"></div>
+            <div className="bg-theme-active h-size-4y w-size-4x rounded-sm"></div>
             {/* <div className="px-size-x py-size-y bg-theme-active rounded w-max">
               <Text className="font-mono">size-{size}</Text>
             </div> */}

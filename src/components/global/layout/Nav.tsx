@@ -6,6 +6,7 @@ import React from "react";
 import { cx } from "utils";
 import { FaGithub } from "react-icons/fa";
 import { useRouter } from "next/router";
+import { useSidebar } from "hooks/useSidebar";
 
 type NavProps = React.HTMLAttributes<HTMLDivElement>;
 

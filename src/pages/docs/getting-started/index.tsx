@@ -48,18 +48,6 @@ const App = () => {
 }`}
       </CodeBlock>
 
-      <Card size="sm" theme="warning" className="my-size-2y backdrop-blur-md">
-        <Card.Content>
-          <Text>
-            If you are using Next.js, pass in the{" "}
-            <Text variant="code" size="xs">
-              ssr: true
-            </Text>{" "}
-            prop to ensure styles are rendered on the server properly.
-          </Text>
-        </Card.Content>
-      </Card>
-
       <Text className="mt-size-4y">
         Lastly, make sure to add the following to your{" "}
         <Text variant="code" size="sm">

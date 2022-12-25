@@ -40,23 +40,28 @@ body {
 
 /* Start of Prism Classes */
 .literal-property.property {
-  @apply italic text-sky-600 dark:text-sky-400;
+  @apply italic text-sky-400;
+  /* text-sky-600  */
 }
 .number {
-  @apply text-amber-600 dark:text-amber-400;
+  @apply text-amber-400;
+  /* text-amber-600  */
 }
 
 .string {
-  @apply text-green-600 dark:text-green-500;
+  @apply text-green-500;
+  /* text-green-600  */
 }
 
 .keyword,
 .operator {
-  @apply text-rose-600 dark:text-rose-400;
+  @apply text-rose-400;
+  /* text-rose-600  */
 }
 
 .function-variable.function {
-  @apply text-purple-600 dark:text-purple-400;
+  @apply text-purple-400;
+  /* text-purple-600  */
 }
 
 .punctuation {
@@ -64,10 +69,12 @@ body {
 }
 
 .comment {
-  @apply text-green-600 dark:text-green-500;
+  @apply text-green-500;
+  /* text-green-600  */
 }
 
 .class-name {
-  @apply text-blue-600 dark:text-blue-400;
+  @apply text-blue-400;
+  /* text-blue-600  */
 }
 /* End of Prism Classes */

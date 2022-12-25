@@ -1,4 +1,6 @@
+import { Dialog } from "@headlessui/react";
 import { Button } from "@parssa/universal-ui";
+import { useSidebar } from "hooks/useSidebar";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import { HiChevronRight, HiMenu } from "react-icons/hi";
@@ -11,6 +13,7 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
   const router = useRouter();
 
   const path = router.asPath;
+  const { toggleSidebar } = useSidebar();
 
   const activeSection = useMemo(() => {
     const activeSection = NAV_SECTIONS.find((item) => {
@@ -33,13 +36,16 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
         variant="ghost"
         className="pl-0 pr-0 pt-0 pb-0 hover:bg-theme-pure ml-[-6px] mr-1"
         icon={<HiMenu className="text-size w-full h-full scale-110" />}
+        onClick={toggleSidebar}
       >
         <div className="sr-only">Toggle Sidebar</div>
       </Button>
-      {/* <HiChevronRight className="w-5 h-5 opacity-60 text-theme-base mr-size-hx" /> */}
+
       {activeSection && (
         <div className="flex items-center">
-          <div className="text-theme-base text-size-2x font-medium opacity-70">{activeSection.title}</div>
+          <div className="text-theme-base text-size-2x font-medium opacity-70">
+            {activeSection.title}
+          </div>
           <HiChevronRight className="w-5 h-5 opacity-60 text-theme-base mx-size-hx" />
           <div className="text-theme-base text-size-2x font-medium">
             {activeSection.child.title}

@@ -31,8 +31,9 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
   return (
     <ThemeProvider
       theme="neutral"
+      dark
       className={cx(
-        "rounded-md overflow-hidden border border-theme-active/40 relative bg-theme-base dark:bg-theme-pure/50 backdrop-blur-lg",
+        "rounded-md overflow-hidden border border-theme-active/40 relative bg-theme-base dark:bg-theme-pure backdrop-blur-lg",
         props.className
       )}
     >

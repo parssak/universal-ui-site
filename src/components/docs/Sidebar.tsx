@@ -45,7 +45,7 @@ export const Sidebar = ({ ...props }: DivProps & {}) => {
       className={cx(
         "px-4 py-8 flex-shrink-0 w-56 xl:w-64 border-r",
         "bg-neutral-50/70 border-neutral-300",
-        "dark:bg-neutral-900/70 dark:border-neutral-700",
+        "dark:bg-neutral-900/70 dark:border-neutral-800/70",
         props.className
       )}
     >

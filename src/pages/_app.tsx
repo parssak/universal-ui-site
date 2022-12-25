@@ -5,6 +5,8 @@ import { Nav } from "components/global/layout/Nav";
 
 import "styles/index.css";
 
+import { SidebarProvider } from "hooks/useSidebar";
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -52,8 +54,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <ThemeProvider className="bg-theme-pure">
           <div className="min-h-screen relative flex flex-col h-full">
-            <Nav />
-            <Component {...pageProps} />
+            <SidebarProvider>
+              <Nav />
+              <Component {...pageProps} />
+            </SidebarProvider>
           </div>
         </ThemeProvider>
       </UniversalUIConfigProvider>
