@@ -1,12 +1,12 @@
+import React from "react";
+import Link from "next/link";
+
 import { Text } from "@parssa/universal-ui";
 import { DocsBreadcrumbs } from "components/docs/DocsBreadcrumbs";
 
-import Link from "next/link";
-import React from "react";
 import { cx } from "utils";
 import { FaGithub } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { useSidebar } from "hooks/useSidebar";
 
 type NavProps = React.HTMLAttributes<HTMLDivElement>;
 

@@ -26,15 +26,7 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
     <div className="flex w-full h-full flex-1 ">
       <Sidebar className="hidden lg:block fixed h-full bottom-0 top-14 " />
 
-      <Transition
-        show={isSidebarOpen}
-        enter=""
-        enterFrom=""
-        enterTo=""
-        leave=""
-        leaveFrom=""
-        leaveTo=""
-      >
+      {isSidebarOpen && (
         <Dialog
           open={isSidebarOpen}
           onClose={() => {
@@ -43,23 +35,24 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
           }}
         >
           <Dialog.Overlay className="fixed inset-0 bg-theme-pure/80 dark:bg-theme-base/50 lg:hidden" />
-          <Dialog.Panel className="lg:hidden fixed h-full bottom-0 top-0 z-50 bg-theme-pure dark:bg-theme-pure">
-            <div className="px-4 pt-8 pb-4">
-              <Link href="/">
-                <Text variant="h5">Universal UI</Text>
-              </Link>
-            </div>
-            <Sidebar
-              className="bg-theme-pure dark:bg-theme-pure"
-              onClickCapture={(e) => {
-                if (e.target instanceof HTMLElement && e.target.tagName === "A") {
-                  toggleSidebar();
-                }
-              }}
-            />
-          </Dialog.Panel>
+          <ThemeProvider>
+            <Dialog.Panel>
+              <Sidebar
+                className="lg:hidden fixed h-full bottom-0 top-0 z-50 bg-theme-pure dark:bg-theme-pure"
+                onClickCapture={(e) => {
+                  if (e.target instanceof HTMLElement && e.target.tagName === "A") {
+                    toggleSidebar();
+                  }
+                }}
+              >
+                <Link href="/">
+                  <Text variant="h5">Universal UI</Text>
+                </Link>
+              </Sidebar>
+            </Dialog.Panel>
+          </ThemeProvider>
         </Dialog>
-      </Transition>
+      )}
       <div className="hidden lg:block w-56 xl:w-64"></div>
       <div className="w-full flex-1 overflow-hidden">
         <div className="container py-12 relative min-h-screen">

@@ -38,17 +38,18 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
   );
 };
 
-export const Sidebar = ({ ...props }: DivProps & {}) => {
+export const Sidebar = ({ children, ...props }: DivProps & {}) => {
   return (
     <div
       {...props}
       className={cx(
         "px-4 py-8 flex-shrink-0 w-56 xl:w-64 border-r",
-        "bg-neutral-50/70 border-neutral-300",
-        "dark:bg-neutral-900/70 dark:border-neutral-800/70",
+        "bg-neutral-50/70 dark:bg-neutral-900/70",
+        "border-neutral-300 dark:border-neutral-800/70",
         props.className
       )}
     >
+      {children}
       {NAV_SECTIONS.map((item) => (
         <div className="flex flex-col" key={item.title}>
           <Text className="opacity-50 mt-6" variant="h6">

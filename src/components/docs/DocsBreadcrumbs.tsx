@@ -1,4 +1,3 @@
-import { Dialog } from "@headlessui/react";
 import { Button } from "@parssa/universal-ui";
 import { useSidebar } from "hooks/useSidebar";
 import { useRouter } from "next/router";
