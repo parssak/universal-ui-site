@@ -38,5 +38,8 @@ const nextConfig = {
 
 module.exports = withMDX({
   ...nextConfig,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"]
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  options: {
+    providerImportSource: "@mdx-js/react"
+  }
 });

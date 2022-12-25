@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { AppProps } from "next/app";
-import { ThemeProvider, UniversalUIConfigProvider } from "@parssa/universal-ui";
+import { Text, ThemeProvider, UniversalUIConfigProvider } from "@parssa/universal-ui";
 import { Nav } from "components/global/layout/Nav";
 
 import "styles/index.css";
 
 import { SidebarProvider } from "hooks/useSidebar";
+import { MDXProvider } from "components/global/ui/MDXProvider";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -55,8 +56,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider className="bg-theme-pure">
           <div className="min-h-screen relative flex flex-col h-full">
             <SidebarProvider>
-              <Nav />
-              <Component {...pageProps} />
+              <MDXProvider>
+                <Nav />
+                {/* @ts-ignore */}
+                <Component {...pageProps} />
+              </MDXProvider>
             </SidebarProvider>
           </div>
         </ThemeProvider>
