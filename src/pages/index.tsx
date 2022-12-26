@@ -1,16 +1,6 @@
-import { Button, Card, Input, Text, ThemeProvider } from "@parssa/universal-ui";
+import { Button, Card, Text, ThemeProvider } from "@parssa/universal-ui";
 import { Footer } from "components/global/layout/Footer";
 import Link from "next/link";
-
-export const getServerSideProps = async ({ req }) => {
-  const theme = req.cookies.themeSwitch ?? "light";
-
-  return {
-    props: {
-      theme
-    } // will be passed to the page component as props
-  };
-};
 
 export default function Home(props) {
   return (

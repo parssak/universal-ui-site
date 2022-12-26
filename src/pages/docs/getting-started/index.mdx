@@ -1,0 +1,41 @@
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+
+export const meta = {
+  title: "Getting Started",
+  description: "Get started with Universal UI in minutes."
+};
+
+Begin by installing `@parssa/universal-ui` with your package manager of choice.
+
+```bash
+npm install @parssa/universal-ui
+```
+
+Now, wrap the root of your app in the `UniversalUIProvider` to provide global theming. More on how to [customize Universal UI here](/docs/getting-started/customization).
+
+```jsx
+import { UniversalUIProvider } from "@parssa/universal-ui";
+
+const App = () => {
+  return <UniversalUIProvider>{/* ... */}</UniversalUIProvider>;
+};
+```
+
+Lastly, add the following to your `tailwind.config.js` to enable the Universal UI plugin.
+
+```js
+module.exports = {
+  content: [
+    "./node_modules/@parssa/universal-ui/src/components/**/*.{ts,tsx,js,jsx}"
+  ],
+  ...
+  plugins: [
+    require("@parssa/universal-ui/src/plugin"),
+  ]
+```
+
+That's it! 🎉 You're now ready to use Universal UI in your app.
+
+The `universalUI` key is used to configure the Universal UI plugin. The `themes` key is used to define the color pallettes that can be used in your application.
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

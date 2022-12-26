@@ -13,7 +13,7 @@ export const DocsHeader = ({
     <div {...props}>
       <Text variant="h1">{title}</Text>
       {description && (
-        <Text variant="h4" className="opacity-60 mt-size-y">
+        <Text variant="h4" className="text-theme-muted mt-size-y font-medium">
           {description}
         </Text>
       )}
