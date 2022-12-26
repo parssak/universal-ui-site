@@ -2,17 +2,18 @@ import React from "react";
 import { DocsLayout } from "./DocsLayout";
 
 export const DocsMDXLayout = ({
-  title,
-  description,
+  meta,
   children,
   ...props
-}: Omit<DivProps, "title"> & {
-  title: string;
-  description?: string;
+}: DivProps & {
+  meta: {
+    title: string;
+    description?: string;
+  }
 }) => {
   return (
     <DocsLayout {...props}>
-      <DocsLayout.Header title={title} description={description} />
+      <DocsLayout.Header title={meta.title} description={meta.description} />
       {children}
     </DocsLayout>
   );

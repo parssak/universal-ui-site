@@ -1,0 +1,72 @@
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+
+export const meta = {
+  title: "Customization",
+  description: "Modify the look and feel of Universal UI to fit your needs."
+};
+
+Universal UI provides two main ways to globally customize the look and feel of your application; through the `UniversalUIProvider` and the `tailwind.config.js` plugin.
+
+## Customize theme with UniversalUIProvider
+
+The `UniversalUIProvider` allows you to customize the look and feel of Universal UI by overriding the behavior of all components.
+
+```jsx
+import { UniversalUIProvider } from "@parssa/universal-ui";
+
+const config = {
+  components: {
+    // overrides for all buttons
+    button: "shadow-none",
+    // styling based on the props of Text
+    text: ({ variant }) =>
+      ({
+        h1: "text-5xl",
+        h6: "tracking-widest text-xs font-mono"
+      }[variant] ?? "")
+  }
+};
+
+const App = () => {
+  return <UniversalUIProvider config={config}>{/* ... */}</UniversalUIProvider>;
+};
+```
+
+The values of the `components` are either strings, or functions that provide the props of the component, and should return a string.
+
+This is useful when needing to override the behavior of a component based on the props passed to it.
+
+## Customize primtives with tailwind.config.js
+
+Universal UI provides a robust [tailwind.config.js](https://tailwindcss.com/docs/configuration) plugin that allows you to customize the look and feel of Universal UI by overriding the default colors and spacing.
+
+```js
+module.exports = {
+  theme: {
+    universalUI: {
+      themes: [
+        {
+          // Used https://uicolors.app/create to generate this pallette
+          name: "brand",
+          colors: {
+            50: "#f1f8f4",
+            100: "#ddeee3",
+            200: "#bdddc9",
+            300: "#9ac8af",
+            400: "#63a482",
+            500: "#428766",
+            600: "#306b50",
+            700: "#265641",
+            800: "#204536",
+            900: "#1b392d"
+          }
+        }
+      ]
+    }
+  }
+};
+```
+
+The `universalUI` key is used to configure the Universal UI plugin. The `themes` key is used to define the color pallettes that can be used in your application.
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

@@ -55,17 +55,22 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
       )}
       <div className="hidden lg:block w-56 xl:w-64"></div>
       <div className="w-full flex-1 overflow-hidden">
-        <div className="container py-12 relative min-h-screen">
+        <div className="container py-12 relative min-h-screen subpixel-antialiased">
           <ThemeProvider theme="brand" className="opacity-80">
             <div className="absolute -top-24 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
             <div className="absolute -bottom-24 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
-            <div className="opacity-80 dark:opacity-50">
+            <div className="opacity-80 dark:opacity-40">
               {accents.map((accent, i) => (
                 <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
               ))}
             </div>
           </ThemeProvider>
-          <div className="relative">{props.children}</div>
+          <div className="relative flex">
+            <div className="max-w-4xl flex-1">{props.children}</div>
+            <div className="fixed pointer-events-none z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden 2xl:block">
+              <Text variant="h6">On this page</Text>
+            </div>
+          </div>
         </div>
         <Footer />
       </div>

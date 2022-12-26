@@ -69,7 +69,7 @@ body {
 }
 
 .comment {
-  @apply text-green-500;
+  @apply text-orange-500;
   /* text-green-600  */
 }
 

@@ -1,4 +1,3 @@
-
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
   options: {
@@ -6,9 +5,9 @@ const withMDX = require("@next/mdx")({
     // as the package is ESM only
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [],
-    rehypePlugins: []
+    rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.
-    // providerImportSource: "@mdx-js/react",
+    providerImportSource: "@mdx-js/react",
   }
 });
 
@@ -20,10 +19,10 @@ const nextConfig = {
   // experimental: {
   //   appDir: true
   // },
-  
+
   i18n: {
     locales: ["en"],
-    defaultLocale: "en",
+    defaultLocale: "en"
   },
   async redirects() {
     return [
@@ -38,8 +37,5 @@ const nextConfig = {
 
 module.exports = withMDX({
   ...nextConfig,
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  options: {
-    providerImportSource: "@mdx-js/react"
-  }
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"]
 });
