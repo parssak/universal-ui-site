@@ -9,7 +9,7 @@ const components = {
   h4: (props) => <Text {...props} variant="h4" />,
   h5: (props) => <Text {...props} variant="h5" />,
   h6: (props) => <Text {...props} variant="h6" />,
-  p: (props) => <Text {...props} variant="p" className='mt-size-2y' />,
+  p: (props) => <Text {...props} variant="p" className='mt-size-2y opacity-80' />,
   code: (props) => <Text {...props} variant="code" size='sm'  />,
   kbd: (props) => <Text {...props} variant="kbd" />,
   pre: (props) => <CodeBlock {...props} className='my-size-4y' />
