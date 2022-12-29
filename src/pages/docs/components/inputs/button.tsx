@@ -213,9 +213,6 @@ const useComponentProps = (defaultProps: Record<string, ComponentProp>) => {
   };
 
   const usableProps = useMemo(() => {
-    if (!isSSR) {
-      highlight();
-    }
     return convertProps(props);
   }, [props]);
 
