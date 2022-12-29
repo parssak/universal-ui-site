@@ -1,6 +1,6 @@
 import { Button, Card, Input, Select, Text } from "@parssa/universal-ui";
 import { Theme } from "@parssa/universal-ui/dist/types";
-import { useResettableState } from "utils";
+import { isSSR, useResettableState } from "utils";
 import highlight from "utils/prism";
 
 import { DocsLayout } from "components/docs/DocsLayout";
@@ -213,7 +213,9 @@ const useComponentProps = (defaultProps: Record<string, ComponentProp>) => {
   };
 
   const usableProps = useMemo(() => {
-    highlight();
+    if (!isSSR) {
+      highlight();
+    }
     return convertProps(props);
   }, [props]);
 
