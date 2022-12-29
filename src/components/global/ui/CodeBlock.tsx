@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { cx, isSSR } from "utils";
-import { Button, ThemeProvider } from "@parssa/universal-ui";
+import { Button } from "@parssa/universal-ui";
 import highlight from "utils/prism";
 import { HiCheck, HiOutlineClipboard } from "react-icons/hi";
 
