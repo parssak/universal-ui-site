@@ -4,15 +4,15 @@ import { Button, ThemeProvider } from "@parssa/universal-ui";
 import highlight from "utils/prism";
 import { HiCheck, HiOutlineClipboard } from "react-icons/hi";
 
-type DivProps = React.HTMLAttributes<HTMLPreElement>;
+type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const CodeBlock = ({ ...props }: DivProps & {}) => {
+export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (isSSR) return;
     highlight();
-  }, []);
+  }, [children]);
 
   const codeRef = React.useRef<HTMLSpanElement>(null);
 
@@ -30,18 +30,15 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
 
   return (
     <div
-      // theme="brand"
+      {...props}
       className={cx(
         "rounded-md relative overflow-hidden border border-theme-active/60  bg-theme-pure",
         props.className
       )}
     >
-      <pre
-        {...props}
-        className={cx("px-4 py-3 text-sm text-theme-base overflow-auto scrollbar-hide")}
-      >
+      <pre className={cx("px-4 py-3 text-sm text-theme-base overflow-auto scrollbar-hide")}>
         <code ref={codeRef} className="language-jsx">
-          {props.children}
+          {children}
         </code>
       </pre>
       <Button
