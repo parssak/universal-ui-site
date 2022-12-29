@@ -1,9 +1,11 @@
 import { Button, Card, Input, Select, Text } from "@parssa/universal-ui";
 import { Theme } from "@parssa/universal-ui/dist/types";
 import { useResettableState } from "utils";
+import highlight from "utils/prism";
 
 import { DocsLayout } from "components/docs/DocsLayout";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
+import { CodeBlock } from "components/global/ui/CodeBlock";
 
 const PRIMITIVE_TYPES = ["string", "number", "boolean"] as const;
 type PropType = typeof PRIMITIVE_TYPES[number];
@@ -26,6 +28,7 @@ interface ComponentProp {
   type: PropType | string;
   description?: string;
   value: string | number | boolean;
+  defaultValue?: string | number | boolean;
   options?: string[];
 }
 
@@ -133,6 +136,7 @@ const THEME_PROP: ComponentProp = {
   type: "Theme",
   description: "The theme of the button",
   value: "neutral",
+  defaultValue: "neutral",
   options: ["neutral", "brand", "success", "error", "warning", "info"]
 };
 
@@ -141,6 +145,7 @@ const SIZE_PROP: ComponentProp = {
   type: "Size",
   description: "The size of the button",
   value: "md",
+  defaultValue: "md",
   options: ["xs", "sm", "md", "lg", "xl"]
 };
 
@@ -149,7 +154,51 @@ const VARIANT_PROP: ComponentProp = {
   type: "Variant",
   description: "The variant of the button",
   value: "solid",
+  defaultValue: "solid",
   options: ["solid", "outline", "ghost"]
+};
+
+const formatCode = (name: string, props: Record<string, ComponentProp>) => {
+  const hasChildren = Object.keys(props).includes("children");
+  const propsWithoutChildren = Object.values(props).filter((prop) => prop.name !== "children");
+
+  const propsArray = propsWithoutChildren
+    .map((prop) => {
+      if (prop.type === "boolean") {
+        return prop.value ? prop.name : "";
+      }
+
+      if (prop.type === "string" && prop.value === "") {
+        return "";
+      }
+
+      if (prop.value === undefined || prop.value === prop.defaultValue) {
+        return "";
+      }
+
+      return `${prop.name}="${prop.value}"`;
+    })
+    .filter((prop) => prop !== "");
+
+  const LINE_BREAK = "\n\t";
+  const MAX_HEADER_STR_LENGTH = 40;
+  const START = `<${name}`;
+  const shouldLineBreak = (START + " " + propsArray.join(" ")).length > MAX_HEADER_STR_LENGTH;
+
+  let propString = propsArray.join(shouldLineBreak ? LINE_BREAK : " ");
+
+  if (shouldLineBreak) {
+    propString = LINE_BREAK + propString;
+  }
+  const END = `${shouldLineBreak ? "\n" : ""}>${shouldLineBreak ? LINE_BREAK : ""}${
+    props.children.value
+  }${shouldLineBreak ? "\n" : ""}</${name}>`;
+
+  if (hasChildren) {
+    return `${START}${propString ? ` ${propString}` : ""}${END}`;
+  }
+
+  return `${START}${propString ? ` ${propString}` : ""} />`;
 };
 
 const useComponentProps = (defaultProps: Record<string, ComponentProp>) => {
@@ -163,7 +212,10 @@ const useComponentProps = (defaultProps: Record<string, ComponentProp>) => {
     return usableProps;
   };
 
-  const usableProps = useMemo(() => convertProps(props), [props]);
+  const usableProps = useMemo(() => {
+    highlight();
+    return convertProps(props);
+  }, [props]);
 
   return {
     props,
@@ -189,24 +241,28 @@ export default function ButtonPage() {
         description="Used to trigger actions and events. Y'know, like a button."
       />
 
-      <Card className="my-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern sticky top-4y">
-        <Card.Content className="py-size-4y my-size-4y grid place-items-center">
-          <div className="flex gap-2 items-center flex-col py-size-4y">
-            <Button {...usableProps} />
-          </div>
-        </Card.Content>
-      </Card>
-      <ComponentConfig
-        componentProps={props}
-        onPropChange={(prop) => {
-          setProps((prev) => {
-            return {
-              ...prev,
-              [prop.name]: prop
-            };
-          });
-        }}
-      />
+      <div className="space-y-size-4y mt-size-4y">
+        <Card className="bg-theme-pure/25 backdrop-blur-lg grid-pattern sticky top-4y">
+          <Card.Content className="py-size-4y my-size-4y grid place-items-center">
+            <div className="flex gap-2 items-center flex-col py-size-4y">
+              <Button {...usableProps} />
+            </div>
+          </Card.Content>
+        </Card>
+
+        <CodeBlock>{formatCode("Button", props)}</CodeBlock>
+        <ComponentConfig
+          componentProps={props}
+          onPropChange={(prop) => {
+            setProps((prev) => {
+              return {
+                ...prev,
+                [prop.name]: prop
+              };
+            });
+          }}
+        />
+      </div>
     </DocsLayout>
   );
 }

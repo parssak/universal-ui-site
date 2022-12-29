@@ -29,8 +29,8 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
   };
 
   return (
-    <ThemeProvider
-      theme="brand"
+    <div
+      // theme="brand"
       className={cx(
         "rounded-md relative overflow-hidden border border-theme-active/60  bg-theme-pure",
         props.className
@@ -47,7 +47,7 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
       <Button
         size="sm"
         theme="neutral"
-        className="absolute top-size-x right-size-x active:absolute enabled:absolute active:top-2 active:right-2"
+        className="absolute top-[7px] right-size-x active:absolute enabled:absolute active:top-2 active:right-2"
         onClick={onCopy}
         icon={
           copied ? (
@@ -59,6 +59,6 @@ export const CodeBlock = ({ ...props }: DivProps & {}) => {
       >
         <span className="sr-only">Copy to clipboard</span>
       </Button>
-    </ThemeProvider>
+    </div>
   );
 };

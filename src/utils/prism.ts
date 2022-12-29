@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* PrismJS 1.29.0
 https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+jsx+tsx+typescript */
 const highlight = () => {

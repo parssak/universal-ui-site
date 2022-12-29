@@ -12,7 +12,7 @@ const components = {
   p: (props) => <Text {...props} variant="p" className='mt-size-2y opacity-80' />,
   code: (props) => <Text {...props} variant="code" size='sm'  />,
   kbd: (props) => <Text {...props} variant="kbd" />,
-  pre: (props) => <CodeBlock {...props} className='my-size-4y' />
+  pre: (props) => <CodeBlock {...props} className='mt-size-2y mb-size-4y' />
 };
 
 export const MDXProvider = ({ children }: { children: React.ReactNode }) => (
