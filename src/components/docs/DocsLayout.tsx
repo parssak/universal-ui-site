@@ -4,7 +4,7 @@ import { Text, ThemeProvider } from "@parssa/universal-ui";
 import { Footer } from "components/global/layout/Footer";
 import { DocsHeader } from "./DocsHeader";
 import { Sidebar } from "./Sidebar";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog } from "@headlessui/react";
 import { useSidebar } from "hooks/useSidebar";
 import Link from "next/link";
 
@@ -34,7 +34,7 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
             toggleSidebar();
           }}
         >
-          <Dialog.Overlay className="fixed inset-0 bg-theme-pure/80 dark:bg-theme-base/50 lg:hidden" />
+          <Dialog.Overlay className="fixed inset-0 bg-theme-pure/80 dark:bg-theme-pure/50 lg:hidden" />
           <ThemeProvider>
             <Dialog.Panel>
               <Sidebar
@@ -59,7 +59,7 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
           <ThemeProvider theme="brand" className="opacity-80">
             <div className="absolute -top-24 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
             <div className="absolute -bottom-24 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
-            <div className="opacity-80 dark:opacity-40">
+            <div className="opacity-80 dark:opacity-20">
               {accents.map((accent, i) => (
                 <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
               ))}

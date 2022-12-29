@@ -18,7 +18,7 @@ export const Nav = ({ ...props }: NavProps & {}) => {
     <nav
       {...props}
       className={cx(
-        `border-b border-theme-base/20 sticky top-0 z-10 bg-theme-base/20 backdrop-blur-md px-4 lg:px-0`,
+        `border-b border-theme-base/20 sticky top-0 z-10 bg-theme-pure/80 backdrop-blur-md px-4 lg:px-0`,
         props.className
       )}
     >

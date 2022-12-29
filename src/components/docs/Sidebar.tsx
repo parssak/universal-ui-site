@@ -44,8 +44,8 @@ export const Sidebar = ({ children, ...props }: DivProps & {}) => {
       {...props}
       className={cx(
         "px-4 py-8 flex-shrink-0 w-56 xl:w-64 border-r",
-        "bg-neutral-50/70 dark:bg-neutral-900/70",
-        "border-neutral-300 dark:border-neutral-800/70",
+        "bg-theme-base dark:bg-theme-pure",
+        "border-theme-base/30",
         props.className
       )}
     >

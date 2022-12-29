@@ -44,9 +44,6 @@ function MyApp({ Component, pageProps }: AppProps) {
               }
             },
             button: ({ variant }) => {
-              // if (variant === 'solid' || !variant) {
-              //   return "bg-gradient-to-t from-theme-base to-theme-active/40 border-0";
-              // }
               if (variant === "ghost") {
                 return "shadow-none";
               }
