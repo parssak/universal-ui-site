@@ -59,10 +59,6 @@ body {
   @apply text-green-600 dark:text-green-500;
 }
 
-.token.tag {
-  @apply text-green-600 dark:text-rose-500;
-}
-
 .token.attr-value > .token.punctuation {
   /* @apply bg-blue-500; */
   @apply text-green-600 dark:text-green-500;

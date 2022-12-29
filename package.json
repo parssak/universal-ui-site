@@ -20,6 +20,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-syntax-highlighter": "^15.5.0",
+    "react-view": "^2.3.7",
     "tailwind-merge": "^1.8.0"
   },
   "devDependencies": {

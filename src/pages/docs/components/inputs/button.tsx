@@ -3,15 +3,14 @@ import { Theme } from "@parssa/universal-ui/dist/types";
 import { useResettableState } from "utils";
 
 import { DocsLayout } from "components/docs/DocsLayout";
-import React, { useMemo } from "react";
-import { CodeBlock } from "components/global/ui/CodeBlock";
+import React from "react";
 
-const PRIMITIVE_TYPES = ["string", "number", "boolean"] as const;
-type PropType = typeof PRIMITIVE_TYPES[number];
+import { useView, Compiler, Editor, Error, PropTypes } from "react-view";
+import { useKeyDown } from "hooks";
+import { ErrorBoundary } from "components/global/ui/ErrorBoundary";
 
 const REACT_TYPE_MAP = {
-  "React.ReactNode": "Any content React can render",
-  "React.ReactElement": "Any React element"
+  [PropTypes.ReactNode]: "Any content React can render"
 };
 
 const CUSTOM_TYPE_MAP = {
@@ -24,7 +23,7 @@ const CUSTOM_TYPE_MAP = {
 
 interface ComponentProp {
   name: string;
-  type: PropType | string;
+  type: PropTypes | string;
   description?: string;
   value: string | number | boolean | any;
   defaultValue?: string | number | boolean;
@@ -35,7 +34,16 @@ const ComponentConfig = ({
   componentProps,
   onPropChange
 }: {
-  componentProps: Record<string, ComponentProp>;
+  componentProps: {
+    [key: string]: {
+      name: string;
+      type: PropTypes | string;
+      description?: string;
+      value: string | number | boolean | any;
+      defaultValue?: string | number | boolean;
+      options?: string[];
+    };
+  };
   onPropChange: (prop: ComponentProp) => void;
 }) => {
   const getInputType = (prop: ComponentProp) => {
@@ -52,24 +60,23 @@ const ComponentConfig = ({
   };
 
   return (
-    <Card className="bg-theme-pure">
+    <Card className="bg-theme-pure" data-size="sm">
       <Card.Content className="divide-theme-active/30 divide-y">
         {Object.values(componentProps).map((prop) => (
           <div
-            data-size="sm"
             className="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-2y pt-size-2y first:pt-0 first:mt-0"
             key={prop.name}
           >
             <div>
-              <div className="flex gap-size-2x">
+              <div className="flex items-center gap-size-2x">
                 <Text className="font-medium min-w-[8ch]">{prop.name}</Text>
                 <Text
                   size="xs"
                   variant="code"
-                  className="opacity-75 pt-[0.17rem]"
+                  className="opacity-75 leading-none"
                   theme={getInputTypeTheme(prop)}
                 >
-                  {prop.type}
+                  {prop.type === "react node" ? "ReactNode" : prop.type}
                 </Text>
               </div>
               <Text variant="p" colorVariant="muted" className="mt-size-2y">
@@ -125,7 +132,7 @@ const ComponentConfig = ({
 
 const CHILDREN_PROP: ComponentProp = {
   name: "children",
-  type: "React.ReactNode",
+  type: PropTypes.ReactNode,
   description: "The content inside the <COMPONENT>",
   value: "Button"
 };
@@ -160,96 +167,6 @@ const VARIANT_PROP: ComponentProp = {
 const PREDEFINED_PROP_MAP = new Map<string, ComponentProp[]>(
   [CHILDREN_PROP, THEME_PROP, SIZE_PROP, VARIANT_PROP].map((prop) => [prop.name, [prop]])
 );
-
-interface Component {
-  name: string;
-  props: Record<string, ComponentProp>;
-}
-
-const convertPropsArray = (props: ComponentProp[]) => {
-  return props
-    .map((prop) => {
-      if (prop.type === "boolean") {
-        return prop.value ? prop.name : "";
-      }
-
-      if (prop.type === "string" && prop.value === "") {
-        return "";
-      }
-
-      if (prop.value === undefined || prop.value === prop.defaultValue) {
-        return "";
-      }
-
-      return `${prop.name}="${prop.value}"`;
-    })
-    .filter((prop) => prop !== "");
-};
-
-// const LINE_BREAK = "\n\t";
-const MAX_HEADER_STR_LENGTH = 40;
-
-const formatComponent = ({ name, props }: Component, tabIndex: number) => {
-  const hasChildren = Object.keys(props).includes("children");
-  const propsWithoutChildren = Object.values(props).filter((prop) => prop.name !== "children");
-
-  const propsArray = convertPropsArray(propsWithoutChildren);
-
-  const LEADING_TABS = "\t".repeat(tabIndex);
-  const LINE_BREAK = "\n" + "\t".repeat(tabIndex + 1);
-  const START = `${LEADING_TABS}<${name}`;
-  const hasLineBreak = (START + " " + propsArray.join(" ")).length > MAX_HEADER_STR_LENGTH;
-
-  let propStr = propsArray.join(hasLineBreak ? LINE_BREAK : " ");
-
-  if (hasLineBreak) {
-    propStr = LINE_BREAK + propStr;
-  }
-
-  if (!hasChildren) {
-    return `${START}${propStr ? ` ${propStr}` : ""} />`;
-  }
-
-  const END = `${hasLineBreak ? LINE_BREAK.slice(0, -1) : ""}>${
-    hasLineBreak ? LINE_BREAK.slice(0, -1) : "\n"
-  }${
-    Array.isArray(props.children?.value)
-      ? formatJSXTree(props.children.value, tabIndex + 1)
-      : props.children.value
-  }${hasLineBreak ? "\n" : ""}</${name}>`;
-
-  if (hasChildren) {
-    return `${START}${propStr ? ` ${propStr}` : ""}${END}`;
-  }
-};
-
-const formatJSXTree = (componentTree: Component[], tabIndex = 0) => {
-  return componentTree.map((component) => formatComponent(component, tabIndex)).join("\n");
-};
-
-const useComponentProps = (defaultProps: Record<string, ComponentProp>) => {
-  const [props, setProps, hasChanged, resetProps] = useResettableState(defaultProps);
-
-  const convertProps = (props: Record<string, ComponentProp>) => {
-    const usableProps: Record<string, any> = {};
-    Object.values(props).forEach((prop) => {
-      usableProps[prop.name] = prop.value;
-    });
-    return usableProps;
-  };
-
-  const usableProps = useMemo(() => {
-    return convertProps(props);
-  }, [props]);
-
-  return {
-    props,
-    setProps,
-    hasChanged,
-    resetProps,
-    usableProps
-  };
-};
 
 const cleanDefaultProps = (
   componentName: string,
@@ -287,23 +204,69 @@ const cleanDefaultProps = (
 };
 
 const ComponentShowcase = ({
-  children,
   componentName,
   defaultProps,
   title
 }: {
-  children: React.ReactNode;
   componentName: string;
   defaultProps: Array<ComponentProp | string>;
   title?: string;
 }) => {
-  const { props, setProps, usableProps } = useComponentProps(
-    cleanDefaultProps(componentName.toLowerCase(), defaultProps)
+  const cleanedDefaultProps = cleanDefaultProps(componentName, defaultProps);
+
+  const params = useView({
+    componentName: "Button",
+    props: {
+      ...Object.fromEntries(
+        Object.entries(cleanedDefaultProps).map(([key, value]) => [
+          key,
+          {
+            value: value.value,
+            type: Object.values(PropTypes).find((type) => type === value.type) ?? PropTypes.String,
+            description: value.description ?? ""
+          }
+        ])
+      )
+    },
+    scope: {
+      Button
+    }
+  });
+
+  console.debug(params, Object.values(PropTypes));
+
+  useKeyDown("s", (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+
+      // format code params.actions.formatCode();
+
+      params.actions.formatCode();
+    }
+  });
+
+  const propValues = Object.fromEntries(
+    Object.entries(params.knobProps.state).map(([key, value]) => [key, value.value])
+  );
+
+  const injectedProps = Object.fromEntries(
+    Object.entries(cleanedDefaultProps).map(([key, value]) => {
+      return [
+        key,
+        {
+          ...value,
+          value: propValues[key]
+        }
+      ];
+    })
   );
 
   return (
-    <div className="space-y-size-2y">
-      <Card className="bg-theme-pure/25 backdrop-blur-lg grid-pattern overflow-hidden relative">
+    <div className="space-y-size-4y">
+      <Card
+        className="bg-theme-pure/25 backdrop-blur-lg grid-pattern overflow-hidden relative"
+        data-size="sm"
+      >
         {title && (
           <Text
             variant="h5"
@@ -317,49 +280,39 @@ const ComponentShowcase = ({
           className={`${title ? "py-size-2y" : "py-size-4y my-size-4y"} grid place-items-center `}
         >
           <div className="flex gap-2 items-center flex-col py-size-4y">
-            {React.cloneElement(children as React.ReactElement, {
-              ...usableProps
-            })}
+            <Compiler {...params.compilerProps} minHeight={62} />
           </div>
         </Card.Content>
-        <CodeBlock className="border-0 border-t rounded-none border-theme-base/30">
-          {formatJSXTree([
-            {
-              name: "div",
-              props: {
-                className: {
-                  name: "className",
-                  type: "string",
-                  value: "flex"
-                },
-                children: {
-                  name: "children",
-                  type: "React.ReactNode",
-                  value: [
-                    {
-                      name: componentName,
-                      props
-                    },
-                    {
-                      name: componentName,
-                      props: {}
-                    }
-                  ]
-                }
-              }
+
+        <div
+          onBlurCapture={(e) => {
+            if (e.relatedTarget === null) {
+              params.actions.formatCode();
             }
-          ])}
-        </CodeBlock>
+          }}
+        >
+          <Editor
+            theme={{
+              plain: {
+                backgroundColor: "rgb(var(--color-bg-pure))",
+                color: "var(--theme-text-primary)",
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: "var(--size-text)",
+                margin: 0
+              },
+              styles: []
+            }}
+            {...params.editorProps}
+            code={params.editorProps.code.replace(`import * as React from "react";\n\n`, "")}
+            className="border-t border-theme-base/20"
+          />
+          <Error {...params.errorProps} />
+        </div>
       </Card>
       <ComponentConfig
-        componentProps={props}
+        componentProps={injectedProps}
         onPropChange={(prop) => {
-          setProps((prev) => {
-            return {
-              ...prev,
-              [prop.name]: prop
-            };
-          });
+          params.knobProps.set(prop.value, prop.name);
         }}
       />
     </div>
@@ -374,18 +327,13 @@ export default function ButtonPage() {
         description="Used to trigger actions and events. Y'know, like a button."
       />
       <div className="mt-size-4y space-y-size-4y">
-        <ComponentShowcase
-          componentName="Button"
-          defaultProps={["children", "theme", "size", "variant"]}
-        >
-          <Button>Click me!</Button>
-        </ComponentShowcase>
+        <ErrorBoundary>
+          <ComponentShowcase
+            componentName="Button"
+            defaultProps={["children", "theme", "size", "variant"]}
+          />
+        </ErrorBoundary>
         <Text variant="h2">Examples</Text>
-        {/* <ComponentShowcase
-          title="Buttons with Leading and Trailing Icons"
-          componentName="button"
-          defaultProps={["children", "theme", "size", "variant"]}
-        /> */}
       </div>
     </DocsLayout>
   );
