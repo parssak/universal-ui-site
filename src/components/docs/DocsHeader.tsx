@@ -11,7 +11,9 @@ export const DocsHeader = ({
 }) => {
   return (
     <div {...props}>
-      <Text variant="h1">{title}</Text>
+      <Text variant="h1" className="gradient-text">
+        {title}
+      </Text>
       {description && (
         <Text variant="h4" className="text-theme-muted mt-size-y font-medium">
           {description}

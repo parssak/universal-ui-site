@@ -20,7 +20,7 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
           "block pl-size-2x py-size-hy rounded group",
           isActive
             ? "bg-theme-active "
-            : "border-transparent transition-all duration-100 hover:bg-theme-active"
+            : "border-transparent transition-all duration-100 hover:bg-theme-active/50"
         )}
       >
         <Text
