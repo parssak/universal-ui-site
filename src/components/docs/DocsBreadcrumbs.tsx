@@ -37,7 +37,7 @@ export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
         icon={<HiMenu className="text-size w-full h-full scale-110" />}
         onClick={toggleSidebar}
       >
-        <div className="sr-only">Toggle Sidebar</div>
+        Toggle Sidebar
       </Button>
 
       {activeSection && (

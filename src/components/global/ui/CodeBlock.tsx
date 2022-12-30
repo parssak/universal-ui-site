@@ -54,7 +54,7 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
           )
         }
       >
-        <span className="sr-only">Copy to clipboard</span>
+        Copy to clipboard
       </Button>
     </div>
   );

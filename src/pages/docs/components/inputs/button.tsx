@@ -1,14 +1,22 @@
 import { Button, Card, Input, Select, Text, ThemeProvider } from "@parssa/universal-ui";
 import { Theme } from "@parssa/universal-ui/dist/types";
-import { isSSR, useResettableState } from "utils";
+import { cx, isSSR, useResettableState } from "utils";
 
 import { DocsLayout } from "components/docs/DocsLayout";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useView, Compiler, Editor, Error, PropTypes } from "react-view";
 import { useKeyDown } from "hooks";
 import { ErrorBoundary } from "components/global/ui/ErrorBoundary";
-import { HiCheck, HiEye, HiOutlineClipboard, HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
+import {
+  HiCheck,
+  HiOutlineClipboard,
+  HiOutlineEye,
+  HiOutlineEyeOff,
+  HiRefresh
+} from "react-icons/hi";
+
+import * as Icon from "react-icons/hi";
 
 const REACT_TYPE_MAP = {
   [PropTypes.ReactNode]: "Any content React can render"
@@ -235,14 +243,122 @@ const cleanDefaultProps = (
   return cleanedProps;
 };
 
-const ComponentShowcase = ({
+const ComponentPreview = ({ params }: { params: ReturnType<typeof useView> }) => {
+  const [copied, setCopied] = useState(false);
+  const [showCode, setShowCode] = useState(false);
+  const [reset, setReset] = useState(false);
+
+  const onCopy = () => {
+    if (isSSR) return;
+    setCopied(true);
+    params.actions.copyCode();
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  };
+
+  const onShowCodeToggle = () => {
+    setShowCode((prev) => !prev);
+  };
+
+  const onReset = () => {
+    if (reset) {
+      return;
+    }
+    setReset(true);
+    params.actions.reset();
+    setTimeout(() => {
+      setReset(false);
+    }, 600);
+  };
+
+  return (
+    <Card className="bg-theme-pure/25 backdrop-blur-lg grid-pattern with-spotlight overflow-hidden">
+      <div className="relative">
+        <Card.Content className={`py-size-4y grid place-items-center `}>
+          <div className="flex gap-2 items-center flex-col py-size-4y">
+            <Compiler {...params.compilerProps} minHeight={62} />
+          </div>
+        </Card.Content>
+
+        <div className="bottom-size-2y right-size-x absolute z-10 flex gap-size-hx" data-size="sm">
+          <Button
+            variant="ghost"
+            className="group"
+            onClick={onReset}
+            icon={<HiRefresh className={cx(`w-full h-full`, reset && 'animate-spin-reverse' )} />}
+          >
+            Reset Example
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={onCopy}
+            icon={
+              copied ? (
+                <HiCheck className="w-full h-full" />
+              ) : (
+                <HiOutlineClipboard className="w-full h-full" />
+              )
+            }
+          >
+            Copy to clipboard
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={onShowCodeToggle}
+            icon={
+              showCode ? (
+                <HiOutlineEyeOff className="w-full h-full" />
+              ) : (
+                <HiOutlineEye className="w-full h-full" />
+              )
+            }
+          >
+            {showCode ? "Hide code" : "Show code"}
+          </Button>
+        </div>
+      </div>
+      {showCode && (
+        <div
+          onBlurCapture={(e) => {
+            if (e.relatedTarget === null) {
+              params.actions.formatCode();
+            }
+          }}
+          data-size="sm"
+        >
+          <Editor
+            theme={{
+              plain: {
+                backgroundColor: "rgb(var(--color-bg-pure))",
+                color: "var(--theme-text-primary)",
+                fontFamily: "JetBrains Mono, monospace",
+                fontSize: "var(--size-text)",
+                margin: 0
+              },
+              styles: []
+            }}
+            {...params.editorProps}
+            code={params.editorProps.code.replace(`import * as React from "react";\n\n`, "")}
+            className={`border-t border-theme-base/40`}
+          />
+          {params.errorProps.msg && (
+            <ThemeProvider theme="error" size="sm" className="bg-theme-base p-size-x">
+              <Text className="font-mono">{params.errorProps.msg}</Text>
+            </ThemeProvider>
+          )}
+        </div>
+      )}
+    </Card>
+  );
+};
+
+const ComponentPrimaryShowcase = ({
   componentName,
-  defaultProps,
-  title
+  defaultProps
 }: {
   componentName: string;
   defaultProps: Array<ComponentProp | string>;
-  title?: string;
 }) => {
   const cleanedDefaultProps = useMemo(
     () => cleanDefaultProps(componentName, defaultProps),
@@ -310,20 +426,10 @@ const ComponentShowcase = ({
 
   return (
     <div className="space-y-size-4y">
-      <Card className="bg-theme-pure/25 backdrop-blur-lg grid-pattern with-spotlight overflow-hidden">
+      <ComponentPreview params={params} />
+      {/* <Card className="bg-theme-pure/25 backdrop-blur-lg grid-pattern with-spotlight overflow-hidden">
         <div className="relative">
-          {title && (
-            <Text
-              variant="h5"
-              size="sm"
-              className="absolute text-size text-theme-muted left-size-x top-size-2y font-medium px-size-qx py-size-qy rounded bg-theme-pure"
-            >
-              {title}
-            </Text>
-          )}
-          <Card.Content
-            className={`${title ? "py-size-2y" : "py-size-4y"} grid place-items-center `}
-          >
+          <Card.Content className={`py-size-4y grid place-items-center `}>
             <div className="flex gap-2 items-center flex-col py-size-4y">
               <Compiler {...params.compilerProps} minHeight={62} />
             </div>
@@ -344,7 +450,7 @@ const ComponentShowcase = ({
                 )
               }
             >
-              <span className="sr-only">Copy to clipboard</span>
+              Copy to clipboard
             </Button>
             <Button
               variant="ghost"
@@ -357,7 +463,153 @@ const ComponentShowcase = ({
                 )
               }
             >
-              <span className="sr-only">Show code</span>
+              {showCode ? "Hide code" : "Show code"}
+            </Button>
+          </div>
+        </div>
+        {showCode && (
+          <div
+            onBlurCapture={(e) => {
+              if (e.relatedTarget === null) {
+                params.actions.formatCode();
+              }
+            }}
+            data-size="sm"
+          >
+            <Editor
+              theme={{
+                plain: {
+                  backgroundColor: "rgb(var(--color-bg-pure))",
+                  color: "var(--theme-text-primary)",
+                  fontFamily: "JetBrains Mono, monospace",
+                  fontSize: "var(--size-text)",
+                  margin: 0
+                },
+                styles: []
+              }}
+              {...params.editorProps}
+              code={params.editorProps.code.replace(`import * as React from "react";\n\n`, "")}
+              className={`border-t border-theme-base/40`}
+            />
+            {params.errorProps.msg && (
+              <ThemeProvider theme="error" size="sm" className="bg-theme-base p-size-x">
+                <Text className="font-mono">{params.errorProps.msg}</Text>
+              </ThemeProvider>
+            )}
+          </div>
+        )}
+      </Card> */}
+      <ComponentConfig
+        componentProps={injectedProps}
+        onPropChange={(prop) => {
+          params.knobProps.set(prop.value, prop.name);
+        }}
+      />
+    </div>
+  );
+};
+
+const ComponentExample = ({
+  title,
+  initialCode,
+  imports,
+  scope
+}: {
+  title: string;
+  initialCode: string;
+  imports?: {
+    [key: string]: {
+      named?: string[];
+      default?: string;
+    };
+  };
+  scope?: {
+    [key: string]: any;
+  };
+}) => {
+  const params = useView({
+    componentName: "Button",
+    initialCode,
+    scope: {
+      Button,
+      ...scope
+    },
+    imports: {
+      ...imports
+    }
+  });
+
+  const [showCode, setShowCode] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  useKeyDown("s", (e) => {
+    if (e.ctrlKey || e.metaKey) {
+      e.preventDefault();
+
+      params.actions.formatCode();
+    }
+  });
+
+  useEffect(() => {
+    params.actions.formatCode();
+  }, []);
+
+  const onCopy = () => {
+    if (isSSR) return;
+
+    setCopied(true);
+    params.actions.copyCode();
+    setTimeout(() => {
+      setCopied(false);
+    }, 1000);
+  };
+
+  const onShowCodeToggle = () => {
+    setShowCode((prevShowCode) => !prevShowCode);
+  };
+
+  return (
+    <div>
+      <Text variant="h3" className="mb-size-2y">
+        {title}
+      </Text>
+      <Card className="bg-theme-pure/25 backdrop-blur-lg grid-pattern with-spotlight overflow-hidden">
+        <div className="relative">
+          <Card.Content className={`py-size-4y grid place-items-center `}>
+            <div className="py-size-4y">
+              <Compiler {...params.compilerProps} minHeight={62} className="flex gap-2 flex-row" />
+            </div>
+          </Card.Content>
+
+          <div
+            className="bottom-size-2y right-size-x absolute z-10 flex gap-size-hx"
+            data-size="sm"
+          >
+            <Button
+              variant="ghost"
+              onClick={onCopy}
+              icon={
+                copied ? (
+                  <HiCheck className="w-full h-full" />
+                ) : (
+                  <HiOutlineClipboard className="w-full h-full" />
+                )
+              }
+            >
+              Copy to clipboard
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={onShowCodeToggle}
+              icon={
+                showCode ? (
+                  <HiOutlineEyeOff className="w-full h-full" />
+                ) : (
+                  <HiOutlineEye className="w-full h-full" />
+                )
+              }
+            >
+              {showCode ? "Hide code" : "Show code"}
             </Button>
           </div>
         </div>
@@ -393,12 +645,6 @@ const ComponentShowcase = ({
           </div>
         )}
       </Card>
-      <ComponentConfig
-        componentProps={injectedProps}
-        onPropChange={(prop) => {
-          params.knobProps.set(prop.value, prop.name);
-        }}
-      />
     </div>
   );
 };
@@ -411,7 +657,7 @@ export default function ButtonPage() {
         description="Used to trigger actions and events. Y'know, like a button."
       />
       <div className="mt-size-4y space-y-size-4y">
-        <ComponentShowcase
+        <ComponentPrimaryShowcase
           componentName="Button"
           defaultProps={[
             "children",
@@ -448,6 +694,29 @@ export default function ButtonPage() {
         />
 
         <Text variant="h2">Examples</Text>
+        <ComponentExample
+          title="With Icons"
+          initialCode={`() => 
+      <>
+        <Button
+          leadingIcon={<Icon.HiBell className="w-full h-full" />}>
+          Notifications
+        </Button>
+        <Button
+          trailingIcon={<Icon.HiArrowRight className="w-full h-full" />}>
+          Next
+        </Button>
+      </>
+    `}
+          scope={{
+            Icon
+          }}
+          imports={{
+            "react-icons/hi": {
+              default: "Icon"
+            }
+          }}
+        />
       </div>
     </DocsLayout>
   );

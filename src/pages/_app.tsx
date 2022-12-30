@@ -37,6 +37,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                   return "";
                 case "h2":
                   return "text-2xl font-medium";
+                case "h3":
+                  return "text-xl font-medium";
                 case "h6":
                   return "uppercase tracking-widest text-xs font-mono";
                 default:

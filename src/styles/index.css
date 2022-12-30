@@ -33,7 +33,11 @@ body {
   }
 
   .gradient-text {
-    background: linear-gradient(to right bottom, rgb(var(--color-text-base)) 10%, rgb(var(--color-text-muted) / 0.38));
+    background: linear-gradient(
+      to right bottom,
+      rgb(var(--color-text-base)) 10%,
+      rgb(var(--color-text-muted) / 0.38)
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: unset;
@@ -60,6 +64,26 @@ body {
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+
+@keyframes spin-reverse {
+  30% {
+    transform: rotate(-100deg);
+  }
+  55% {
+    transform: rotate(-20deg);
+  }
+  69% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+.animate-spin-reverse {
+  /* animate once */
+  animation: spin-reverse 0.5s linear;
+}
 }
 
 /*= Start of Prism Classes */
