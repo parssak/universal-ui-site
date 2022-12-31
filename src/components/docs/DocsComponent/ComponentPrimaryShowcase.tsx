@@ -1,6 +1,6 @@
 import { useKeyDown } from "hooks";
 import { useMemo } from "react";
-import { useView, Compiler, Editor, PropTypes } from "react-view";
+import { useView, PropTypes } from "react-view";
 import { ComponentConfig } from "./ComponentConfig";
 import { ComponentPreview } from "./ComponentPreview";
 import { cleanDefaultProps } from "./utils";
