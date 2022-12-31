@@ -1,6 +1,6 @@
 import { Card, Input, Select, Text } from "@parssa/universal-ui";
 import { Theme } from "@parssa/universal-ui/dist/types";
-import { getInputType, getInputTypeTheme } from "../utils";
+import { getInputType, getInputTypeTheme } from "./utils";
 
 export const ComponentConfig = ({
   componentProps,
