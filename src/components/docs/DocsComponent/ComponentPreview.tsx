@@ -10,45 +10,12 @@ import {
   HiRefresh
 } from "react-icons/hi";
 
-const useBodyElement = () => {
-  const [body, setBody] = React.useState<HTMLElement | null>(null);
-
-  React.useEffect(() => {
-    setBody(document.body);
-  }, []);
-
-  return body;
-};
+const EVENT_THEME = "success" as const;
 
 export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView> }) => {
   const [copied, setCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
   const [refresh, setRefresh] = useState(false);
-
-  const [render, setRender] = useState(0);
-  const body = useBodyElement();
-
-  useEffect(() => {
-    setRender((prev) => prev + 1);
-  }, []);
-
-  useEffect(() => {
-    // add a scroll listener to the body element
-    const handleScroll = (e) => {
-      // do something
-      console.log("scroll", e);
-    };
-    if (body) {
-      body.addEventListener("scroll", handleScroll);
-    }
-
-    // remove the scroll listener when the component unmounts
-    return () => {
-      if (body) {
-        body.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, [body]);
 
   const onCopy = () => {
     if (isSSR) return;
@@ -74,8 +41,6 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
     }, 1000);
   };
 
-  console.debug("render", render, body);
-
   return (
     <Card
       className={cx(
@@ -83,13 +48,14 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
         "with-spotlight overflow-hidden relative isolate border-theme-muted",
         refresh && "refresh-shine"
       )}
-      theme={refresh || copied ? "info" : "neutral"}
+      theme={refresh || copied ? EVENT_THEME : !!params.errorProps.msg ? "error" : "neutral"}
     >
       <div className="relative" data-theme="neutral">
         <Card.Content
-          className={`py-size-4y grid place-items-center transition-transform ${
+          className={cx(
+            `py-size-4y grid place-items-center transition-transform`,
             refresh && "refresh-shine-inner"
-          }`}
+          )}
         >
           <div className="flex gap-2 items-center flex-col py-size-4y">
             <Compiler {...params.compilerProps} minHeight={62} className="flex gap-2 flex-row" />
@@ -103,7 +69,7 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
                 variant="ghost"
                 className="group"
                 data-name="refresh-btn"
-                theme={refresh ? "info" : "neutral"}
+                theme={refresh ? EVENT_THEME : "neutral"}
                 onClick={onRefresh}
                 icon={
                   <HiRefresh
@@ -118,15 +84,14 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
               </Button>
             </Tooltip.Trigger>
             <Tooltip.Content
-              // onPointerDownOutside={(e) => {
-              //   if (e.target instanceof HTMLElement && e.target.dataset?.name === "refresh-btn") {
-              //     e.preventDefault();
-              //   }
-              // }}
-              container={body}
+              onPointerDownOutside={(e) => {
+                if (e.target instanceof HTMLElement && e.target.dataset?.name === "refresh-btn") {
+                  e.preventDefault();
+                }
+              }}
               size="xs"
               className="px-size-x"
-              theme={refresh ? "info" : "neutral"}
+              theme={refresh ? EVENT_THEME : "neutral"}
             >
               {refresh ? "Refreshed!" : "Refresh Example"}
             </Tooltip.Content>
@@ -137,7 +102,7 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
               <Button
                 variant="ghost"
                 onClick={onCopy}
-                theme={copied ? "info" : "neutral"}
+                theme={copied ? EVENT_THEME : "neutral"}
                 icon={
                   copied ? (
                     <HiCheck className="w-full h-full" />
@@ -153,12 +118,12 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
             <Tooltip.Content
               size="xs"
               className="px-size-x"
-              theme={copied ? "info" : "neutral"}
-              // onPointerDownOutside={(e) => {
-              //   if (e.target instanceof HTMLElement && e.target.dataset?.name === "copy-btn") {
-              //     e.preventDefault();
-              //   }
-              // }}
+              theme={copied ? EVENT_THEME : "neutral"}
+              onPointerDownOutside={(e) => {
+                if (e.target instanceof HTMLElement && e.target.dataset?.name === "copy-btn") {
+                  e.preventDefault();
+                }
+              }}
             >
               {copied ? "Copied!" : "Copy to clipboard"}
             </Tooltip.Content>
