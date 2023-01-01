@@ -4,15 +4,16 @@ import { CodeBlock } from "./CodeBlock";
 
 const components = {
   h1: (props) => <Text {...props} variant="h1" />,
-  h2: (props) => <Text {...props} variant="h2" className='mt-size-4y' />,
-  h3: (props) => <Text {...props} variant="h3" />,
+  h2: (props) => <Text {...props} variant="h2" className="mt-size-4y" />,
+  h3: (props) => <Text {...props} variant="h3" className='mt-size-2y' />,
   h4: (props) => <Text {...props} variant="h4" />,
   h5: (props) => <Text {...props} variant="h5" />,
   h6: (props) => <Text {...props} variant="h6" />,
-  p: (props) => <Text {...props} variant="p" className='mt-size-2y opacity-80' />,
-  code: (props) => <Text {...props} variant="code" size='sm'  />,
+  p: (props) => <Text {...props} variant="p" className="mt-size-x text-theme-muted" />,
+  a: (props) => <Text {...props} theme="info" as="a" className="text-theme-active underline underline-offset-2" />,
+  code: (props) => <Text {...props} variant="code" size="sm" className="text-theme-muted border-theme-base/40 font-normal" theme='brand' />,
   kbd: (props) => <Text {...props} variant="kbd" />,
-  pre: (props) => <CodeBlock {...props} className='mt-size-2y mb-size-4y' />
+  pre: (props) => <CodeBlock {...props} className="mt-size-2y mb-size-4y" />
 };
 
 export const MDXProvider = ({ children }: { children: React.ReactNode }) => (

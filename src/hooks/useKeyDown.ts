@@ -1,7 +1,11 @@
 import { isSSR } from "utils";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
-export const useKeyDown = (key: string, callback: (event: KeyboardEvent) => void) => {
+export const useKeyDown = (
+  key: string,
+  callback: (event: KeyboardEvent) => void,
+  deps: React.DependencyList
+) => {
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
       if (event.key === key) {
@@ -18,5 +22,5 @@ export const useKeyDown = (key: string, callback: (event: KeyboardEvent) => void
         window.removeEventListener("keydown", handler);
       }
     };
-  }, [key, callback]);
+  }, deps);
 };

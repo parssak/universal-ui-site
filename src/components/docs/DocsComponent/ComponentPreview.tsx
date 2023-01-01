@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { cx, isSSR } from "utils";
 import { useView, Compiler, Editor } from "react-view";
 import { Button, Card, Text, ThemeProvider, Tooltip } from "@parssa/universal-ui";
@@ -166,7 +166,7 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
               styles: []
             }}
             {...params.editorProps}
-            code={params.editorProps.code.replace(`import * as React from "react";\n\n`, "")}
+            code={params.editorProps.code}
             className={`border-t border-theme-base/40`}
           />
           {params.errorProps.msg && (

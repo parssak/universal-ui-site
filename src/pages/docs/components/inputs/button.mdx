@@ -1,7 +1,7 @@
 import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
 import { DocsComponent } from "components/docs/DocsComponent";
 import { PropTypes } from "react-view";
-import { Button } from "@parssa/universal-ui";
+import { Button, InputGroup } from "@parssa/universal-ui";
 import * as Icon from "react-icons/hi";
 
 export const meta = {
@@ -50,6 +50,8 @@ export const meta = {
   }}
 />
 
+## Examples
+
 <DocsComponent.Example
   title="With Icons"
   initialCode={`() => 
@@ -78,16 +80,21 @@ export const meta = {
   }}
 />
 
+You can use the `leadingIcon` and `trailingIcon` props to add icons before/after the button content.
+
+These props accept any ReactNode, so you can use any icon library you want.
+If the icons are not being sized correctly, make sure there is no implicit `width/height` props on the icon, and try adding `w-full h-full`.
+
 <DocsComponent.Example
   title="Pure Icon"
   initialCode={`() => 
       <>
         <Button
-          leadingIcon={<Icon.HiBell className="w-full h-full" />}>
+          icon={<Icon.HiBell className="w-full h-full" />}>
           Notifications
         </Button>
         <Button
-          trailingIcon={<Icon.HiArrowRight className="w-full h-full" />}>
+          icon={<Icon.HiAdjustments className="w-full h-full" />}>
           Next
         </Button>
       </>
@@ -105,5 +112,51 @@ export const meta = {
     }
   }}
 />
+
+For a button with only an icon, you can use the `icon` prop. This will render a button with a uniform size and shape, and the icon will be centered.
+
+The `children` prop is used as the `alt` text for the icon, and will not be visible.
+
+<DocsComponent.Example
+  title="With InputGroup"
+  initialCode={`() => 
+      <>
+        <InputGroup>
+          <Button
+            icon={<Icon.HiBell className="w-full h-full" />}>
+            Notifications
+          </Button>
+          <Button
+            icon={<Icon.HiAdjustments className="w-full h-full" />}>
+            Next
+          </Button>
+          <Button>
+            Notifications
+          </Button>
+          <Button
+            trailingIcon={<Icon.HiArrowRight className="w-full h-full" />}>
+            Next
+          </Button>
+        </InputGroup>
+      </>
+    `}
+  scope={{
+    Button,
+    Icon,
+    InputGroup
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Button", "InputGroup"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
+You can use the `Button` component inside an `InputGroup` to create a segmented button. The `InputGroup` can be used with `Input`, `Select` and `Button`.
+
+Learn more about `InputGroup` [here](/docs/components/input-group).
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

@@ -32,11 +32,13 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
     <div
       {...props}
       className={cx(
-        "rounded-md relative overflow-hidden border border-theme-active/60  bg-theme-pure",
+        "rounded-md relative overflow-hidden border border-theme-muted bg-theme-pure",
         props.className
       )}
     >
-      <pre className={cx("px-4 py-3 text-sm text-theme-base overflow-auto scrollbar-hide")}>
+      <pre
+        className={cx("p-size-x text-sm text-theme-base overflow-auto scrollbar-hide")}
+      >
         <code ref={codeRef} className="language-jsx">
           {children}
         </code>
