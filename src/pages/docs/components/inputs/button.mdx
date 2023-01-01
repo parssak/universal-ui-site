@@ -78,4 +78,32 @@ export const meta = {
   }}
 />
 
+<DocsComponent.Example
+  title="Pure Icon"
+  initialCode={`() => 
+      <>
+        <Button
+          leadingIcon={<Icon.HiBell className="w-full h-full" />}>
+          Notifications
+        </Button>
+        <Button
+          trailingIcon={<Icon.HiArrowRight className="w-full h-full" />}>
+          Next
+        </Button>
+      </>
+    `}
+  scope={{
+    Button,
+    Icon
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Button"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

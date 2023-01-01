@@ -29,6 +29,7 @@ const nextConfig = {
     locales: ["en"],
     defaultLocale: "en"
   },
+  reactStrictMode: false,
   async redirects() {
     return [
       {

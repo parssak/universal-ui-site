@@ -50,7 +50,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 return "shadow-none";
               }
               return "";
-            }
+            },
+            'tooltip.content': 'backdrop-blur-sm'
           }
         }}
       >

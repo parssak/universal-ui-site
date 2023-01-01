@@ -74,6 +74,8 @@ export const ComponentPrimaryShowcase = ({
     })
   );
 
+  console.debug("rerender");
+
   return (
     <div className="space-y-size-4y">
       <ComponentPreview params={params} />

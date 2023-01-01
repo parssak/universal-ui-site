@@ -24,7 +24,7 @@ export default function Home(props) {
             </Card.Content>
           </Card>
 
-          <Text className="text-5xl gradient-text" variant="h1">
+          <Text className="text-5xl gradient-text-subtle" variant="h1">
             Universal UI
           </Text>
           <Text className="mb-size-4y mt-size-y" variant="h4">

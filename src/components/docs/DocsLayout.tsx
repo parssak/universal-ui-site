@@ -24,17 +24,11 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
   ];
   return (
     <div className="flex w-full h-full flex-1 ">
-      <Sidebar className="hidden lg:block fixed h-full bottom-0 top-14 " />
+      <Sidebar className="hidden lg:block absolute h-full bottom-0 pt-24" />
 
       {isSidebarOpen && (
-        <Dialog
-          open={isSidebarOpen}
-          onClose={() => {
-            console.log("close");
-            toggleSidebar();
-          }}
-        >
-          <Dialog.Overlay className="fixed inset-0 bg-theme-pure/80 dark:bg-theme-pure/50 lg:hidden" />
+        <Dialog open={isSidebarOpen} onClose={toggleSidebar}>
+          <Dialog.Overlay className="fixed inset-0 h-full bg-theme-pure/80 dark:bg-theme-pure/50 lg:hidden" />
           <ThemeProvider>
             <Dialog.Panel>
               <Sidebar

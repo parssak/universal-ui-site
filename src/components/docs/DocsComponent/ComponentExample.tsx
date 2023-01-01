@@ -32,7 +32,7 @@ export const ComponentExample = ({
   });
 
   return (
-    <div>
+    <div className='mt-size-4y'>
       <Text variant="h3" className="mb-size-2y">
         {title}
       </Text>
