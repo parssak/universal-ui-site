@@ -51,19 +51,11 @@ export const ComponentPrimaryShowcase = ({
     }
   });
 
-  // useKeyDown("s", (e) => {
-  //   if (e.ctrlKey || e.metaKey) {
-  //     e.preventDefault();
-  //     params.actions.formatCode();
-  //   }
-  // }, [params.actions]);
-
   useEffect(() => {
     if (params.errorProps.msg) {
       return;
     }
-    console.debug(params)
-  }, [])
+  }, []);
 
   const propValues = Object.fromEntries(
     Object.entries(params.knobProps.state).map(([key, value]) => [key, value.value])
@@ -80,8 +72,6 @@ export const ComponentPrimaryShowcase = ({
       ];
     })
   );
-
-  console.debug("rerender");
 
   return (
     <div className="space-y-size-4y">

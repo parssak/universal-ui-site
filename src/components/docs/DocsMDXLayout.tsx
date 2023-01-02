@@ -9,11 +9,11 @@ export const DocsMDXLayout = ({
   meta: {
     title: string;
     description?: string;
-  }
+  };
 }) => {
   return (
     <DocsLayout {...props}>
-      <DocsLayout.Header title={meta.title} description={meta.description} className='mb-8' />
+      <DocsLayout.Header title={meta.title} description={meta.description} className="mb-8" />
       {children}
     </DocsLayout>
   );
