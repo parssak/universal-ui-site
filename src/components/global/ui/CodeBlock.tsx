@@ -8,7 +8,7 @@ type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
   const [copied, setCopied] = useState(false);
-console.debug(props)
+  
   useEffect(() => {
     if (isSSR) return;
     highlight();
@@ -42,7 +42,7 @@ console.debug(props)
       <Tooltip.Root>
         <Tooltip.Trigger
           onClick={(e) => e.preventDefault()}
-          data-size='sm'
+          data-size="sm"
           className="absolute top-size-x right-size-x "
         >
           <Button

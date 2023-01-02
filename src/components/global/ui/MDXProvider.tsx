@@ -63,7 +63,8 @@ const components = {
     />
   ),
   kbd: (props) => <Text {...props} variant="kbd" />,
-  pre: (props) => <CodeBlock {...props} className="mt-size-2y mb-size-4y" />
+  pre: (props) => <CodeBlock {...props} className="mt-size-2y mb-size-4y" />,
+  hr: (props) => <hr {...props} className="my-8 text-theme-muted border-theme-muted" />
 };
 
 export const MDXProvider = ({ children }: { children: React.ReactNode }) => (

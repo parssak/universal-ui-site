@@ -10,7 +10,7 @@ type DivProps = React.HTMLAttributes<HTMLDivElement>;
 const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] }) => {
   const router = useRouter();
 
-  const isActive = router.asPath === item.href;
+  const isActive = router.asPath.split("#")[0] === item.href.split("#")[0];
 
   return (
     <ThemeProvider theme={isActive ? "brand" : "neutral"}>
