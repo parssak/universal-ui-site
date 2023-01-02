@@ -1,14 +1,11 @@
-import { Text } from "@parssa/universal-ui";
-import { useView, Compiler, Editor, Error, PropTypes } from "react-view";
+import { useView } from "react-view";
 import { ComponentPreview } from "./ComponentPreview";
 
 export const ComponentExample = ({
-  title,
   initialCode,
   imports,
   scope
 }: {
-  title: string;
   initialCode: string;
   imports?: {
     [key: string]: {
@@ -32,10 +29,7 @@ export const ComponentExample = ({
   });
 
   return (
-    <div className='mt-size-4y'>
-      <Text variant="h3" className="mb-size-2y">
-        {title}
-      </Text>
+    <div className="mt-size-2y">
       <ComponentPreview params={params} />
     </div>
   );

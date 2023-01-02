@@ -70,7 +70,7 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
   const headings = extractChildrenFromHeadings(children);
 
   return (
-    <div className="flex w-full h-full flex-1 ">
+    <div {...props} className="flex w-full h-full flex-1">
       <Sidebar className="hidden lg:block fixed h-full top-0 bottom-0 pt-24 overflow-auto" />
 
       {isSidebarOpen && (
@@ -95,11 +95,11 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
         </Dialog>
       )}
       <div className="hidden lg:block w-56 xl:w-64"></div>
-      <div className="w-full flex-1 overflow-hidden">
+      <div className="w-full flex-1 overflow-hidden flex flex-col ">
         <div className="container py-12 relative min-h-screen subpixel-antialiased">
           <ThemeProvider theme="neutral" className="opacity-80">
-            <div className="absolute -top-24 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
-            <div className="absolute -bottom-24 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
+            <div className="absolute top-0 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
+            <div className="absolute bottom-0 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
             <div className="opacity-80 dark:opacity-20">
               {accents.map((accent, i) => (
                 <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
@@ -107,27 +107,34 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
             </div>
           </ThemeProvider>
           <ThemeProvider className="relative">
-            <div className="max-w-4xl">{children}</div>
-            <div className="fixed pointer-events-none z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden 2xl:block">
-              <Text variant="h6">On this page</Text>
-              <ul className="mt-4 space-y-2 pointer-events-auto">
-                {headings.map((heading) => (
-                  <li key={heading.text}>
-                    <Link
-                      href={heading.link}
-                      className="text-theme-base/80 dark:text-theme-base/50 hover:text-theme-active dark:hover:text-theme-active"
-                    >
-                      <Text size="sm" className={levelToMarginMap[heading.level]}>
-                        {heading.text}
-                      </Text>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <div className={headings.length > 0 ? "max-w-4xl" : 'max-w-6xl'}>{children}</div>
+            {headings.length > 0 && (
+              <div className="fixed pointer-events-none z-20 top-[3.8125rem] inset-x-0 bottom-0 py-10 overflow-y-auto hidden 2xl:flex">
+                <div className="max-w-screen-xl p-1 w-full" />
+                <div className="pl-size-4y pr-size-2x w-72">
+                  <Text size="sm" variant="h6">
+                    On this page
+                  </Text>
+                  <ul className="mt-4 space-y-2 pointer-events-auto">
+                    {headings.map((heading) => (
+                      <li key={heading.text}>
+                        <Link href={heading.link} className="group">
+                          <Text
+                            size="sm"
+                            className={`${levelToMarginMap[heading.level]} text-theme-muted `}
+                          >
+                            {heading.text}
+                          </Text>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
           </ThemeProvider>
         </div>
-        <Footer />
+        <Footer className="mt-auto" />
       </div>
     </div>
   );

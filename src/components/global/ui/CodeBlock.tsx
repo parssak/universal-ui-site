@@ -8,7 +8,7 @@ type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
   const [copied, setCopied] = useState(false);
-
+console.debug(props)
   useEffect(() => {
     if (isSSR) return;
     highlight();

@@ -23,7 +23,7 @@ export const Nav = ({ ...props }: NavProps & {}) => {
       )}
     >
       <div className="">
-        <div className="lg:mx-56 xl:mx-64 py-4 flex items-center">
+        <div className="lg:ml-56 xl:ml-64 max-w-5xl pr-12 py-4 flex items-center">
           <Link href="/">
             <Text variant="h5">Universal UI</Text>
           </Link>
