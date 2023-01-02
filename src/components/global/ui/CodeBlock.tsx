@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { cx, isSSR } from "utils";
-import { Button } from "@parssa/universal-ui";
+import { Button, Card, Tooltip } from "@parssa/universal-ui";
 import highlight from "utils/prism";
 import { HiCheck, HiOutlineClipboard } from "react-icons/hi";
 
@@ -29,33 +29,51 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
   };
 
   return (
-    <div
+    <Card
       {...props}
-      className={cx(
-        "rounded-md relative overflow-hidden border border-theme-active/60  bg-theme-pure",
-        props.className
-      )}
+      theme={copied ? "success" : "neutral"}
+      className={cx("relative overflow-hidden transition-all bg-theme-pure", props.className)}
     >
-      <pre className={cx("px-4 py-3 text-sm text-theme-base overflow-auto scrollbar-hide")}>
+      <pre className={cx("p-size-x text-sm text-theme-base overflow-auto scrollbar-hide")}>
         <code ref={codeRef} className="language-jsx">
           {children}
         </code>
       </pre>
-      <Button
-        size="sm"
-        theme="neutral"
-        className="absolute top-[7px] right-size-x active:absolute enabled:absolute active:top-2 active:right-2"
-        onClick={onCopy}
-        icon={
-          copied ? (
-            <HiCheck className="w-full h-full" />
-          ) : (
-            <HiOutlineClipboard className="w-full h-full" />
-          )
-        }
-      >
-        Copy to clipboard
-      </Button>
-    </div>
+      <Tooltip.Root>
+        <Tooltip.Trigger
+          onClick={(e) => e.preventDefault()}
+          data-size='sm'
+          className="absolute top-size-x right-size-x "
+        >
+          <Button
+            size="sm"
+            theme={copied ? "success" : "neutral"}
+            onClick={onCopy}
+            data-name="copy-btn"
+            variant="ghost"
+            icon={
+              copied ? (
+                <HiCheck className="w-full h-full" />
+              ) : (
+                <HiOutlineClipboard className="w-full h-full" />
+              )
+            }
+          >
+            Copy to clipboard
+          </Button>
+        </Tooltip.Trigger>
+        <Tooltip.Content
+          theme={copied ? "success" : "neutral"}
+          size="xs"
+          onPointerDownOutside={(e) => {
+            if (e.target instanceof HTMLElement && e.target.dataset?.name === "copy-btn") {
+              e.preventDefault();
+            }
+          }}
+        >
+          {copied ? "Copied!" : "Copy to clipboard"}
+        </Tooltip.Content>
+      </Tooltip.Root>
+    </Card>
   );
 };

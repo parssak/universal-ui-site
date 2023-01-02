@@ -1,6 +1,6 @@
 import { useKeyDown } from "hooks";
-import { useMemo } from "react";
-import { useView, Compiler, Editor, PropTypes } from "react-view";
+import { useEffect, useMemo } from "react";
+import { useView, PropTypes } from "react-view";
 import { ComponentConfig } from "./ComponentConfig";
 import { ComponentPreview } from "./ComponentPreview";
 import { cleanDefaultProps } from "./utils";
@@ -51,12 +51,11 @@ export const ComponentPrimaryShowcase = ({
     }
   });
 
-  useKeyDown("s", (e) => {
-    if (e.ctrlKey || e.metaKey) {
-      e.preventDefault();
-      params.actions.formatCode();
+  useEffect(() => {
+    if (params.errorProps.msg) {
+      return;
     }
-  });
+  }, []);
 
   const propValues = Object.fromEntries(
     Object.entries(params.knobProps.state).map(([key, value]) => [key, value.value])

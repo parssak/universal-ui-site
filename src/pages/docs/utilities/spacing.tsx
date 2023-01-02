@@ -8,15 +8,6 @@ import { isSSR } from "utils";
 export default function Spacing() {
   const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
 
-  // !  Experimental
-  // if (!isSSR) {
-  //   const stylesheet = Array.from(document.styleSheets).filter(
-  //     (sheet) => sheet.href === null || sheet.href.startsWith(window.location.origin)
-  //   );
-
-  //   // console.debug(Array.from(stylesheet[0].cssRules).filter((rule) => rule.cssText.includes('--')));
-  // }
-
   return (
     <DocsLayout>
       <Text variant="h1">Spacing</Text>

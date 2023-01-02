@@ -15,7 +15,7 @@ export const DocsHeader = ({
         {title}
       </Text>
       {description && (
-        <Text variant="h4" className="text-theme-muted mt-size-y font-medium">
+        <Text variant="h4" as='p' className="text-theme-muted mt-size-y font-medium">
           {description}
         </Text>
       )}

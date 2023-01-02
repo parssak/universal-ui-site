@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="space-y-size-4y">
+    <div
+      class="border rounded-md shadow-sm bg-theme-pure/25 transition-all backdrop-blur-lg grid-pattern with-spotlight overflow-hidden relative isolate border-theme-muted"
+      data-theme="neutral">
+      <div class="relative" data-theme="neutral">
+        <div class="p-size-x py-size-4y grid place-items-center transition-transform">
+          <div class="flex gap-2 items-center flex-col py-size-4y">
+            <div class="flex gap-2 flex-row"></div>
+          </div>
+        </div>
+        <div class="bottom-size-2y right-size-x absolute z-10 flex gap-size-hx" data-size="sm">
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active group"
+              data-theme="neutral" data-name="refresh-btn"><span class="sr-only">Refresh Example</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                  class="w-full h-full pointer-events-none" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                    clip-rule="evenodd"></path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"
+              data-theme="neutral" data-name="copy-btn"><span class="sr-only">Copy to clipboard</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                  </path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"><span
+                class="sr-only">Show code</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                  </path>
+                </svg></span></button></div>
+        </div>
+      </div>
+    </div>
+    <div class="border border-theme-muted rounded-md shadow-sm bg-theme-base/20">
+      <div class="p-size-x">
+        <div data-size="sm" class="divide-theme-active/30 divide-y">
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">children</p>
+                <code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="info">ReactNode</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">The content of
+                the Button.</p>
+            </div>
+            <div class="sm:ml-auto flex">
+              <div
+                class="tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 font-normal placeholder:opacity-50 truncate w-max flex items-center pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size text-theme-base placeholder:text-theme-muted bg-theme-pure border-theme-base/50 flex-1">
+                <input type="react node"
+                  class="bg-transparent focus:outline-none placeholder:text-theme-muted truncate placeholder:opacity-50"
+                  value="Button" />
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">theme</p>
+                <code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="brand">Theme</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">The theme of the
+                Button.</p>
+            </div>
+            <div class="sm:ml-auto flex"><button data-size="sm"
+                class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 hover:bg-theme-base pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size bg-theme-base text-theme-base placeholder:text-theme-muted enabled:hover:bg-theme-active border-theme-base/20 flex-1"
+                type="button" role="combobox" aria-controls="radix-:Rka1:" aria-expanded="false"
+                aria-autocomplete="none" dir="ltr" data-state="closed">
+                <div class="flex items-center justify-between min-w-[15ch]"><span
+                    style="pointer-events:none"></span><span
+                    class="h-size-line aspect-square scale-75 text-theme-muted pointer-events-none select-none relative -right-size-qx"
+                    aria-hidden="true"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      name="selector">
+                      <path
+                        d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z"
+                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg></span></div>
+              </button><select aria-hidden="true" tabindex="-1"
+                style="position:absolute;border:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;word-wrap:normal"></select>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">size</p><code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="brand">Size</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">The size of the
+                Button.</p>
+            </div>
+            <div class="sm:ml-auto flex"><button data-size="sm"
+                class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 hover:bg-theme-base pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size bg-theme-base text-theme-base placeholder:text-theme-muted enabled:hover:bg-theme-active border-theme-base/20 flex-1"
+                type="button" role="combobox" aria-controls="radix-:Rke1:" aria-expanded="false"
+                aria-autocomplete="none" dir="ltr" data-state="closed">
+                <div class="flex items-center justify-between min-w-[15ch]"><span
+                    style="pointer-events:none"></span><span
+                    class="h-size-line aspect-square scale-75 text-theme-muted pointer-events-none select-none relative -right-size-qx"
+                    aria-hidden="true"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      name="selector">
+                      <path
+                        d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z"
+                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg></span></div>
+              </button><select aria-hidden="true" tabindex="-1"
+                style="position:absolute;border:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;word-wrap:normal"></select>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">variant</p>
+                <code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="brand">Variant</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">The variant of
+                the Button.</p>
+            </div>
+            <div class="sm:ml-auto flex"><button data-size="sm"
+                class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 hover:bg-theme-base pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size bg-theme-base text-theme-base placeholder:text-theme-muted enabled:hover:bg-theme-active border-theme-base/20 flex-1"
+                type="button" role="combobox" aria-controls="radix-:Rki1:" aria-expanded="false"
+                aria-autocomplete="none" dir="ltr" data-state="closed">
+                <div class="flex items-center justify-between min-w-[15ch]"><span
+                    style="pointer-events:none"></span><span
+                    class="h-size-line aspect-square scale-75 text-theme-muted pointer-events-none select-none relative -right-size-qx"
+                    aria-hidden="true"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      name="selector">
+                      <path
+                        d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z"
+                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg></span></div>
+              </button><select aria-hidden="true" tabindex="-1"
+                style="position:absolute;border:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;word-wrap:normal"></select>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">disabled</p>
+                <code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="neutral">boolean</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">Whether the
+                Button is disabled.</p>
+            </div>
+            <div class="sm:ml-auto flex"><button data-size="sm"
+                class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 hover:bg-theme-base pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size bg-theme-base text-theme-base placeholder:text-theme-muted enabled:hover:bg-theme-active border-theme-base/20 flex-1"
+                type="button" role="combobox" aria-controls="radix-:Rsm1:" aria-expanded="false"
+                aria-autocomplete="none" dir="ltr" data-state="closed">
+                <div class="flex items-center justify-between min-w-[15ch]"><span
+                    style="pointer-events:none"></span><span
+                    class="h-size-line aspect-square scale-75 text-theme-muted pointer-events-none select-none relative -right-size-qx"
+                    aria-hidden="true"><svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      name="selector">
+                      <path
+                        d="M4.93179 5.43179C4.75605 5.60753 4.75605 5.89245 4.93179 6.06819C5.10753 6.24392 5.39245 6.24392 5.56819 6.06819L7.49999 4.13638L9.43179 6.06819C9.60753 6.24392 9.89245 6.24392 10.0682 6.06819C10.2439 5.89245 10.2439 5.60753 10.0682 5.43179L7.81819 3.18179C7.73379 3.0974 7.61933 3.04999 7.49999 3.04999C7.38064 3.04999 7.26618 3.0974 7.18179 3.18179L4.93179 5.43179ZM10.0682 9.56819C10.2439 9.39245 10.2439 9.10753 10.0682 8.93179C9.89245 8.75606 9.60753 8.75606 9.43179 8.93179L7.49999 10.8636L5.56819 8.93179C5.39245 8.75606 5.10753 8.75606 4.93179 8.93179C4.75605 9.10753 4.75605 9.39245 4.93179 9.56819L7.18179 11.8182C7.35753 11.9939 7.64245 11.9939 7.81819 11.8182L10.0682 9.56819Z"
+                        fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg></span></div>
+              </button><select aria-hidden="true" tabindex="-1"
+                style="position:absolute;border:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;word-wrap:normal"></select>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">leadingIcon
+                </p><code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="info">ReactNode</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">Icon shown before
+                the content.</p>
+            </div>
+            <div class="sm:ml-auto flex">
+              <div
+                class="tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 font-normal placeholder:opacity-50 truncate w-max flex items-center pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size text-theme-base placeholder:text-theme-muted bg-theme-pure border-theme-base/50 flex-1">
+                <input type="react node"
+                  placeholder="&lt;svg viewBox=&quot;0 0 15 15&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;"
+                  class="bg-transparent focus:outline-none placeholder:text-theme-muted truncate placeholder:opacity-50"
+                  value="" />
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">trailingIcon
+                </p><code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="info">ReactNode</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">Icon shown after
+                the content.</p>
+            </div>
+            <div class="sm:ml-auto flex">
+              <div
+                class="tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 font-normal placeholder:opacity-50 truncate w-max flex items-center pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size text-theme-base placeholder:text-theme-muted bg-theme-pure border-theme-base/50 flex-1">
+                <input type="react node"
+                  placeholder="&lt;svg viewBox=&quot;0 0 15 15&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;"
+                  class="bg-transparent focus:outline-none placeholder:text-theme-muted truncate placeholder:opacity-50"
+                  value="" />
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col sm:flex-row gap-4 sm:items-center w-full mt-size-4y pt-size-4y first:pt-0 first:mt-0">
+            <div>
+              <div class="flex items-center gap-size-x">
+                <p class="text-theme-base text-size tracking-normal leading-size font-medium min-w-[10ch]">icon</p><code
+                  class="text-theme-base font-mono border text-size bg-theme-pure border-theme-base px-1 py-0.5 rounded font-medium whitespace-nowrap leading-size opacity-75"
+                  data-size="xs" data-theme="info">ReactNode</code>
+              </div>
+              <p class="text-theme-muted text-size font-normal tracking-normal leading-size mt-size-y">Renders a
+                uniformly shaped button with a centered icon. Children is used as alt-text</p>
+            </div>
+            <div class="sm:ml-auto flex">
+              <div
+                class="tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 font-normal placeholder:opacity-50 truncate w-max flex items-center pl-size-x pr-size-x pt-size-y pb-size-y text-size leading-size text-theme-base placeholder:text-theme-muted bg-theme-pure border-theme-base/50 flex-1">
+                <input type="react node"
+                  placeholder="&lt;svg viewBox=&quot;0 0 15 15&quot; fill=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;"
+                  class="bg-transparent focus:outline-none placeholder:text-theme-muted truncate placeholder:opacity-50"
+                  value="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2>Examples</h2>
+  <div class="mt-size-4y">
+    <h3 class="text-theme-base text-2xl font-semibold tracking-tight mb-size-2y">With Icons</h3>
+    <div
+      class="border rounded-md shadow-sm bg-theme-pure/25 transition-all backdrop-blur-lg grid-pattern with-spotlight overflow-hidden relative isolate border-theme-muted"
+      data-theme="neutral">
+      <div class="relative" data-theme="neutral">
+        <div class="p-size-x py-size-4y grid place-items-center transition-transform">
+          <div class="flex gap-2 items-center flex-col py-size-4y">
+            <div class="flex gap-2 flex-row"></div>
+          </div>
+        </div>
+        <div class="bottom-size-2y right-size-x absolute z-10 flex gap-size-hx" data-size="sm">
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active group"
+              data-theme="neutral" data-name="refresh-btn"><span class="sr-only">Refresh Example</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                  class="w-full h-full pointer-events-none" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                    clip-rule="evenodd"></path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"
+              data-theme="neutral" data-name="copy-btn"><span class="sr-only">Copy to clipboard</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                  </path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"><span
+                class="sr-only">Show code</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                  </path>
+                </svg></span></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>You can use the <code>leadingIcon</code> and <code>trailingIcon</code> props to add icons before/after the button
+    content.</p>
+  <p>These props accept any ReactNode, so you can use any icon library you want.
+    If the icons are not being sized correctly, make sure there is no implicit <code>width/height</code> props on the
+    icon, and try adding <code>w-full h-full</code>.</p>
+  <div class="mt-size-4y">
+    <h3 class="text-theme-base text-2xl font-semibold tracking-tight mb-size-2y">Pure Icon</h3>
+    <div
+      class="border rounded-md shadow-sm bg-theme-pure/25 transition-all backdrop-blur-lg grid-pattern with-spotlight overflow-hidden relative isolate border-theme-muted"
+      data-theme="neutral">
+      <div class="relative" data-theme="neutral">
+        <div class="p-size-x py-size-4y grid place-items-center transition-transform">
+          <div class="flex gap-2 items-center flex-col py-size-4y">
+            <div class="flex gap-2 flex-row"></div>
+          </div>
+        </div>
+        <div class="bottom-size-2y right-size-x absolute z-10 flex gap-size-hx" data-size="sm">
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active group"
+              data-theme="neutral" data-name="refresh-btn"><span class="sr-only">Refresh Example</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                  class="w-full h-full pointer-events-none" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                    clip-rule="evenodd"></path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"
+              data-theme="neutral" data-name="copy-btn"><span class="sr-only">Copy to clipboard</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                  </path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"><span
+                class="sr-only">Show code</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                  </path>
+                </svg></span></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>For a button with only an icon, you can use the <code>icon</code> prop. This will render a button with a uniform
+    size and shape, and the icon will be centered.</p>
+  <p>The <code>children</code> prop is used as the <code>alt</code> text for the icon, and will not be visible.</p>
+  <div class="mt-size-4y">
+    <h3 class="text-theme-base text-2xl font-semibold tracking-tight mb-size-2y">With InputGroup</h3>
+    <div
+      class="border rounded-md shadow-sm bg-theme-pure/25 transition-all backdrop-blur-lg grid-pattern with-spotlight overflow-hidden relative isolate border-theme-muted"
+      data-theme="neutral">
+      <div class="relative" data-theme="neutral">
+        <div class="p-size-x py-size-4y grid place-items-center transition-transform">
+          <div class="flex gap-2 items-center flex-col py-size-4y">
+            <div class="flex gap-2 flex-row"></div>
+          </div>
+        </div>
+        <div class="bottom-size-2y right-size-x absolute z-10 flex gap-size-hx" data-size="sm">
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active group"
+              data-theme="neutral" data-name="refresh-btn"><span class="sr-only">Refresh Example</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
+                  class="w-full h-full pointer-events-none" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                    clip-rule="evenodd"></path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"
+              data-theme="neutral" data-name="copy-btn"><span class="sr-only">Copy to clipboard</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                  </path>
+                </svg></span></button></div>
+          <div class="inline-block" data-state="closed"><button
+              class="font-medium tracking-tight rounded duration-100 border shadow disabled:opacity-75 disabled:cursor-not-allowed focus:outline-none ring-0 transition-all focus-within:relative focus-within:z-20 focus:ring focus-within:ring focus:ring-theme-base/50 focus-within:ring-theme-base/50 select-none inline-flex items-center justify-center pt-size-y pb-size-y text-size leading-size pl-size-y pr-size-y bg-transparent text-theme-base hover:text-theme-active placeholder:text-theme-muted border-transparent enabled:hover:bg-theme-active"><span
+                class="sr-only">Show code</span><span
+                class="h-size-line aspect-square relative scale-75 text-theme-muted pointer-events-none select-none"
+                aria-hidden="true"><svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
+                  class="w-full h-full" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                  </path>
+                </svg></span></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>You can use the <code>Button</code> component inside an <code>InputGroup</code> to create a segmented button. The
+    <code>InputGroup</code> can be used with <code>Input</code>, <code>Select</code> and <code>Button</code>.
+  </p>
+  <p>Learn more about <code>InputGroup</code> <a href="/docs/components/inputs/input-group">here -&gt;</a>.</p>
+</body>
+
+</html>
