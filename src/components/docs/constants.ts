@@ -30,19 +30,31 @@ export const NAV_SECTIONS = [
       {
         title: "Input",
         href: "/docs/components/inputs/input"
-      }
+      },
+      {
+        title: "InputGroup",
+        href: "/docs/components/inputs/input-group"
+      },
+      {
+        title: "Select",
+        href: "/docs/components/inputs/select"
+      },
     ]
   },
   {
     title: "Display",
     items: [
       {
+        title: "Card",
+        href: "/docs/components/display/card"
+      },
+      {
         title: "Text",
         href: "/docs/components/display/text"
       },
       {
-        title: "Card",
-        href: "/docs/components/display/card"
+        title: 'Tooltip',
+        href: '/docs/components/display/tooltip'
       }
     ]
   },

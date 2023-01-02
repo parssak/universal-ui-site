@@ -24,7 +24,7 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
   ];
   return (
     <div className="flex w-full h-full flex-1 ">
-      <Sidebar className="hidden lg:block absolute h-full bottom-0 pt-24" />
+      <Sidebar className="hidden lg:block fixed h-full top-0 bottom-0 pt-24 overflow-auto" />
 
       {isSidebarOpen && (
         <Dialog open={isSidebarOpen} onClose={toggleSidebar}>
@@ -59,8 +59,8 @@ const DocsLayoutRoot = ({ ...props }: DivProps & {}) => {
               ))}
             </div>
           </ThemeProvider>
-          <ThemeProvider className="relative flex">
-            <div className="max-w-4xl flex-1">{props.children}</div>
+          <ThemeProvider className="relative">
+            <div className="max-w-4xl">{props.children}</div>
             <div className="fixed pointer-events-none z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden 2xl:block">
               <Text variant="h6">On this page</Text>
             </div>

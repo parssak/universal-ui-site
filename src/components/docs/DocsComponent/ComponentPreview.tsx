@@ -90,7 +90,6 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
                 }
               }}
               size="xs"
-              className="px-size-x"
               theme={refresh ? EVENT_THEME : "neutral"}
             >
               {refresh ? "Refreshed!" : "Refresh Example"}
@@ -117,7 +116,6 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
             </Tooltip.Trigger>
             <Tooltip.Content
               size="xs"
-              className="px-size-x"
               theme={copied ? EVENT_THEME : "neutral"}
               onPointerDownOutside={(e) => {
                 if (e.target instanceof HTMLElement && e.target.dataset?.name === "copy-btn") {
@@ -146,9 +144,7 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
               </Button>
             </Tooltip.Trigger>
 
-            <Tooltip.Content size="xs" className="px-size-x">
-              {showCode ? "Hide code" : "Show code"}
-            </Tooltip.Content>
+            <Tooltip.Content size="xs">{showCode ? "Hide code" : "Show code"}</Tooltip.Content>
           </Tooltip.Root>
         </div>
       </div>
