@@ -11,7 +11,7 @@ type DivProps = React.HTMLAttributes<HTMLDivElement>;
 export const DocsBreadcrumbs = ({ ...props }: DivProps & {}) => {
   const router = useRouter();
 
-  const path = router.asPath;
+  const path = router.asPath.split("#")[0];
   const { toggleSidebar } = useSidebar();
 
   const activeSection = useMemo(() => {
