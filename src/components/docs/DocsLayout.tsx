@@ -42,6 +42,7 @@ const getHeadings = (source: string) => {
 };
 
 const extractChildrenFromHeadings = (children: any) => {
+  if (process.env.NODE_ENV === "development") return []
   const str = renderToString(<RadixTooltip.Provider>{children}</RadixTooltip.Provider>);
   return getHeadings(str);
 };

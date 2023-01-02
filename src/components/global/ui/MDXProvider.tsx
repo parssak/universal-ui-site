@@ -2,6 +2,8 @@ import { MDXProvider as Provider } from "@mdx-js/react";
 import { Text } from "@parssa/universal-ui";
 import { cx } from "utils";
 import { CodeBlock } from "./CodeBlock";
+import * as Icon from "react-icons/hi";
+
 
 const components = {
   h1: (props) => <Text {...props} variant="h1" />,
@@ -70,5 +72,6 @@ const components = {
 export const MDXProvider = ({ children }: { children: React.ReactNode }) => (
   <Provider components={components}>
     <>{children}</>
+
   </Provider>
 );

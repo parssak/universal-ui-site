@@ -10,7 +10,7 @@ export const Footer = ({ ...props }: FooterProps & {}) => {
       {...props}
       data-theme="brand"
       data-dark={true}
-      className={cx(`bg-theme-base border-t border-theme-active/70 relative z-20`, props.className)}
+      className={cx(`bg-theme-base border-t border-theme-active/70`, props.className)}
     >
       <div className="container py-4 text-center grid place-items-center bg-gradient-to-t from-theme-base to-theme-active/70 ">
         <Text className="text-theme-active" size="xs">

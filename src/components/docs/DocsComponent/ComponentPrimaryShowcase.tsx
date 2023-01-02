@@ -1,5 +1,5 @@
 import { useKeyDown } from "hooks";
-import { useEffect, useMemo } from "react";
+import { cloneElement, useEffect, useMemo } from "react";
 import { useView, PropTypes } from "react-view";
 import { ComponentConfig } from "./ComponentConfig";
 import { ComponentPreview } from "./ComponentPreview";
@@ -9,7 +9,9 @@ export const ComponentPrimaryShowcase = ({
   componentName,
   defaultProps,
   imports,
-  scope
+  scope,
+  customRender,
+  initialCode
 }: {
   componentName: string;
   defaultProps: Array<ComponentProp | string>;
@@ -22,6 +24,8 @@ export const ComponentPrimaryShowcase = ({
   scope?: {
     [key: string]: any;
   };
+  customRender?: React.ReactNode;
+  initialCode?: string;
 }) => {
   const cleanedDefaultProps = useMemo(
     () => cleanDefaultProps(componentName, defaultProps),
@@ -30,6 +34,7 @@ export const ComponentPrimaryShowcase = ({
 
   const params = useView({
     componentName,
+    initialCode,
     props: {
       ...Object.fromEntries(
         Object.entries(cleanedDefaultProps).map(([key, value]) => [
@@ -42,6 +47,13 @@ export const ComponentPrimaryShowcase = ({
           }
         ])
       )
+      // children: {
+      //   name: "children",
+      //   type: PropTypes.ReactNode,
+      //   description: "Icon shown after the content.",
+      //   value: <>hello</>,
+      //   placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">'
+      // }
     },
     scope: {
       ...scope
@@ -75,7 +87,18 @@ export const ComponentPrimaryShowcase = ({
 
   return (
     <div className="space-y-size-4y">
-      <ComponentPreview params={params} />
+      <ComponentPreview
+        params={params}
+        customRender={
+          customRender
+            ? cloneElement(customRender as React.ReactElement, {
+                ...Object.fromEntries(
+                  Object.entries(injectedProps).map(([key, value]) => [key, value.value])
+                )
+              })
+            : undefined
+        }
+      />
 
       <ComponentConfig
         componentProps={injectedProps}

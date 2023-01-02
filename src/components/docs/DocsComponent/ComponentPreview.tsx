@@ -12,7 +12,13 @@ import {
 
 const EVENT_THEME = "success" as const;
 
-export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView> }) => {
+export const ComponentPreview = ({
+  params,
+  customRender
+}: {
+  params: ReturnType<typeof useView>;
+  customRender?: React.ReactNode;
+}) => {
   const [copied, setCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
   const [refresh, setRefresh] = useState(false);
@@ -58,7 +64,9 @@ export const ComponentPreview = ({ params }: { params: ReturnType<typeof useView
           )}
         >
           <div className="flex gap-2 items-center flex-col py-size-4y">
-            <Compiler {...params.compilerProps} minHeight={62} className="flex gap-2 flex-row" />
+            {customRender ?? (
+              <Compiler {...params.compilerProps} minHeight={62} className="flex gap-2 flex-row" />
+            )}
           </div>
         </Card.Content>
 

@@ -8,6 +8,7 @@ interface ComponentProp {
   defaultValue?: string | number | boolean;
   placeholder?: string;
   options?: string[];
+  noPreview?: boolean;
 }
 
 const CHILDREN_PROP: ComponentProp = {
@@ -91,6 +92,7 @@ export const cleanDefaultProps = (
   const cleanedProps: Record<string, ComponentProp> = {};
 
   let propName = "";
+
   defaultProps.forEach((prop) => {
     propName = typeof prop === "string" ? prop : prop.name;
     if (typeof prop === "string") {
@@ -108,13 +110,15 @@ export const cleanDefaultProps = (
         };
       }
     } else {
-      cleanedProps[prop.name] = prop;
+      if (!prop.noPreview) cleanedProps[prop.name] = prop;
     }
 
-    cleanedProps[propName].description = cleanedProps[propName].description.replace(
-      /<COMPONENT>/g,
-      componentName
-    );
+    if (cleanedProps[propName]?.description) {
+      cleanedProps[propName].description = cleanedProps[propName].description.replace(
+        /<COMPONENT>/g,
+        componentName
+      );
+    }
   });
 
   return cleanedProps;

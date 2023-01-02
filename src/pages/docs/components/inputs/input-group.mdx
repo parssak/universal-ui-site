@@ -1,0 +1,158 @@
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Button, Input, Select, InputGroup } from "@parssa/universal-ui";
+import * as Icon from "react-icons/hi";
+
+export const meta = {
+  title: "InputGroup",
+  description: "Contain inputs and buttons together"
+};
+
+<DocsComponent.Primary
+  componentName="InputGroup"
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "Inputs rendered inside.",
+      value: <>hello</>,
+      placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">',
+      noPreview: true
+    },
+    {
+      name: "borderOption",
+      type: PropTypes.String,
+      description: "Determines how the borders of the inputs render internally.",
+      value: "right",
+      options: ["left", "right", "both", "none"]
+    },
+    "theme",
+    "size"
+  ]}
+  customRender={
+    <InputGroup>
+      <Input type="email" placeholder="sven@mail.com" />
+      <Button>Send</Button>
+    </InputGroup>
+  }
+  scope={{
+    Button,
+    InputGroup
+  }}
+  initialCode={`<InputGroup>
+  <Input type="email" placeholder="sven@mail.com" />
+  <Button>Send</Button>
+</InputGroup>`}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Button", "InputGroup"]
+    }
+  }}
+/>
+
+---
+
+## Examples
+
+### Buttons
+
+<DocsComponent.Example
+  initialCode={`() => 
+      <InputGroup borderOption="left">
+        <Button icon={<Icon.HiArrowLeft className="w-full h-full" />}>
+          Back
+        </Button>
+        <Button  icon={<Icon.HiRefresh className="w-full h-full" />}>
+          Refresh
+        </Button>
+        <Button icon={<Icon.HiArrowRight className="w-full h-full" />}>
+          Next
+        </Button>
+      </InputGroup>
+    `}
+  scope={{
+    Button,
+    Icon,
+    InputGroup
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Button", "InputGroup"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
+### Inputs
+
+<DocsComponent.Example
+  initialCode={`() => 
+      <div className="grid gap-2">
+        <InputGroup borderOption="left">
+          <Input placeholder="First Name" />
+          <Input placeholder="Last Name" />
+        </InputGroup>
+        <Input placeholder="sven@mail.com" type="mail" className="w-full" />
+      </div>
+    `}
+  scope={{
+    Input,
+    Icon,
+    InputGroup
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "InputGroup"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
+### Select with Button
+
+<DocsComponent.Example
+  initialCode={`() => 
+      <InputGroup borderOption="left">
+        <Select>
+          <Select.Trigger trailingIcon={null} placeholder="Pick a fruit..." />
+          <Select.Panel>
+            {[
+              'Apple',
+              'Banana',
+              'Orange',
+              'Pineapple',
+              'Mango',
+              'Grape',
+              'Watermelon'].map(fruit => (
+              <Select.Item value={fruit} key={fruit} className="capitalize">
+              {fruit}
+              </Select.Item>
+            ))}
+          </Select.Panel>
+        </Select>
+        <Button>Submit</Button>
+      </InputGroup>
+    `}
+  scope={{
+    Input,
+    Icon,
+    InputGroup,
+    Select,
+    Button
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "InputGroup", "Select", "Button"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

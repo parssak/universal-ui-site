@@ -564,10 +564,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@parssa/universal-ui@^0.1.67":
-  version "0.1.67"
-  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.67.tgz#47ffe91eac75d7a558e0f6763893c22d0b0f8b88"
-  integrity sha512-oqzQPlyTEJRBGfJyQwUa7weQFXn76UJRkDphhvsOmhikSL5guoeWlbahM7ftvzGaWW0+k0r+oYw9vay1AcYOyA==
+"@parssa/universal-ui@^0.1.68":
+  version "0.1.68"
+  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.68.tgz#327a7e346b045ddd6e168db6e8c14a051a234262"
+  integrity sha512-RkyKq0bhMeG6+sJvfrd6m53tc/yrqcs9FMcqqDUAMjNOxNK1nSu59RwmPg6GWkih1GtN1ke0VLvLOpbyLyCyQQ==
   dependencies:
     "@heroicons/react" "^1.0.6"
     "@popperjs/core" "^2.11.5"
