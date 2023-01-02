@@ -41,6 +41,13 @@ const getHeadings = (source: string) => {
   return [];
 };
 
+const extractChildrenFromHeadings = (children: any) => {
+  if (process.env.NODE_ENV !== "production") return [];
+
+  const str = renderToString(<RadixTooltip.Provider>{children}</RadixTooltip.Provider>);
+  return getHeadings(str);
+};
+
 const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
   const { toggleSidebar, isSidebarOpen } = useSidebar();
   const accents = [
@@ -54,9 +61,6 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
     "bottom-24 left-6 opacity-40 rounded-full rotate-[36deg] from-theme-base/50 to-theme-active w-96 h-24"
   ];
 
-  const str = renderToString(<RadixTooltip.Provider>{children}</RadixTooltip.Provider>);
-  const headings = getHeadings(str);
-
   const levelToMarginMap = {
     2: "ml-0",
     3: "ml-2",
@@ -64,6 +68,8 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
     5: "ml-6",
     6: "ml-8"
   };
+
+  const headings = extractChildrenFromHeadings(children);
 
   return (
     <div className="flex w-full h-full flex-1 ">
