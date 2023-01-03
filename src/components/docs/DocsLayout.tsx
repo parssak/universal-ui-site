@@ -9,6 +9,7 @@ import { useSidebar } from "hooks/useSidebar";
 import Link from "next/link";
 import { renderToString } from "react-dom/server";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
+import { useRouter } from "next/router";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -42,7 +43,7 @@ const getHeadings = (source: string) => {
 };
 
 const extractChildrenFromHeadings = (children: any) => {
-  if (process.env.NODE_ENV === "development") return []
+  if (process.env.NODE_ENV === "development") return [];
   const str = renderToString(<RadixTooltip.Provider>{children}</RadixTooltip.Provider>);
   return getHeadings(str);
 };
@@ -69,6 +70,15 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
   };
 
   const headings = extractChildrenFromHeadings(children);
+  const router = useRouter();
+
+  const routeThemeMap = {
+    "getting-started": "brand",
+    components: "neutral",
+    utilities: "info"
+  };
+
+  const theme = routeThemeMap[router.pathname.split("/")[2]] || "info";
 
   return (
     <div {...props} className="flex w-full h-full flex-1">
@@ -98,7 +108,7 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
       <div className="hidden lg:block w-56 xl:w-64"></div>
       <div className="w-full flex-1 overflow-hidden flex flex-col ">
         <div className="container py-12 relative min-h-screen subpixel-antialiased">
-          <ThemeProvider theme="neutral" className="opacity-80">
+          <ThemeProvider theme={theme} className="opacity-80">
             <div className="absolute top-0 -inset-x-24 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
             <div className="absolute bottom-0 -inset-x-24 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
             <div className="opacity-80 dark:opacity-20">
@@ -108,7 +118,7 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
             </div>
           </ThemeProvider>
           <ThemeProvider className="relative">
-            <div className={headings.length > 0 ? "max-w-4xl" : 'max-w-6xl'}>{children}</div>
+            <div className={headings.length > 0 ? "max-w-4xl" : "max-w-6xl"}>{children}</div>
             {headings.length > 0 && (
               <div className="fixed pointer-events-none z-20 top-[3.8125rem] inset-x-0 bottom-0 py-10 overflow-y-auto hidden 2xl:flex">
                 <div className="max-w-screen-xl p-1 w-full" />

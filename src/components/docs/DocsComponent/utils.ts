@@ -8,7 +8,7 @@ interface ComponentProp {
   defaultValue?: string | number | boolean;
   placeholder?: string;
   options?: string[];
-  noPreview?: boolean;
+  noEdit?: boolean;
 }
 
 const CHILDREN_PROP: ComponentProp = {
@@ -110,7 +110,7 @@ export const cleanDefaultProps = (
         };
       }
     } else {
-      if (!prop.noPreview) cleanedProps[prop.name] = prop;
+      cleanedProps[prop.name] = prop;
     }
 
     if (cleanedProps[propName]?.description) {

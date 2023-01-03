@@ -1,0 +1,132 @@
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Input, Select, InputGroup } from "@parssa/universal-ui";
+import * as Icon from "react-icons/hi";
+import { FRUITS } from "components/docs/constants.ts";
+
+export const meta = {
+  title: "Select",
+  description: <>A robust selector for all selective needs.</>
+};
+
+<DocsComponent.Primary
+  componentName="Select"
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "The trigger and panel should be placed here.",
+      value: "",
+      placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">',
+      noEdit: true
+    },
+    "theme",
+    "size",
+    "variant",
+    "disabled",
+    {
+      name: "leadingIcon",
+      type: PropTypes.ReactNode,
+      description: "Icon shown before the content.",
+      value: "",
+      placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    },
+    {
+      name: "trailingIcon",
+      type: PropTypes.ReactNode,
+      description: "Icon shown after the content.",
+      value: "",
+      placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    }
+  ]}
+  scope={{
+    Select
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Select"]
+    }
+  }}
+  customRender={
+    <Select>
+      <Select.Trigger />
+      <Select.Panel>
+        {FRUITS.map((fruit) => (
+          <Select.Item value={fruit} key={fruit} className="capitalize">
+            {fruit}
+          </Select.Item>
+        ))}
+      </Select.Panel>
+    </Select>
+  }
+/>
+
+---
+
+## Examples
+
+### With Icons
+
+<DocsComponent.Example
+  initialCode={`() => 
+      <>
+        <Input
+          leadingIcon={<Icon.HiBell className="w-full h-full" />}
+          placeholder="Notifications" />
+        <Input
+          trailingIcon={<Icon.HiArrowRight className="w-full h-full" />}
+          placeholder="Next" />
+      </>
+    `}
+  scope={{
+    Input,
+    Icon
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
+You can use the `leadingIcon` and `trailingIcon` props to add icons before/after the Input content.
+
+These props accept any ReactNode, so you can use any icon library you want.
+If the icons are not being sized correctly, make sure there is no implicit `width/height` props on the icon, and try adding `w-full h-full`.
+
+### With InputGroup
+
+<DocsComponent.Example
+  initialCode={`() => 
+      <div className="grid gap-2">
+        <InputGroup borderOption="left">
+          <Input placeholder="First Name" />
+          <Input placeholder="Last Name" />
+        </InputGroup>
+        <Input placeholder="sven@mail.com" type="mail" className="w-full" />
+      </div>
+    `}
+  scope={{
+    Input,
+    Icon,
+    InputGroup
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "InputGroup"]
+    },
+    "react-icons/hi": {
+      default: "Icon"
+    }
+  }}
+/>
+
+You can use the `Input` component inside an `InputGroup` to create a segmented Input. The `InputGroup` can be used with `Input`, `Select` and `Input`.
+
+Learn more about `InputGroup` [here ->](/docs/components/inputs/input-group).
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

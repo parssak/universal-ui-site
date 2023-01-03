@@ -1,9 +1,6 @@
-import { Card, Text, ThemeProvider } from "@parssa/universal-ui";
+import { Text } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
-import { CodeBlock } from "components/global/ui/CodeBlock";
-
-import Link from "next/link";
-import { isSSR } from "utils";
+import { Todo } from "components/global/ui/Todo";
 
 export default function Spacing() {
   const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
@@ -11,6 +8,7 @@ export default function Spacing() {
   return (
     <DocsLayout>
       <Text variant="h1">Spacing</Text>
+      <Todo>This page is still under construction. Please check back later.</Todo>
 
       <Text className="mt-size-4y">
         Universal UI provides a set of spacing utilities to help you quickly add margin and padding

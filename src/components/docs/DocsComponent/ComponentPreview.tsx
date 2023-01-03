@@ -14,10 +14,12 @@ const EVENT_THEME = "success" as const;
 
 export const ComponentPreview = ({
   params,
-  customRender
+  customRender,
+  onRefresh
 }: {
   params: ReturnType<typeof useView>;
   customRender?: React.ReactNode;
+  onRefresh?: () => void;
 }) => {
   const [copied, setCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
@@ -36,7 +38,7 @@ export const ComponentPreview = ({
     setShowCode((prev) => !prev);
   };
 
-  const onRefresh = () => {
+  const handleRefresh = () => {
     if (refresh) {
       return;
     }
@@ -44,7 +46,8 @@ export const ComponentPreview = ({
     params.actions.reset();
     setTimeout(() => {
       setRefresh(false);
-    }, 1000);
+      onRefresh?.();
+    }, 600);
   };
 
   return (
@@ -78,7 +81,7 @@ export const ComponentPreview = ({
                 className="group"
                 data-name="refresh-btn"
                 theme={refresh ? EVENT_THEME : "neutral"}
-                onClick={onRefresh}
+                onClick={handleRefresh}
                 icon={
                   <HiRefresh
                     className={cx(

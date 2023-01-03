@@ -38,67 +38,79 @@ export const ComponentConfig = ({
                   </Text>
                 )}
               </div>
-              <div className="sm:ml-auto flex">
-                {getInputType(prop) === "text" && (
-                  <Input
-                    className="flex-1"
-                    value={prop.value as string | number}
-                    type={prop.type}
-                    onChange={(e) => {
-                      onPropChange({
-                        ...prop,
-                        value: e.target.value
-                      });
-                    }}
-                    placeholder={prop.placeholder}
-                  />
-                )}
+              {!prop.noEdit ? (
+                <div className="sm:ml-auto flex">
+                  {getInputType(prop) === "text" && (
+                    <Input
+                      className="flex-1"
+                      value={prop.value as string | number}
+                      type={prop.type}
+                      onChange={(e) => {
+                        onPropChange({
+                          ...prop,
+                          value: e.target.value
+                        });
+                      }}
+                      placeholder={prop.placeholder}
+                    />
+                  )}
 
-                {getInputType(prop) === "select" && (
-                  <Select
-                    size="sm"
-                    value={prop.value as string}
-                    onValueChange={(e) => {
-                      onPropChange({
-                        ...prop,
-                        value: e
-                      });
-                    }}
-                  >
-                    <Select.Trigger className="flex-1" />
-                    <Select.Panel>
-                      {prop.options.map((option) => (
-                        <Select.Item
-                          key={option}
-                          value={option}
-                          theme={prop.name === "theme" ? (option as Theme) : "neutral"}
-                        >
-                          {option}
-                        </Select.Item>
-                      ))}
-                    </Select.Panel>
-                  </Select>
-                )}
+                  {getInputType(prop) === "select" && (
+                    <Select
+                      size="sm"
+                      value={prop.value as string}
+                      onValueChange={(e) => {
+                        onPropChange({
+                          ...prop,
+                          value: e
+                        });
+                      }}
+                    >
+                      <Select.Trigger className="flex-1" />
+                      <Select.Panel>
+                        {prop.options.map((option) => (
+                          <Select.Item
+                            key={option}
+                            value={option}
+                            theme={prop.name === "theme" ? (option as Theme) : "neutral"}
+                          >
+                            {option}
+                          </Select.Item>
+                        ))}
+                      </Select.Panel>
+                    </Select>
+                  )}
 
-                {getInputType(prop) === "checkbox" && (
-                  <Select
-                    size="sm"
-                    value={`${prop.value}`}
-                    onValueChange={(e) => {
-                      onPropChange({
-                        ...prop,
-                        value: e === "true" ? true : false
-                      });
-                    }}
-                  >
-                    <Select.Trigger className="flex-1" />
-                    <Select.Panel>
-                      <Select.Item value={"true"}>true</Select.Item>
-                      <Select.Item value={"false"}>false</Select.Item>
-                    </Select.Panel>
-                  </Select>
-                )}
-              </div>
+                  {getInputType(prop) === "checkbox" && (
+                    <Select
+                      size="sm"
+                      value={`${prop.value}`}
+                      onValueChange={(e) => {
+                        onPropChange({
+                          ...prop,
+                          value: e === "true" ? true : false
+                        });
+                      }}
+                    >
+                      <Select.Trigger className="flex-1" />
+                      <Select.Panel>
+                        <Select.Item value={"true"}>true</Select.Item>
+                        <Select.Item value={"false"}>false</Select.Item>
+                      </Select.Panel>
+                    </Select>
+                  )}
+                </div>
+              ) : (
+                <div className="sm:ml-auto flex">
+                  <Text variant="p" colorVariant="muted" className="mt-size-y">
+                    *Can't edit{" "}
+                    <Text variant="code" size="xs">
+                      ReactNode
+                    </Text>{" "}
+                    values here
+                  </Text>
+                </div>
+              )}
             </div>
           ))}
         </div>

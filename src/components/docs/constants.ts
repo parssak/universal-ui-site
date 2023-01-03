@@ -38,7 +38,7 @@ export const NAV_SECTIONS = [
       {
         title: "Select",
         href: "/docs/components/inputs/select"
-      },
+      }
     ]
   },
   {
@@ -53,8 +53,8 @@ export const NAV_SECTIONS = [
         href: "/docs/components/display/text"
       },
       {
-        title: 'Tooltip',
-        href: '/docs/components/display/tooltip'
+        title: "Tooltip",
+        href: "/docs/components/display/tooltip"
       }
     ]
   },
@@ -68,7 +68,7 @@ export const NAV_SECTIONS = [
       {
         title: "Spacing",
         href: "/docs/utilities/spacing"
-      },
+      }
       // {
       //   title: "Classes 🚧",
       //   href: "/docs/utilities/classes"
@@ -80,3 +80,32 @@ export const NAV_SECTIONS = [
     ]
   }
 ] as ReadonlyArray<NavSection>;
+
+export const FRUITS = [
+  "Apple",
+  "Banana",
+  "Orange",
+  "Pineapple",
+  "Mango",
+  "Grape",
+  "Watermelon",
+  "Pear",
+  "Peach",
+  "Cherry",
+  "Strawberry",
+  "Kiwi",
+  "Blueberry",
+  "Raspberry",
+  "Blackberry",
+  "Apricot",
+  "Avocado",
+  "Coconut",
+  "Fig",
+  "Lemon",
+  "Lime",
+  "Melon",
+  "Nectarine",
+  "Papaya"
+];
+
+export const themes = ["neutral", "brand", "error", "warning", "success", "info"];

@@ -1,7 +1,8 @@
 import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
 import { DocsComponent } from "components/docs/DocsComponent";
 import { PropTypes } from "react-view";
-import { Button, Input, Select, InputGroup } from "@parssa/universal-ui";
+import { Button, Input, Select, InputGroup, Text } from "@parssa/universal-ui";
+import { Callout } from "components/global/ui/Callout";
 import * as Icon from "react-icons/hi";
 
 export const meta = {
@@ -15,10 +16,10 @@ export const meta = {
     {
       name: "children",
       type: PropTypes.ReactNode,
-      description: "Inputs rendered inside.",
-      value: <>hello</>,
+      description: "The inputs rendered inside of the group.",
+      value: "",
       placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">',
-      noPreview: true
+      noEdit: true
     },
     {
       name: "borderOption",
@@ -154,5 +155,9 @@ export const meta = {
     }
   }}
 />
+
+<Callout className="mt-size-4y" theme="warning" size='sm'>
+    When inferred props such as `theme` or `size` are being used, you should pass the prop to any  **floating** components as well i.e. `Select.Panel`, `Tooltip.Content`
+</Callout>
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

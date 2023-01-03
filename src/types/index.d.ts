@@ -8,4 +8,5 @@ interface ComponentProp {
   defaultValue?: string | number | boolean;
   placeholder?: string;
   options?: string[];
+  noEdit?: boolean;
 }

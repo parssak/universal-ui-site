@@ -199,3 +199,7 @@ a.anchor {
   top: -250px;
   visibility: hidden;
 }
+
+[data-name="callout"] .mdx-p-tag {
+  @apply mt-0;
+}

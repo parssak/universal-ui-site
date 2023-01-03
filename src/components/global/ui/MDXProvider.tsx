@@ -29,7 +29,9 @@ const components = {
   h4: (props) => <Text {...props} variant="h4" />,
   h5: (props) => <Text {...props} variant="h5" />,
   h6: (props) => <Text {...props} variant="h6" />,
-  p: (props) => <Text {...props} variant="p" className="mt-size-x text-theme-muted" />,
+  p: (props) => (
+    <Text {...props} variant="p" className="mt-size-x mdx-p-tag text-theme-muted" />
+  ),
   a: (props) => (
     <Text
       {...props}

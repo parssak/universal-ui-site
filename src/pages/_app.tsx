@@ -51,7 +51,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               }
               return "";
             },
-            'tooltip.content': 'backdrop-blur-sm'
+            'tooltip.content': 'backdrop-blur-sm',
+            'select.panel': 'z-[60]'
           }
         }}
       >

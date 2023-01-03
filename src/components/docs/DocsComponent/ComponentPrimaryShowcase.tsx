@@ -1,4 +1,3 @@
-import { useKeyDown } from "hooks";
 import { cloneElement, useEffect, useMemo } from "react";
 import { useView, PropTypes } from "react-view";
 import { ComponentConfig } from "./ComponentConfig";
@@ -47,13 +46,6 @@ export const ComponentPrimaryShowcase = ({
           }
         ])
       )
-      // children: {
-      //   name: "children",
-      //   type: PropTypes.ReactNode,
-      //   description: "Icon shown after the content.",
-      //   value: <>hello</>,
-      //   placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">'
-      // }
     },
     scope: {
       ...scope
@@ -93,7 +85,9 @@ export const ComponentPrimaryShowcase = ({
           customRender
             ? cloneElement(customRender as React.ReactElement, {
                 ...Object.fromEntries(
-                  Object.entries(injectedProps).map(([key, value]) => [key, value.value])
+                  Object.entries(injectedProps)
+                    .map(([key, value]) => [key, value.value])
+                    .filter(([key]) => key !== "children")
                 )
               })
             : undefined

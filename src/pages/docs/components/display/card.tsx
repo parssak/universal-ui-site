@@ -1,5 +1,6 @@
 import { Button, Card, Text } from "@parssa/universal-ui";
 import { DocsLayout } from "components/docs/DocsLayout";
+import { Todo } from "components/global/ui/Todo";
 
 export default function CardPage() {
   return (
@@ -8,6 +9,7 @@ export default function CardPage() {
         title="Card"
         description="A card is a flexible and extensible content container."
       />
+      <Todo>This page is still under construction. Please check back later.</Todo>
 
       <Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
         <Card.Content className="py-size-2y md:py-size-4y my-size-4y px-size-2x md:px-size-4x">
