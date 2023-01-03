@@ -15,6 +15,10 @@ All the default colors provided by Universal UI are listed below. You can also o
 <ThemeProvider key={theme} theme={theme} className="mt-size-4y">
   <Text className="capitalize mb-size-2y" variant="h2">
     {theme}
+    <div
+      className="relative  -top-24 invisible"
+      id={theme.toString().replace(/ /g, "_").toLowerCase()}
+    ></div>
   </Text>
   <div className="py-size-2y md:py-size-4y px-size-2x mt-size-y rounded bg-theme-pure border border-theme-base flex w-full justify-between">
     <Text className="font-medium">Pure </Text>
