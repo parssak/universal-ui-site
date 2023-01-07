@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useView } from "react-view";
+import { cx } from "utils";
 import { ComponentPreview } from "./ComponentPreview";
 
 export const ComponentExample = ({
   initialCode,
   imports,
-  scope
+  scope,
+  ...props
 }: {
   initialCode: string;
   imports?: {
@@ -17,7 +19,7 @@ export const ComponentExample = ({
   scope?: {
     [key: string]: any;
   };
-}) => {
+} & DivProps) => {
   const params = useView({
     componentName: "Button",
     initialCode,
@@ -30,7 +32,7 @@ export const ComponentExample = ({
   });
 
   return (
-    <div className="mt-size-2y">
+    <div {...props} className={cx("mt-size-2y", props.className)}>
       <ComponentPreview params={params} />
     </div>
   );

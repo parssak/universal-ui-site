@@ -109,10 +109,10 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
         </Dialog>
       )}
       <ThemeProvider theme={theme} className="opacity-80 pointer-events-none select-none">
-        <div className="absolute top-0 -inset-x-0 h-[45rem] bg-gradient-to-tr via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
-        <div className="absolute top-0 -inset-x-0 h-[45rem] bg-gradient-to-t from-theme-pure via-transparent to-transparent"></div>
-        <div className="absolute bottom-0 -inset-x-0 h-[45rem] bg-gradient-to-bl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
-        <div className="absolute bottom-0 -inset-x-0 h-[45rem] bg-gradient-to-b via-transparent to-transparent from-theme-pure"></div>
+        <div className="absolute top-0 -inset-x-0 h-[min(40rem,50vh)] bg-gradient-to-tr via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
+        <div className="absolute top-0 -inset-x-0 h-[min(40rem,50vh)] bg-gradient-to-t from-theme-pure via-transparent to-transparent"></div>
+        <div className="absolute bottom-0 -inset-x-0 h-[min(40rem,50vh)] bg-gradient-to-bl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
+        <div className="absolute bottom-0 -inset-x-0 h-[min(40rem,50vh)] bg-gradient-to-b via-transparent to-transparent from-theme-pure"></div>
         <div className="opacity-80 dark:opacity-20">
           {accents.map((accent, i) => (
             <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
