@@ -62,7 +62,7 @@ export const BuildFeatures = () => {
 
             <DocsComponent.Example
               defaultOpen
-              className="mt-0  shadow-2xl shadow-neutral-500/5 dark:shadow-transparent"
+              className="mt-0 shadow-2xl shadow-neutral-500/5 "
               initialCode={`() => 
   <div className='grid gap-size-2y'>
     <InputGroup>
