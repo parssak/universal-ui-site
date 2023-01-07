@@ -32,8 +32,8 @@ function MyApp({ Component, pageProps }: AppProps) {
               switch (variant) {
                 case "p":
                   if (size === undefined) {
-                    return "leading-relaxed";
                   }
+                  return "leading-relaxed";
                   return "";
                 case "h2":
                   return "text-2xl font-medium";

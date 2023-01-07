@@ -7,6 +7,7 @@ export const ComponentExample = ({
   initialCode,
   imports,
   scope,
+  defaultOpen = false,
   ...props
 }: {
   initialCode: string;
@@ -19,6 +20,7 @@ export const ComponentExample = ({
   scope?: {
     [key: string]: any;
   };
+  defaultOpen?: boolean;
 } & DivProps) => {
   const params = useView({
     componentName: "Button",
@@ -33,7 +35,7 @@ export const ComponentExample = ({
 
   return (
     <div {...props} className={cx("mt-size-2y", props.className)}>
-      <ComponentPreview params={params} />
+      <ComponentPreview params={params} defaultOpen={defaultOpen} />
     </div>
   );
 };

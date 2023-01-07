@@ -1,4 +1,4 @@
-import { Button, Card, Input, InputGroup, Text, ThemeProvider } from "@parssa/universal-ui";
+import { Button, Card, Input, InputGroup, Select, Text, ThemeProvider } from "@parssa/universal-ui";
 import { DocsComponent } from "components/docs/DocsComponent";
 import { Footer } from "components/global/layout/Footer";
 import Link from "next/link";
@@ -6,6 +6,91 @@ import { useState } from "react";
 import { HiCheck, HiOutlineClipboard } from "react-icons/hi";
 import { isSSR } from "utils";
 import * as Icon from "react-icons/hi";
+
+const Primitives = () => {
+  const themes = ["neutral", "brand", "success", "error", "warning", "info"] as const;
+
+  const [theme, setTheme] = useState<typeof themes[number]>("brand");
+
+  return (
+    <div className="py-size-8y  bg-theme-base/20" data-theme={theme}>
+      <div className="container grid lg:grid-cols-2 gap-size-2x">
+        <div className="lg:order-2">
+          <Text variant="h2" className="text-3xl">
+            Primitives
+          </Text>
+          <Text variant="h3" className="opacity-80">
+            TailwindCSS primitives for consistent UI
+          </Text>
+
+          <Text className="mt-size-4y">
+            Comes with built-in TailwindCSS primitives for consistent styling across your project.
+            <br />
+            Primitives are built on{" "}
+            <Text variant="code" size="sm">
+              var(--css-variables)
+            </Text>{" "}
+            and work with data-attributes.
+          </Text>
+          <Button
+            trailingIcon={
+              <Icon.HiArrowRight className="w-full h-full transition-transform transform group-hover:translate-x-1" />
+            }
+            as={Link}
+            href="/docs/utilities/colors"
+            className="mt-size-4y group"
+          >
+            See all primitives
+          </Button>
+        </div>
+        <div className="lg:order-1">
+          <div className="lg:max-w-lg mx-auto font-mono ">
+            <Card className="overflow-hidden">
+              <Card.Content className="bg-theme-pure">{`bg-theme-pure`}</Card.Content>
+              <Card.Content className="bg-theme-base">{`bg-theme-base`}</Card.Content>
+              <Card.Content className="bg-theme-active">{`bg-theme-active`}</Card.Content>
+            </Card>
+            <Text size="sm" className="mt-size-4y">
+              Theme:
+            </Text>
+            <Select value={theme} onValueChange={v => setTheme(v as any)} theme={theme}>
+              <Select.Trigger className="w-full mt-size-y xl:hidden" />
+              <Select.Panel>
+                {themes.map((t) => (
+                  <Select.Item key={t} value={t} theme={t}>
+                    {t}
+                  </Select.Item>
+                ))}
+              </Select.Panel>
+            </Select>
+
+            <div className="hidden xl:block">
+              <InputGroup className="mt-size-y w-full">
+                {themes.map((t) => (
+                  <Button
+                    key={t}
+                    theme={t}
+                    onClick={() => setTheme(t)}
+                    className={`
+                    w-full
+                  ${
+                    t === theme
+                      ? "bg-theme-active text-theme-active"
+                      : "text-theme-muted saturate-0 transition-all hover:saturate-100"
+                  }
+                  `}
+                  >
+                    {t}
+                  </Button>
+                ))}
+              </InputGroup>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Home(props) {
   const [copied, setCopied] = useState(false);
@@ -24,12 +109,12 @@ export default function Home(props) {
       <ThemeProvider className="bg-theme-pure relative overflow-hidden grid-pattern py-24">
         <ThemeProvider
           theme="brand"
-          className="absolute mix-blend-multiply dark:mix-blend-normal -top-24 -inset-x-12 h-[26rem] bg-gradient-to-tr  blur-3xl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60 dark:opacity-60 pointer-events-none"
+          className="absolute mix-blend-multiply dark:mix-blend-normal -top-24 -inset-x-12 h-[26rem] bg-gradient-to-tr  blur-3xl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/80 dark:opacity-60 pointer-events-none"
         />
 
         <ThemeProvider
           theme="info"
-          className="mix-blend-multiply dark:mix-blend-normal absolute -bottom-24 -inset-x-12 h-[26rem] bg-gradient-to-bl  blur-3xl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60 dark:opacity-60 pointer-events-none"
+          className="mix-blend-multiply dark:mix-blend-normal absolute -bottom-24 -inset-x-12 h-[26rem] bg-gradient-to-bl  blur-3xl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/80 dark:opacity-60 pointer-events-none"
         />
         <div className="absolute inset-0 with-spotlight pointer-events-none" />
         <div className="container  flex-1 grid place-items-center">
@@ -59,19 +144,7 @@ export default function Home(props) {
                 href="/docs"
                 className="group justify-center"
                 trailingIcon={
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    aria-hidden="true"
-                    className="group-hover:translate-x-1 transition-all"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <Icon.HiArrowRight className="w-full h-full transition-transform transform group-hover:translate-x-1" />
                 }
               >
                 Get Started
@@ -97,29 +170,53 @@ export default function Home(props) {
       </ThemeProvider>
 
       <ThemeProvider
-        className="bg-theme-pure py-size-4y border-y border-theme-active/20"
-        theme="info"
+        className="bg-theme-pure py-size-4y border-y border-theme-active/30"
+        theme="neutral"
         data-override="true"
       >
         <div className="container grid lg:grid-cols-2 gap-size-2x lg:py-size-4y">
-          <div className="py-size-4y">
-            <Text variant="h2" className='text-3xl'>
-              Build <b>features</b>, not frameworks
-            </Text>
-            <Text variant="h3" className="opacity-80">
-              Don't re-invent UI libraries for every project
-            </Text>
-            <Text className="max-w-lg mt-size-4y">
-              Universal UI is built with accessibility, performance, and DX in mind.
-            </Text>
+          <div className="py-size-4y flex justify-center flex-col items-start">
+            <div>
+              <Text variant="h2" className="text-3xl">
+                Build <b>features</b>, not UI components.
+              </Text>
+              <Text variant="h3" className="opacity-80">
+                Scaffold your app in minutes, not hours.
+              </Text>
+              <Text className="max-w-lg mt-size-4y">
+                Universal UI is built with accessibility, performance, and DX in mind. <br />
+                <br />
+                New components are added regularly, and you can always customize them to your needs.
+                <br />
+                <br />
+                All components under the hood are built with TailwindCSS, so you can easily
+                customize them to your needs, without needing to override styles with sketchy{" "}
+                <Text variant="code" size="sm" theme="error">
+                  !important
+                </Text>{" "}
+                rules.
+              </Text>
+            </div>
+
+            {/* <Button
+              theme="brand"
+              trailingIcon={
+                <Icon.HiArrowRight className="w-full h-full transition-transform transform group-hover:translate-x-1" />
+              }
+              as={Link}
+              href="/docs"
+              className="mt-size-4y group"
+            >
+              Get Started
+            </Button> */}
           </div>
-          <div className="">
-            <div className="relative overflow-hidden">
-              <div className="opacity-25">
+          <div className="flex justify-center flex-col ">
+            <div className="relative dark:overflow-hidden">
+              <div className="opacity-30 dark:opacity-50">
                 <div className="absolute -left-12 rounded-lg -rotate-45 -top-6 w-1/2 h-2/3 bg-theme-active/30 blur-md"></div>
                 <div
                   data-theme="warning"
-                  className="absolute -right-12 rounded-full rotate-12 -bottom-6 w-3/4 h-2/3 bg-theme-active/20 blur-xl"
+                  className="absolute -right-12 rounded-full rotate-12 -bottom-6 w-3/4 h-2/3 bg-theme-active/25 blur-xl"
                 ></div>
                 <div
                   data-theme="brand"
@@ -128,18 +225,15 @@ export default function Home(props) {
               </div>
 
               <DocsComponent.Example
-                className="mt-0 relative"
+                defaultOpen
+                className="mt-0 relative shadow-2xl shadow-neutral-500/5 dark:shadow-transparent"
                 initialCode={`() => 
-  <div className="grid gap-size-x">
-    <InputGroup borderOption="left">
+  <div className='grid gap-size-2y'>
+    <InputGroup>
       <Input placeholder="First Name" />
       <Input placeholder="Last Name" />
     </InputGroup>
-    <Input placeholder="sven@mail.com" type="email" className='w-full' />
-    <Button 
-      theme="brand"
-      leadingIcon={<Icon.HiOutlineMail className='w-full h-full' />}
-    >
+    <Button theme="brand">
       Send
     </Button>    
   </div>
@@ -163,41 +257,7 @@ export default function Home(props) {
           </div>
         </div>
       </ThemeProvider>
-
-      <ThemeProvider className="bg-theme-pure py-size-4y">
-        <Text variant="h2" className="text-center mb-size-4y">
-          Features
-        </Text>
-        <div className="container grid lg:grid-cols-3 gap-size-2x">
-          <Card className="p-size-4y">
-            <Card.Content>
-              <Text variant="h3">TailwindCSS-first</Text>
-              <Text className="mt-size-y">
-                Universal UI is built with TailwindCSS in mind. You can customize every aspect of
-                the library with TailwindCSS.
-              </Text>
-            </Card.Content>
-          </Card>
-          <Card className="p-size-4y">
-            <Card.Content>
-              <Text variant="h3">Accessible</Text>
-              <Text className="mt-size-y">
-                Universal UI is built with accessibility in mind. Every component is accessible by
-                default.
-              </Text>
-            </Card.Content>
-          </Card>
-          <Card className="p-size-4y">
-            <Card.Content>
-              <Text variant="h3">Performant</Text>
-              <Text className="mt-size-y">
-                Universal UI is built with performance in mind. Every component is performant by
-                default.
-              </Text>
-            </Card.Content>
-          </Card>
-        </div>
-      </ThemeProvider>
+      <Primitives />
       <Footer />
     </div>
   );

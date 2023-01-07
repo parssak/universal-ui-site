@@ -14,13 +14,15 @@ const EVENT_THEME = "success" as const;
 
 export const ComponentPreview = ({
   params,
-  customRender
+  customRender,
+  defaultOpen = false
 }: {
   params: ReturnType<typeof useView>;
   customRender?: React.ReactNode;
+  defaultOpen?: boolean;
 }) => {
   const [copied, setCopied] = useState(false);
-  const [showCode, setShowCode] = useState(false);
+  const [showCode, setShowCode] = useState(defaultOpen);
   const [refresh, setRefresh] = useState(false);
 
   const onCopy = () => {
