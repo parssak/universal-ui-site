@@ -83,7 +83,7 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
   return (
     <div
       {...props}
-      className="flex w-full h-full flex-1 max-w-[90rem] mx-auto border-r border-theme-base/30 overflow-hidden relative"
+      className="flex w-full max-w-[90rem] mx-auto border-r border-theme-base/30 overflow-hidden relative"
     >
       <Sidebar className="hidden lg:block fixed h-full top-0 bottom-0 pt-24 overflow-auto w-[15rem] z-10" />
 
@@ -119,24 +119,29 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
           ))}
         </div>
       </ThemeProvider>
-      <div className="w-full flex-1 flex flex-col lg:pl-[15rem] relative">
+      <div className="w-full lg:pl-[15rem] relative">
         <div
-          className={`min-h-screen w-full  subpixel-antialiased mx-auto pt-10 xl:max-w-none xl:ml-0 
+          className={`min-h-screen w-full subpixel-antialiased mx-auto pt-10 xl:max-w-none xl:ml-0 
           ${headings?.length > 0 ? "xl:mr-[16.5rem] max-w-3xl xl:w-auto" : ""}`}
         >
           <ThemeProvider className="px-6 pb-12">{children}</ThemeProvider>
           {headings?.length > 0 && (
-            <div className="fixed z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden xl:block">
+            <div className="fixed z-20 top-[3.8125rem] pointer-events-none bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden xl:block">
               <Text size="sm" variant="h6">
                 On this page
               </Text>
-              <ul className="mt-4 space-y-2 pointer-events-auto">
+              <ul className="mt-4 space-y-px pointer-events-auto flex flex-col">
                 {headings.map((heading) => (
-                  <li key={heading.text}>
-                    <Link href={heading.link} className="group">
+                  <li
+                    key={heading.text}
+                    className="group hover:bg-theme-active transition-colors rounded w-48 p-size-qx"
+                  >
+                    <Link href={heading.link}>
                       <Text
                         size="sm"
-                        className={`${levelToMarginMap[heading.level]} text-theme-muted `}
+                        className={`${
+                          levelToMarginMap[heading.level]
+                        } text-theme-muted group-hover:text-theme-active transition-colors `}
                       >
                         {heading.text}
                       </Text>

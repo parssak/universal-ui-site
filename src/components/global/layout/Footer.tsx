@@ -10,7 +10,7 @@ export const Footer = ({ ...props }: FooterProps & {}) => {
       {...props}
       data-theme="brand"
       data-dark={true}
-      className={cx(`bg-theme-base border-t border-theme-active/70 relative`, props.className)}
+      className={cx(`bg-theme-base border-t border-theme-active/70 relative overflow-hidden`, props.className)}
     >
       <div className="absolute inset-0 bg-gradient-to-t from-theme-base to-theme-active/70 pointer-events-none" aria-hidden='true' />
       <div className="container py-4 text-center grid place-items-center relative">
