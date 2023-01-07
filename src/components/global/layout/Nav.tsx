@@ -18,12 +18,12 @@ export const Nav = ({ ...props }: NavProps & {}) => {
     <nav
       {...props}
       className={cx(
-        `border-b border-theme-base/20 sticky top-0 z-50 bg-theme-pure/80 backdrop-blur-md px-4 lg:px-0`,
+        `border-b border-theme-base/20 sticky top-0 z-50 bg-theme-pure/80 backdrop-blur-md`,
         props.className
       )}
     >
-      <div className="">
-        <div className="lg:ml-56 xl:ml-64 max-w-5xl pr-12 py-4 flex items-center">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="py-4 flex items-center">
           <Link href="/">
             <Text variant="h5">Universal UI</Text>
           </Link>

@@ -8,7 +8,7 @@ type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
   const [copied, setCopied] = useState(false);
-  
+
   useEffect(() => {
     if (isSSR) return;
     highlight();
@@ -32,9 +32,12 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
     <Card
       {...props}
       theme={copied ? "success" : "neutral"}
-      className={cx("relative overflow-hidden transition-all bg-theme-pure", props.className)}
+      className={cx(
+        "w-full border-red-500 overflow-hidden",
+        props.className
+      )}
     >
-      <pre className={cx("p-size-x text-sm text-theme-base overflow-auto scrollbar-hide")}>
+      <pre className={cx("p-size-x text-sm text-theme-base ")}>
         <code ref={codeRef} className="language-jsx">
           {children}
         </code>

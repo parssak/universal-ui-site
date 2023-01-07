@@ -2,8 +2,6 @@ import { MDXProvider as Provider } from "@mdx-js/react";
 import { Text } from "@parssa/universal-ui";
 import { cx } from "utils";
 import { CodeBlock } from "./CodeBlock";
-import * as Icon from "react-icons/hi";
-
 
 const components = {
   h1: (props) => <Text {...props} variant="h1" />,
@@ -11,7 +9,7 @@ const components = {
     <Text {...props} variant="h2" className="mt-size-4y text-theme-active">
       {children}
       <div
-        className="relative  -top-24 invisible"
+        className="relative -top-24 invisible"
         id={children.toString().replace(/ /g, "_").toLowerCase()}
       ></div>
     </Text>

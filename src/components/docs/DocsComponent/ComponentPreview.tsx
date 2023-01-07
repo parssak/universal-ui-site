@@ -14,12 +14,10 @@ const EVENT_THEME = "success" as const;
 
 export const ComponentPreview = ({
   params,
-  customRender,
-  onRefresh
+  customRender
 }: {
   params: ReturnType<typeof useView>;
   customRender?: React.ReactNode;
-  onRefresh?: () => void;
 }) => {
   const [copied, setCopied] = useState(false);
   const [showCode, setShowCode] = useState(false);
@@ -46,7 +44,6 @@ export const ComponentPreview = ({
     params.actions.reset();
     setTimeout(() => {
       setRefresh(false);
-      onRefresh?.();
     }, 600);
   };
 
