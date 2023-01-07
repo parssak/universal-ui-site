@@ -14,10 +14,10 @@ export const BuildFeatures = () => {
         <div className="py-size-4y flex justify-center flex-col items-start">
           <div>
             <Text variant="h2" className="text-3xl">
-              Build <b>features</b>, not UI components.
+              Build <b>features</b>, not UI components
             </Text>
             <Text variant="h3" className="opacity-80">
-              Scaffold your app in minutes, not hours.
+              Scaffold your app in minutes, not hours
             </Text>
             <Text className="max-w-lg mt-size-4y">
               Universal UI is built with accessibility, performance, and DX in mind. <br />
