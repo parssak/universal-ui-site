@@ -83,7 +83,7 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
   return (
     <div
       {...props}
-      className="flex w-full h-full flex-1 max-w-[90rem] mx-auto  overflow-hidden relative"
+      className="flex w-full h-full flex-1 max-w-[90rem] mx-auto border-r border-theme-base/30 overflow-hidden relative"
     >
       <Sidebar className="hidden lg:block fixed h-full top-0 bottom-0 pt-24 overflow-auto w-[15rem] z-10" />
 
@@ -109,8 +109,10 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
         </Dialog>
       )}
       <ThemeProvider theme={theme} className="opacity-80 pointer-events-none select-none">
-        <div className="absolute top-0 -inset-x-0 h-[30rem] bg-gradient-to-tr blur-lg via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
-        <div className="absolute bottom-0 -inset-x-0 h-[30rem] bg-gradient-to-bl blur-lg via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
+        <div className="absolute top-0 -inset-x-0 h-[45rem] bg-gradient-to-tr via-theme-base/20 from-transparent to-theme-active/60 dark:to-theme-base/60"></div>
+        <div className="absolute top-0 -inset-x-0 h-[45rem] bg-gradient-to-t from-theme-pure via-transparent to-transparent"></div>
+        <div className="absolute bottom-0 -inset-x-0 h-[45rem] bg-gradient-to-bl via-theme-base/20 from-transparent to-theme-active dark:to-theme-base/60"></div>
+        <div className="absolute bottom-0 -inset-x-0 h-[45rem] bg-gradient-to-b via-transparent to-transparent from-theme-pure"></div>
         <div className="opacity-80 dark:opacity-20">
           {accents.map((accent, i) => (
             <div key={i} className={`absolute bg-gradient-to-r ${accent}`} aria-hidden="true" />
@@ -118,29 +120,32 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
         </div>
       </ThemeProvider>
       <div className="w-full flex-1 flex flex-col lg:pl-[15rem] relative">
-        <div className="min-h-screen subpixel-antialiased max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[16.5rem] ">
-          <ThemeProvider className="px-6 pb-12">
-            {children}
-          </ThemeProvider>
-          <div className="fixed z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden xl:block">
-            <Text size="sm" variant="h6">
-              On this page
-            </Text>
-            <ul className="mt-4 space-y-2 pointer-events-auto">
-              {headings.map((heading) => (
-                <li key={heading.text}>
-                  <Link href={heading.link} className="group">
-                    <Text
-                      size="sm"
-                      className={`${levelToMarginMap[heading.level]} text-theme-muted `}
-                    >
-                      {heading.text}
-                    </Text>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div
+          className={`min-h-screen w-full xl:w-auto subpixel-antialiased max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 
+          ${headings?.length > 0 ? "xl:mr-[16.5rem]" : ""}`}
+        >
+          <ThemeProvider className="px-6 pb-12">{children}</ThemeProvider>
+          {headings?.length > 0 && (
+            <div className="fixed z-20 top-[3.8125rem] bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden xl:block">
+              <Text size="sm" variant="h6">
+                On this page
+              </Text>
+              <ul className="mt-4 space-y-2 pointer-events-auto">
+                {headings.map((heading) => (
+                  <li key={heading.text}>
+                    <Link href={heading.link} className="group">
+                      <Text
+                        size="sm"
+                        className={`${levelToMarginMap[heading.level]} text-theme-muted `}
+                      >
+                        {heading.text}
+                      </Text>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <Footer className="mt-auto" />
       </div>
