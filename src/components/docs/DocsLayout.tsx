@@ -121,8 +121,8 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
       </ThemeProvider>
       <div className="w-full flex-1 flex flex-col lg:pl-[15rem] relative">
         <div
-          className={`min-h-screen w-full xl:w-auto subpixel-antialiased max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 
-          ${headings?.length > 0 ? "xl:mr-[16.5rem]" : ""}`}
+          className={`min-h-screen w-full  subpixel-antialiased mx-auto pt-10 xl:max-w-none xl:ml-0 
+          ${headings?.length > 0 ? "xl:mr-[16.5rem] max-w-3xl xl:w-auto" : ""}`}
         >
           <ThemeProvider className="px-6 pb-12">{children}</ThemeProvider>
           {headings?.length > 0 && (

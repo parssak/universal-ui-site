@@ -51,22 +51,20 @@ function MyApp({ Component, pageProps }: AppProps) {
               }
               return "";
             },
-            'tooltip.content': 'backdrop-blur-sm',
-            'select.panel': 'z-[60]'
+            "tooltip.content": "backdrop-blur-sm",
+            "select.panel": "z-[60]"
           }
         }}
       >
-        <ThemeProvider className="bg-theme-pure">
-          <div className="min-h-screen relative flex flex-col h-full">
-            <SidebarProvider>
-              <MDXProvider>
-                <Nav />
-                {/* @ts-ignore */}
-                <Component {...pageProps} />
-              </MDXProvider>
-            </SidebarProvider>
-          </div>
-        </ThemeProvider>
+        <div className="min-h-screen relative flex flex-col h-full">
+          <SidebarProvider>
+            <MDXProvider>
+              <Nav />
+              {/* @ts-ignore */}
+              <Component {...pageProps} />
+            </MDXProvider>
+          </SidebarProvider>
+        </div>
       </UniversalUIConfigProvider>
     </>
   );

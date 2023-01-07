@@ -559,10 +559,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@parssa/universal-ui@^0.1.70":
-  version "0.1.70"
-  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.70.tgz#4b4f6cb4fa4685bf98a09d409f7cc0bc97b9b2ba"
-  integrity sha512-2WVbBMiwcHqa5Fgi8URkPPHTslrjqFHQo6MfJQob261kF4RDTbsVd10GIrmNw9zRWXREEgyipSj4LeEXHVU8Dw==
+"@parssa/universal-ui@^0.1.72":
+  version "0.1.72"
+  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.72.tgz#0422b2aece778c4b14e93243f47e8dfceb76cce3"
+  integrity sha512-mZPfnW9ljANQEEeSYbGRo0xKYnsyn/IE/KRnUPUJ4lypwngtVYFCzhzpnXp6teo/1VRQmx7qYk1wCt/XJmiw+g==
   dependencies:
     "@radix-ui/react-select" "^1.1.2"
     "@radix-ui/react-tooltip" "^1.0.2"

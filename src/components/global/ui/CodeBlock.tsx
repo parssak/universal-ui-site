@@ -32,9 +32,12 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
     <Card
       {...props}
       theme={copied ? "success" : "neutral"}
-      className={cx("relative overflow-hidden transition-all bg-theme-pure w-full", props.className)}
+      className={cx(
+        "relative overflow-hidden transition-all bg-theme-pure w-full",
+        props.className
+      )}
     >
-      <pre className={cx("p-size-x text-sm text-theme-base ")}>
+      <pre className={cx("p-size-x text-sm text-theme-base overflow-auto scrollbar-hide")}>
         <code ref={codeRef} className="language-jsx">
           {children}
         </code>
@@ -50,7 +53,8 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
             theme={copied ? "success" : "neutral"}
             onClick={onCopy}
             data-name="copy-btn"
-            variant="ghost"
+            // variant=""
+            className='border-0 shadow-none'
             icon={
               copied ? (
                 <HiCheck className="w-full h-full" />
