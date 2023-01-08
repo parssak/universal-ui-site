@@ -13,14 +13,14 @@ export const Primitives = () => {
   const [theme, setTheme] = useState<typeof themes[number]>("brand");
 
   return (
-    <div className="py-size-8y  bg-theme-base/20" data-theme={theme}>
+    <div className="py-size-8y bg-gradient-to-tr from-theme-pure to-theme-base/20" data-theme={theme}>
       <div className="container grid lg:grid-cols-2 gap-size-2x">
         <div className="lg:order-2">
           <Text variant="h2" className="text-3xl">
-            Primitives
+            Powerful Primitives
           </Text>
           <Text variant="h3" className="opacity-80">
-            TailwindCSS primitives for consistent UI
+            TailwindCSS primitives for consistent interfaces
           </Text>
 
           <Text className="mt-size-4y">

@@ -25,8 +25,8 @@ export const BuildFeatures = () => {
               New components are added regularly, and you can always customize them to your needs.
               <br />
               <br />
-              All components under the hood are built with TailwindCSS, so you can easily customize
-              them to your needs, without needing to override styles with sketchy{" "}
+              Components are built with TailwindCSS, so you can easily customize
+              them to your needs, without overriding styles with sketchy{" "}
               <Text variant="code" size="sm" theme="error">
                 !important
               </Text>{" "}
@@ -46,24 +46,23 @@ export const BuildFeatures = () => {
               Get Started
             </Button> */}
         </div>
-        <div className="flex justify-center flex-col ">
-          <div className="relative isolate  overflow-hidden">
-            <div className="opacity-30 dark:opacity-50">
-              <div className="absolute -left-12 rounded-lg -rotate-12 top-12 w-1/2 h-2/3 bg-theme-active/30 blur-sm"></div>
-              <div
-                data-theme="warning"
-                className="absolute -right-12 rounded-full rotate-12 -bottom-6 w-3/4 h-2/3 bg-theme-active/25 blur-xl"
-              ></div>
-              <div
-                data-theme="brand"
-                className="absolute -right-12 rounded-full rotate-12 top-8 w-3/4 h-2/3 bg-theme-active/40 blur-xl"
-              ></div>
-            </div>
+        <div className="relative isolate  overflow-hidden">
+          <div className="opacity-30 dark:opacity-50">
+            <div className="absolute -left-12 rounded-lg -rotate-12 top-12 w-1/2 h-2/3 bg-theme-active/30 blur-sm"></div>
+            <div
+              data-theme="warning"
+              className="absolute -right-12 rounded-full rotate-12 -bottom-6 w-3/4 h-2/3 bg-theme-active/25 blur-xl"
+            ></div>
+            <div
+              data-theme="brand"
+              className="absolute -right-12 rounded-full rotate-12 top-8 w-3/4 h-2/3 bg-theme-active/40 blur-xl"
+            ></div>
+          </div>
 
-            <DocsComponent.Example
-              defaultOpen
-              className="mt-0 shadow-2xl shadow-neutral-500/5 "
-              initialCode={`() => 
+          <DocsComponent.Example
+            defaultOpen
+            className="mt-0 shadow-2xl shadow-neutral-500/5 "
+            initialCode={`() => 
   <div className='grid gap-size-2y'>
     <InputGroup>
       <Input placeholder="First Name" />
@@ -74,22 +73,21 @@ export const BuildFeatures = () => {
     </Button>    
   </div>
     `}
-              scope={{
-                Input,
-                Icon,
-                Button,
-                InputGroup
-              }}
-              imports={{
-                "@parssa/universal-ui": {
-                  named: ["Input", "InputGroup", "Button"]
-                },
-                "react-icons/hi": {
-                  default: "Icon"
-                }
-              }}
-            />
-          </div>
+            scope={{
+              Input,
+              Icon,
+              Button,
+              InputGroup
+            }}
+            imports={{
+              "@parssa/universal-ui": {
+                named: ["Input", "InputGroup", "Button"]
+              },
+              "react-icons/hi": {
+                default: "Icon"
+              }
+            }}
+          />
         </div>
       </div>
     </div>

@@ -58,16 +58,16 @@ export const ComponentPreview = ({
       )}
       theme={refresh || copied ? EVENT_THEME : !!params.errorProps.msg ? "error" : "neutral"}
     >
-      <div className="relative" data-theme="neutral">
+      <div className="relative overflow-auto w-full" data-theme="neutral">
         <Card.Content
           className={cx(
             `py-size-4y grid place-items-center transition-transform`,
             refresh && "refresh-shine-inner"
           )}
         >
-          <div className="flex gap-2 items-center flex-col py-size-4y">
+          <div className="flex gap-2 items-center flex-col py-size-4y px-size-x">
             {customRender ?? (
-              <Compiler {...params.compilerProps} minHeight={62} className="flex gap-2 flex-row" />
+              <Compiler {...params.compilerProps} minHeight={42} className="flex gap-2 flex-row" />
             )}
           </div>
         </Card.Content>
