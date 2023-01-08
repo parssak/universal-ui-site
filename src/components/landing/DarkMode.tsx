@@ -39,7 +39,7 @@ export const DarkMode = ({ ...props }: DivProps & {}) => {
                 <Text>This entire section has been inverted to whatever the device theme is.</Text>
                 <Text className="mt-size-2y">
                   All components inside will respect the styling for it as well, <br />
-                  <span className="font-medium underline underline-offset-2">
+                  <span className="font-medium">
                     without props/context passed around
                   </span>
                   .
