@@ -58,10 +58,10 @@ export const ComponentPreview = ({
       )}
       theme={refresh || copied ? EVENT_THEME : !!params.errorProps.msg ? "error" : "neutral"}
     >
-      <div className="relative overflow-auto w-full" data-theme="neutral">
+      <div className="relative " data-theme="neutral">
         <Card.Content
           className={cx(
-            `py-size-4y grid place-items-center transition-transform`,
+            `py-size-4y grid place-items-center transition-transform  overflow-auto scrollbar-hide`,
             refresh && "refresh-shine-inner"
           )}
         >
