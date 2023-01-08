@@ -1,10 +1,6 @@
-import { Button, Card, Input, InputGroup, Select, Text, ThemeProvider } from "@parssa/universal-ui";
-import { DocsComponent } from "components/docs/DocsComponent";
-import { Footer } from "components/global/layout/Footer";
+import { Button, Card,  InputGroup, Select, Text } from "@parssa/universal-ui";
 import Link from "next/link";
 import { useState } from "react";
-import { HiCheck, HiOutlineClipboard } from "react-icons/hi";
-import { isSSR } from "utils";
 import * as Icon from "react-icons/hi";
 
 export const Primitives = () => {
@@ -13,8 +9,17 @@ export const Primitives = () => {
   const [theme, setTheme] = useState<typeof themes[number]>("brand");
 
   return (
-    <div className="py-size-8y bg-gradient-to-tr from-theme-pure to-theme-base/20" data-theme={theme}>
-      <div className="container grid lg:grid-cols-2 gap-size-2x">
+    <div className="py-size-8y relative" data-theme={theme}>
+      {themes.map((t) => (
+        <div
+          key={t}
+          className={`transition-opacity absolute inset-0 bg-gradient-to-tr from-theme-pure to-theme-base/80 dark:to-theme-base/50 
+          ${t === theme ? "opacity-100 duration-200 z-10" : "opacity-0 duration-200"}`}
+          data-theme={t}
+        />
+      ))}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t z-[11] from-theme-pure to-transparent"></div>
+      <div className="container grid lg:grid-cols-2 gap-size-2x relative z-20">
         <div className="lg:order-2">
           <Text variant="h2" className="text-3xl">
             Powerful Primitives
