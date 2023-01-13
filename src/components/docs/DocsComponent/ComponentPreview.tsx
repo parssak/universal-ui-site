@@ -15,11 +15,13 @@ const EVENT_THEME = "success" as const;
 export const ComponentPreview = ({
   params,
   customRender,
-  defaultOpen = false
+  defaultOpen = false,
+  hideClose = false
 }: {
   params: ReturnType<typeof useView>;
   customRender?: React.ReactNode;
   defaultOpen?: boolean;
+  hideClose?: boolean;
 }) => {
   const [copied, setCopied] = useState(false);
   const [showCode, setShowCode] = useState(defaultOpen);
@@ -137,25 +139,27 @@ export const ComponentPreview = ({
             </Tooltip.Content>
           </Tooltip.Root>
 
-          <Tooltip.Root>
-            <Tooltip.Trigger>
-              <Button
-                variant="ghost"
-                onClick={onShowCodeToggle}
-                icon={
-                  showCode ? (
-                    <HiOutlineEyeOff className="w-full h-full" />
-                  ) : (
-                    <HiOutlineEye className="w-full h-full" />
-                  )
-                }
-              >
-                {showCode ? "Hide code" : "Show code"}
-              </Button>
-            </Tooltip.Trigger>
+          {!hideClose && (
+            <Tooltip.Root>
+              <Tooltip.Trigger>
+                <Button
+                  variant="ghost"
+                  onClick={onShowCodeToggle}
+                  icon={
+                    showCode ? (
+                      <HiOutlineEyeOff className="w-full h-full" />
+                    ) : (
+                      <HiOutlineEye className="w-full h-full" />
+                    )
+                  }
+                >
+                  {showCode ? "Hide code" : "Show code"}
+                </Button>
+              </Tooltip.Trigger>
 
-            <Tooltip.Content size="xs">{showCode ? "Hide code" : "Show code"}</Tooltip.Content>
-          </Tooltip.Root>
+              <Tooltip.Content size="xs">{showCode ? "Hide code" : "Show code"}</Tooltip.Content>
+            </Tooltip.Root>
+          )}
         </div>
       </div>
       {showCode && (

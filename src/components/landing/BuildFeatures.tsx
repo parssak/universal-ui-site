@@ -25,8 +25,8 @@ export const BuildFeatures = () => {
               New components are added regularly, and you can always customize them to your needs.
               <br />
               <br />
-              Components are built with TailwindCSS, so you can easily customize
-              them to your needs, without overriding styles with sketchy{" "}
+              Components are built with TailwindCSS, so you can easily customize them to your needs,
+              without overriding styles with sketchy{" "}
               <Text variant="code" size="sm" theme="error">
                 !important
               </Text>{" "}
@@ -61,6 +61,7 @@ export const BuildFeatures = () => {
 
           <DocsComponent.Example
             defaultOpen
+            hideClose
             className="mt-0 shadow-2xl shadow-neutral-500/5 "
             initialCode={`() => 
   <div className='grid gap-size-2y'>
