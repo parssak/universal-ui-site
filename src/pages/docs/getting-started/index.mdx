@@ -11,13 +11,13 @@ Begin by installing `@parssa/universal-ui` with your package manager of choice.
 npm install @parssa/universal-ui
 ```
 
-Now, wrap the root of your app in the `UniversalUIProvider` to provide global theming. More on how to [customize Universal UI here](/docs/getting-started/customization).
+Now, wrap the root of your app in the `UniversalUIConfigProvider` to provide global theming. More on how to [customize Universal UI here](/docs/getting-started/customization).
 
 ```jsx
-import { UniversalUIProvider } from "@parssa/universal-ui";
+import { UniversalUIConfigProvider } from "@parssa/universal-ui";
 
 const App = () => {
-  return <UniversalUIProvider>{/* ... */}</UniversalUIProvider>;
+  return <UniversalUIConfigProvider>{/* ... */}</UniversalUIConfigProvider>;
 };
 ```
 
