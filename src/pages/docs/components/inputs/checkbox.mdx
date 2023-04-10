@@ -1,0 +1,51 @@
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Checkbox, Text } from "@parssa/universal-ui";
+import * as Icon from "react-icons/hi";
+
+export const meta = {
+  title: "Checkbox",
+  description: "A checkbox component"
+};
+
+<DocsComponent.Primary
+  componentName="Checkbox"
+  defaultProps={["theme", "size", "disabled"]}
+  scope={{
+    Checkbox
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Checkbox"]
+    }
+  }}
+/>
+
+---
+
+## Examples
+
+### With Label
+
+<DocsComponent.Example
+  initialCode={`() => 
+      <div>
+        <label className='flex items-center gap-size-x'>
+          <Checkbox />
+          <Text>Accept Terms and Conditions</Text>
+        </label>
+      </div>
+    `}
+  scope={{
+    Text,
+    Checkbox
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Checkbox, Text"]
+    }
+  }}
+/>
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

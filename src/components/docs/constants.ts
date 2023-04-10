@@ -28,6 +28,10 @@ export const NAV_SECTIONS = [
         href: "/docs/components/inputs/button"
       },
       {
+        title: "Checkbox",
+        href: "/docs/components/inputs/checkbox"
+      },
+      {
         title: "Input",
         href: "/docs/components/inputs/input"
       },

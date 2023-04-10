@@ -12,15 +12,20 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
 
   const isActive = router.asPath.split("#")[0] === item.href.split("#")[0];
 
+  const getTheme = () => {
+    if (!isActive) return "neutral";
+    if (item.href.includes("getting")) return "brand";
+    if (item.href.includes("utilities")) return "info";
+    return "warning";
+  };
+
   return (
-    <ThemeProvider theme={isActive ? "brand" : "neutral"}>
+    <ThemeProvider theme={getTheme()}>
       <Link
         href={item.href}
         className={cx(
-          "block pl-size-2x py-size-hy rounded group",
-          isActive
-            ? "bg-theme-active "
-            : "border-transparent transition-all duration-100 hover:bg-theme-active/50"
+          "block pl-size-2x py-size-hy rounded group transition-colors duration-100",
+          isActive ? "bg-theme-active " : "border-transparent  hover:bg-theme-active/50"
         )}
       >
         <Text

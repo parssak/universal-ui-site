@@ -71,21 +71,43 @@ export const meta = {
 <DocsComponent.Example
   initialCode={`() => 
       <>
-        <Input
-          leadingIcon={<Icon.HiBell className="w-full h-full" />}
-          placeholder="Notifications" />
-        <Input
-          trailingIcon={<Icon.HiArrowRight className="w-full h-full" />}
-          placeholder="Next" />
+        <Select>
+          <Select.Trigger
+            placeholder="Notification Type"
+            leadingIcon={<Icon.HiBell className="w-full h-full" />}
+           />
+          <Select.Panel>
+            {FRUITS.map((fruit) => (
+              <Select.Item value={fruit} key={fruit} className="capitalize">
+                {fruit}
+              </Select.Item>
+            ))}
+          </Select.Panel>
+        </Select>
+
+        <Select>
+          <Select.Trigger
+            
+            trailingIcon={<Icon.HiChevronDown className="w-full h-full" />}
+           />
+          <Select.Panel>
+            {FRUITS.map((fruit) => (
+              <Select.Item value={fruit} key={fruit} className="capitalize">
+                {fruit}
+              </Select.Item>
+            ))}
+          </Select.Panel>
+        </Select>
       </>
     `}
   scope={{
-    Input,
-    Icon
+    Select,
+    Icon,
+    FRUITS
   }}
   imports={{
     "@parssa/universal-ui": {
-      named: ["Input"]
+      named: ["Select"]
     },
     "react-icons/hi": {
       default: "Icon"

@@ -48,16 +48,17 @@ module.exports = {
         {
           name: "brand",
           colors: {
-            50: "#f1f8f4",
-            100: "#ddeee3",
-            200: "#bdddc9",
-            300: "#9ac8af",
-            400: "#63a482",
-            500: "#428766",
-            600: "#306b50",
-            700: "#265641",
-            800: "#204536",
-            900: "#1b392d"
+            50: "#effcfc",
+            100: "#d7f5f6",
+            200: "#b4eaed",
+            300: "#80dae0",
+            400: "#45c0cb",
+            500: "#2aa4b0",
+            600: "#268594",
+            700: "#236774",
+            800: "#265864",
+            900: "#234b56",
+            950: "#12303a"
           }
         }
       ]
@@ -67,5 +68,7 @@ module.exports = {
 ```
 
 The `universalUI` key is used to configure the Universal UI plugin. The `themes` key is used to define the color pallettes that can be used in your application.
+
+We recommend using the [uicolors](https://uicolors.app/create) website to generate the color pallettes.
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;
