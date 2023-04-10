@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { AppProps } from "next/app";
 import { Text, ThemeProvider, UniversalUIConfigProvider } from "@parssa/universal-ui";
@@ -9,6 +10,12 @@ import { SidebarProvider } from "hooks/useSidebar";
 import { MDXProvider } from "components/global/ui/MDXProvider";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <>
       <Head>
@@ -25,47 +32,53 @@ function MyApp({ Component, pageProps }: AppProps) {
         {/* Prevent dark mode flicker, add data-theme="neutral-dark" if client is in dark mode */}
         <meta name="color-scheme" content="light dark" />
       </Head>
-      <UniversalUIConfigProvider
-        config={{
-          components: {
-            text: ({ variant, size }) => {
-              switch (variant) {
-                case "p":
-                  if (size === undefined) {
-                  }
-                  return "leading-relaxed";
-                  return "";
-                case "h2":
-                  return "text-2xl font-medium";
-                case "h3":
-                  return "text-xl font-medium";
-                case "h6":
-                  return "uppercase tracking-widest text-xs font-mono";
-                default:
-                  return "";
-              }
-            },
-            button: ({ variant }) => {
-              if (variant === "ghost") {
-                return "shadow-none";
-              }
-              return "";
-            },
-            "tooltip.content": "backdrop-blur-sm",
-            "select.panel": "z-[60]"
-          }
+      <div
+        style={{
+          visibility: mounted ? "visible" : "hidden"
         }}
       >
-        <div className="min-h-screen relative flex flex-col h-full">
-          <SidebarProvider>
-            <MDXProvider>
-              <Nav />
-              {/* @ts-ignore */}
-              <Component {...pageProps} />
-            </MDXProvider>
-          </SidebarProvider>
-        </div>
-      </UniversalUIConfigProvider>
+        <UniversalUIConfigProvider
+          config={{
+            components: {
+              text: ({ variant, size }) => {
+                switch (variant) {
+                  case "p":
+                    if (size === undefined) {
+                    }
+                    return "leading-relaxed";
+                    return "";
+                  case "h2":
+                    return "text-2xl font-medium";
+                  case "h3":
+                    return "text-xl font-medium";
+                  case "h6":
+                    return "uppercase tracking-widest text-xs font-mono";
+                  default:
+                    return "";
+                }
+              },
+              button: ({ variant }) => {
+                if (variant === "ghost") {
+                  return "shadow-none";
+                }
+                return "";
+              },
+              "tooltip.content": "backdrop-blur-sm",
+              "select.panel": "z-[60]"
+            }
+          }}
+        >
+          <div className="min-h-screen relative flex flex-col h-full">
+            <SidebarProvider>
+              <MDXProvider>
+                <Nav />
+                {/* @ts-ignore */}
+                <Component {...pageProps} />
+              </MDXProvider>
+            </SidebarProvider>
+          </div>
+        </UniversalUIConfigProvider>
+      </div>
     </>
   );
 }
