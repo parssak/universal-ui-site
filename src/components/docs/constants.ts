@@ -53,13 +53,18 @@ export const NAV_SECTIONS = [
         href: "/docs/components/display/card"
       },
       {
+        title: "Modal",
+        href: "/docs/components/display/modal"
+      },
+      {
         title: "Text",
         href: "/docs/components/display/text"
       },
       {
         title: "Tooltip",
         href: "/docs/components/display/tooltip"
-      }
+      },
+      
     ]
   },
   {

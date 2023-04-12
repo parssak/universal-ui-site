@@ -43,10 +43,9 @@ function MyApp({ Component, pageProps }: AppProps) {
               text: ({ variant, size }) => {
                 switch (variant) {
                   case "p":
-                    if (size === undefined) {
+                    if (size == undefined) {
                     }
                     return "leading-relaxed";
-                    return "";
                   case "h2":
                     return "text-2xl font-medium";
                   case "h3":
@@ -64,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 return "";
               },
               "tooltip.content": "backdrop-blur-sm",
-              "select.panel": "z-[60]"
+              "select.panel": "z-[60]",
             }
           }}
         >

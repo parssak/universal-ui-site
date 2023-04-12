@@ -559,12 +559,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@parssa/universal-ui@^0.1.90":
-  version "0.1.90"
-  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.90.tgz#1a49f2f98fea551336a541135fb24a995a6f67e9"
-  integrity sha512-WXpSfBB9c4WldpIKJ8K8wFUefUicoV3XfeuEITqIZwdnfxXmEihyKRK5nyntvw7ZuPvXnR6iH2MidP8e9LtO9A==
+"@parssa/universal-ui@^0.1.96":
+  version "0.1.96"
+  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.96.tgz#71697de4b01c36fad22180b6114bc2d3df903182"
+  integrity sha512-x91nS4A/FmKFlRjfUCnXFY8KJJh2WfQ06irWJuK9m2wQxPW31x1X1zkyAeRn1QfhgopIF74Xgtlqj6Tf0a/LTA==
   dependencies:
     "@radix-ui/react-checkbox" "^1.0.1"
+    "@radix-ui/react-dialog" "^1.0.3"
     "@radix-ui/react-select" "^1.1.2"
     "@radix-ui/react-tooltip" "^1.0.2"
     tailwind-merge "^1.3.0"
@@ -639,6 +640,27 @@
   integrity sha512-1pVM9RfOQ+n/N5PJK33kRSKsr1glNxomxONs5c49MliinBY6Yw2Q995qfBUUo0/Mbg05B/sGA0gkgPI7kmSHBg==
   dependencies:
     "@babel/runtime" "^7.13.10"
+
+"@radix-ui/react-dialog@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-dialog/-/react-dialog-1.0.3.tgz#a715bf30f35fcd80476c0a07fcc073c1968e6d3e"
+  integrity sha512-owNhq36kNPqC2/a+zJRioPg6HHnTn5B/sh/NjTY8r4W9g1L5VJlrzZIVcBr7R9Mg8iLjVmh6MGgMlfoVf/WO/A==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-dismissable-layer" "1.0.3"
+    "@radix-ui/react-focus-guards" "1.0.0"
+    "@radix-ui/react-focus-scope" "1.0.2"
+    "@radix-ui/react-id" "1.0.0"
+    "@radix-ui/react-portal" "1.0.2"
+    "@radix-ui/react-presence" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.2"
+    "@radix-ui/react-slot" "1.0.1"
+    "@radix-ui/react-use-controllable-state" "1.0.0"
+    aria-hidden "^1.1.1"
+    react-remove-scroll "2.5.5"
 
 "@radix-ui/react-direction@1.0.0":
   version "1.0.0"

@@ -33,7 +33,7 @@ export const ComponentConfig = ({
                   </Text>
                 </div>
                 {prop.description && (
-                  <Text variant="p" colorVariant="muted" className="mt-size-y">
+                  <Text variant="p" className="mt-size-y text-theme-muted">
                     {prop.description}
                   </Text>
                 )}
@@ -102,10 +102,10 @@ export const ComponentConfig = ({
                 </div>
               ) : (
                 <div className="sm:ml-auto flex">
-                  <Text variant="p" colorVariant="muted" className="mt-size-y">
+                  <Text variant="p" className="mt-size-y text-theme-muted">
                     *Can't edit{" "}
                     <Text variant="code" size="xs">
-                      ReactNode
+                      {prop.type}
                     </Text>{" "}
                     values here
                   </Text>

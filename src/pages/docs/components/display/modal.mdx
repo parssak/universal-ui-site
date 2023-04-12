@@ -1,0 +1,88 @@
+import { useState } from "react";
+import { PropTypes } from "react-view";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { Button, Input, Modal, Text } from "@parssa/universal-ui";
+import { Todo } from "components/global/ui/Todo";
+import { DocsComponent } from "components/docs/DocsComponent";
+
+export const meta = {
+  title: "Modal",
+  description: "A modal is a dialog that displays on top the page."
+};
+
+<Todo prefix='NOTE'>This page is still under construction, but the component is ready for use.</Todo>
+
+<DocsComponent.Primary
+        defaultProps={['children', 
+        {
+      name: "open",
+      type: PropTypes.Boolean,
+      description: "Icon shown before the content.",
+      value: "",
+      noEdit: true,
+      defaultValue: false,
+      placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    },
+    {
+      name: "onOpenChange",
+      type: PropTypes.Function,
+      description: "Icon shown before the content.",
+      value: "",
+      noEdit: true,
+      placeholder: '<svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    },
+        ]}
+
+        initialCode={`
+        () => {
+          const [open, setOpen] = useState(false);
+
+          return (
+            <>
+
+<Button onClick={() => setOpen(true)}>Open Modal</Button>
+<Modal open={open} onOpenChange={setOpen}>
+  <Modal.Content>
+    <Modal.Title>Edit Profile</Modal.Title>
+    <Modal.Description className="mt-size-2y">
+      Make changes to your profile here.
+    </Modal.Description>
+    <label className="grid grid-cols-4 items-center gap-size-x mt-size-4y ">
+      <Text size="sm" as="span" className="font-medium  text-right">
+        Name
+      </Text>
+      <Input className="col-span-3 w-full" />
+    </label>
+    <label className="grid grid-cols-4 items-center gap-size-x mt-size-2y ">
+      <Text size="sm" as="span" className="font-medium  text-right">
+        Username
+      </Text>
+      <Input className="col-span-3 w-full" />
+    </label>
+    <div className="flex justify-end mt-6">
+      <Button theme="brand">Save changes</Button>
+    </div>
+  </Modal.Content>    
+</Modal>
+          </>
+          )
+        }
+        `}
+        scope={{
+          Input,
+          Button,
+          Modal,
+          Text,
+          useState
+        }}
+        imports={{
+          "@parssa/universal-ui": {
+            named: ["Input", "Button", "Modal", "Text"]
+          },
+          react: {
+            named: ["useState"]
+          }
+        }}
+      />
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;
