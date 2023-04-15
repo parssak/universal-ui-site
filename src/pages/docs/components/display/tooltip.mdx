@@ -2,7 +2,6 @@ import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
 import { Card, Text, Button, Tooltip } from "@parssa/universal-ui";
 import { Todo } from "components/global/ui/Todo";
 
-
 export const meta = {
   title: "Tooltip",
   description: "Floating tooltips for displaying additional information."
@@ -10,13 +9,13 @@ export const meta = {
 
 <Todo>This page is still under construction. Please check back later.</Todo>
 
-<Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
+<Card data-uui="false" className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
   <Card.Content className="py-size-2y md:py-size-4y my-size-4y px-size-2x md:px-size-4x grid place-items-center">
-   <Tooltip.Root>
+    <Tooltip.Root>
       <Tooltip.Trigger>
         <Button>Hover me</Button>
       </Tooltip.Trigger>
-      <Tooltip.Content size='sm'>
+      <Tooltip.Content size="sm">
         <Text>Here's a cookie 🍪</Text>
       </Tooltip.Content>
     </Tooltip.Root>
@@ -24,4 +23,3 @@ export const meta = {
 </Card>
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;
-

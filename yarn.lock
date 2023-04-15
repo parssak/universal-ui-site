@@ -559,10 +559,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@parssa/universal-ui@^0.1.98":
-  version "0.1.98"
-  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.98.tgz#1b5c59a2f7a0a38469473ccab77464db9db9c85f"
-  integrity sha512-AbBs5uj4V0gPDYIVuHQBoKxnYF7Cf1UXxt0zYk5PXUMBjwuyEkavshKHbAhePeq1/wJOWpYawavaDB9IOcql/w==
+"@parssa/universal-ui@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.2.3.tgz#1a8bafdf9b05c51e57f8de2ccac75807af7b2757"
+  integrity sha512-FFtSJfukP8acdcfUwF+e+dAfTqoGAfX8fDfxmXIvo9i5QdtRkuWAAFaeVYT3Ew+8wSJ9oQ2ChpOvWrIy1S63lg==
   dependencies:
     "@radix-ui/react-checkbox" "^1.0.1"
     "@radix-ui/react-dialog" "^1.0.3"

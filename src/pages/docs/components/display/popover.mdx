@@ -1,39 +1,79 @@
 import React from "react";
 import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
 import { Card, Text, Input, Button, Popover } from "@parssa/universal-ui";
 import { Todo } from "components/global/ui/Todo";
+import { CodeBlock } from "components/global/ui/CodeBlock";
+import { RadixDisclaimer } from "components/global/ui/RadixDisclaimer";
 
 export const meta = {
   title: "Popover",
   description: "Floating Popovers for displaying additional information."
 };
 
-<Todo>This page is still under construction. Please check back later.</Todo>
+<DocsComponent.Primary
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "The content of the modal",
+      value: "",
+      noEdit: true
+    }
+  ]}
+  initialCode={`
+() => (
+<Popover.Root>
+  <Popover.Trigger>
+    <Button>Adjust size</Button>
+  </Popover.Trigger>
+  <Popover.Content>
+    <Text variant="h5">Dimensions</Text>
+    <div className="mt-size-2y space-y-2" data-size="sm">
+      <div className="grid place-items-center grid-cols-4 gap-2">
+        <Text>Width</Text>
+        <Input className="w-full col-span-3" defaultValue="100%" />
+      </div>
+      <div className="grid place-items-center grid-cols-4 gap-2">
+        <Text>Height</Text>
+        <Input className="w-full col-span-3" defaultValue="100%" />
+      </div>
+    </div>
+  </Popover.Content>
+</Popover.Root>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Popover
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text", "Popover"]
+    }
+  }}
+/>
 
-<Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
-  <Card.Content className="py-size-2y md:py-size-4y my-size-4y px-size-2x md:px-size-4x grid place-items-center">
-   <Popover.Root>
-      <Popover.Trigger>
-        <Button>Hover me</Button>
-      </Popover.Trigger>
-      <Popover.Content className='w-[15rem]'> 
-        <Text variant="h5">Dimensions</Text>
-        <Text size='sm'>Dimensions</Text>
-        <div className='mt-size-2y space-y-2' data-size='sm'>
-          <div className='grid place-items-center grid-cols-4 gap-2'>
-            <Text>Width</Text>
-            <Input className='w-full col-span-3' defaultValue='100%' />
-          </div>
-          <div className='grid place-items-center grid-cols-4 gap-2'>
-            <Text>Height</Text>
-            <Input className='w-full col-span-3' defaultValue='100%' />
-          </div>
-        </div>
+### Anatomy
 
-      </Popover.Content>
-    </Popover.Root>
+<CodeBlock className="my-size-2y">
+  {`<Popover>
+  <Popover.Trigger> 
+    {/* ... */}
+  </Popover.Trigger>
+  <Popover.Content>
+    {/* ... */}
+  <Popover.Content>
+</Popover>`}
+</CodeBlock>
 
-  </Card.Content>
-</Card>
+<RadixDisclaimer
+  componentName="Popover"
+  radixComponentName="Popover"
+  radixURL="https://www.radix-ui.com/docs/primitives/components/popover"
+/>
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

@@ -1,0 +1,72 @@
+import React from "react";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Card, Text, Input, Button } from "@parssa/universal-ui";
+import { Todo } from "components/global/ui/Todo";
+import { CodeBlock } from "components/global/ui/CodeBlock";
+
+export const meta = {
+  title: "Card",
+  description: "A flexible and extensible content container."
+};
+
+<DocsComponent.Primary
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "The content of the modal",
+      value: "",
+      noEdit: true
+    }
+  ]}
+  initialCode={`
+() => (
+  <Card>
+    <Card.Content>
+      <Text variant="h4">Edit Profile</Text>
+      <Text className="mt-size-y text-theme-muted">Make changes to your profile here.</Text>
+      <label className="grid grid-cols-4 items-center gap-size-x mt-size-4y ">
+        <Text size="sm" as="span" className="font-medium  text-right">
+          Name
+        </Text>
+        <Input className="col-span-3 w-full" />
+      </label>
+      <label className="grid grid-cols-4 items-center gap-size-x mt-size-2y ">
+        <Text size="sm" as="span" className="font-medium  text-right">
+          Username
+        </Text>
+        <Input className="col-span-3 w-full" />
+      </label>
+      <div className="flex justify-end mt-6">
+        <Button theme="brand">Save changes</Button>
+      </div>
+    </Card.Content>
+  </Card>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text"]
+    }
+  }}
+/>
+
+### Anatomy
+
+<CodeBlock className="mt-size-2y">
+  {`<Card>
+  <Card.Content> 
+    {/* ... */}
+  </Card.Content>
+  {/* (Full-width sections can go here) */}
+</Card>`}
+</CodeBlock>
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

@@ -59,6 +59,7 @@ export const ComponentPreview = ({
         refresh && "refresh-shine"
       )}
       theme={refresh || copied ? EVENT_THEME : !!params.errorProps.msg ? "error" : "neutral"}
+      data-uui={false}
     >
       <div className="relative " data-theme="neutral">
         <Card.Content
