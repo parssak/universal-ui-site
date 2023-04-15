@@ -559,13 +559,14 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@parssa/universal-ui@^0.1.96":
-  version "0.1.96"
-  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.96.tgz#71697de4b01c36fad22180b6114bc2d3df903182"
-  integrity sha512-x91nS4A/FmKFlRjfUCnXFY8KJJh2WfQ06irWJuK9m2wQxPW31x1X1zkyAeRn1QfhgopIF74Xgtlqj6Tf0a/LTA==
+"@parssa/universal-ui@^0.1.98":
+  version "0.1.98"
+  resolved "https://registry.yarnpkg.com/@parssa/universal-ui/-/universal-ui-0.1.98.tgz#1b5c59a2f7a0a38469473ccab77464db9db9c85f"
+  integrity sha512-AbBs5uj4V0gPDYIVuHQBoKxnYF7Cf1UXxt0zYk5PXUMBjwuyEkavshKHbAhePeq1/wJOWpYawavaDB9IOcql/w==
   dependencies:
     "@radix-ui/react-checkbox" "^1.0.1"
     "@radix-ui/react-dialog" "^1.0.3"
+    "@radix-ui/react-popover" "^1.0.5"
     "@radix-ui/react-select" "^1.1.2"
     "@radix-ui/react-tooltip" "^1.0.2"
     tailwind-merge "^1.3.0"
@@ -717,6 +718,28 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "1.0.0"
+
+"@radix-ui/react-popover@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popover/-/react-popover-1.0.5.tgz#9c58100ed6809eb611c0acbf032f9ab58c0b55d1"
+  integrity sha512-GRHZ8yD12MrN2NLobHPE8Rb5uHTxd9x372DE9PPNnBjpczAQHcZ5ne0KXG4xpf+RDdXSzdLv9ym6mYJCDTaUZg==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.0"
+    "@radix-ui/react-compose-refs" "1.0.0"
+    "@radix-ui/react-context" "1.0.0"
+    "@radix-ui/react-dismissable-layer" "1.0.3"
+    "@radix-ui/react-focus-guards" "1.0.0"
+    "@radix-ui/react-focus-scope" "1.0.2"
+    "@radix-ui/react-id" "1.0.0"
+    "@radix-ui/react-popper" "1.1.1"
+    "@radix-ui/react-portal" "1.0.2"
+    "@radix-ui/react-presence" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.2"
+    "@radix-ui/react-slot" "1.0.1"
+    "@radix-ui/react-use-controllable-state" "1.0.0"
+    aria-hidden "^1.1.1"
+    react-remove-scroll "2.5.5"
 
 "@radix-ui/react-popper@1.0.1":
   version "1.0.1"

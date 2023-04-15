@@ -1,0 +1,39 @@
+import React from "react";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { Card, Text, Input, Button, Popover } from "@parssa/universal-ui";
+import { Todo } from "components/global/ui/Todo";
+
+export const meta = {
+  title: "Popover",
+  description: "Floating Popovers for displaying additional information."
+};
+
+<Todo>This page is still under construction. Please check back later.</Todo>
+
+<Card className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
+  <Card.Content className="py-size-2y md:py-size-4y my-size-4y px-size-2x md:px-size-4x grid place-items-center">
+   <Popover.Root>
+      <Popover.Trigger>
+        <Button>Hover me</Button>
+      </Popover.Trigger>
+      <Popover.Content className='w-[15rem]'> 
+        <Text variant="h5">Dimensions</Text>
+        <Text size='sm'>Dimensions</Text>
+        <div className='mt-size-2y space-y-2' data-size='sm'>
+          <div className='grid place-items-center grid-cols-4 gap-2'>
+            <Text>Width</Text>
+            <Input className='w-full col-span-3' defaultValue='100%' />
+          </div>
+          <div className='grid place-items-center grid-cols-4 gap-2'>
+            <Text>Height</Text>
+            <Input className='w-full col-span-3' defaultValue='100%' />
+          </div>
+        </div>
+
+      </Popover.Content>
+    </Popover.Root>
+
+  </Card.Content>
+</Card>
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

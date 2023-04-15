@@ -64,7 +64,10 @@ export const NAV_SECTIONS = [
         title: "Tooltip",
         href: "/docs/components/display/tooltip"
       },
-      
+      {
+        title: "Popover",
+        href: "/docs/components/display/popover"
+      }
     ]
   },
   {
