@@ -4,10 +4,10 @@ import React from "react";
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Todo = ({
-  prefix,
+  prefix = 'TODO',
   ...props
 }: DivProps & {
-  prefix: "TODO";
+    prefix?: string;
 }) => {
   return (
     <Card theme="warning" {...props} className="my-size-4y first:mt-0">
