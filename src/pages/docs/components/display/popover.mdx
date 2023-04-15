@@ -12,6 +12,13 @@ export const meta = {
   description: "Floating Popovers for displaying additional information."
 };
 
+<RadixDisclaimer
+  componentName="Popover"
+  radixComponentName="Popover"
+  radixURL="https://www.radix-ui.com/docs/primitives/components/popover"
+/>
+
+
 <DocsComponent.Primary
   defaultProps={[
     {
@@ -57,7 +64,7 @@ export const meta = {
   }}
 />
 
-### Anatomy
+## Anatomy
 
 <CodeBlock className="my-size-2y">
   {`<Popover>
@@ -70,10 +77,49 @@ export const meta = {
 </Popover>`}
 </CodeBlock>
 
-<RadixDisclaimer
-  componentName="Popover"
-  radixComponentName="Popover"
-  radixURL="https://www.radix-ui.com/docs/primitives/components/popover"
+## Examples
+
+### With Arrow Indicator
+
+To add an arrow indicator to the tooltip, add `arrowClassName='fill-transparent'` prop to `Tooltip.Content`.
+
+<DocsComponent.Example
+  initialCode={`
+() => (
+<Popover.Root>
+  <Popover.Trigger>
+    <Button>Without Arrow Indicator</Button>
+  </Popover.Trigger>
+  <Popover.Content arrowClassName='fill-transparent'>
+    <Text variant="h5">Dimensions</Text>
+    <div className="mt-size-2y space-y-2" data-size="sm">
+      <div className="grid place-items-center grid-cols-4 gap-2">
+        <Text>Width</Text>
+        <Input className="w-full col-span-3" defaultValue="100%" />
+      </div>
+      <div className="grid place-items-center grid-cols-4 gap-2">
+        <Text>Height</Text>
+        <Input className="w-full col-span-3" defaultValue="100%" />
+      </div>
+    </div>
+  </Popover.Content>
+</Popover.Root>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Popover,
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text", "Popover"]
+    },
+  }}
 />
+
+You can also enable this globally by setting `popover.content_arrow: 'fill-transparent'` in your [`UniversalUIConfigProvider`](/docs/getting-started/customization).
+
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

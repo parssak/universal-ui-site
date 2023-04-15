@@ -5,14 +5,14 @@ export const meta = {
   description: "Modify the look and feel of Universal UI to fit your needs."
 };
 
-Universal UI provides two main ways to globally customize the look and feel of your application; through the `UniversalUIProvider` and the `tailwind.config.js` plugin.
+Universal UI provides two main ways to globally customize the look and feel of your application; through the `UniversalUIConfigProvider` and the `tailwind.config.js` plugin.
 
-## Customize theme with UniversalUIProvider
+## Customize theme with UniversalUIConfigProvider
 
-The `UniversalUIProvider` allows you to customize the look and feel of Universal UI by overriding the behavior of all components.
+The `UniversalUIConfigProvider` allows you to customize the look and feel of Universal UI by overriding the behavior of all components.
 
 ```jsx
-import { UniversalUIProvider } from "@parssa/universal-ui";
+import { UniversalUIConfigProvider } from "@parssa/universal-ui";
 
 const config = {
   components: {
@@ -28,7 +28,7 @@ const config = {
 };
 
 const App = () => {
-  return <UniversalUIProvider config={config}>{/* ... */}</UniversalUIProvider>;
+  return <UniversalUIConfigProvider config={config}>{/* ... */}</UniversalUIConfigProvider>;
 };
 ```
 

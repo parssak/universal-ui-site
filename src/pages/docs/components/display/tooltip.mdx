@@ -1,25 +1,112 @@
+import React from "react";
 import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
-import { Card, Text, Button, Tooltip } from "@parssa/universal-ui";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Card, Text, Input, Button, Tooltip } from "@parssa/universal-ui";
 import { Todo } from "components/global/ui/Todo";
+import { CodeBlock } from "components/global/ui/CodeBlock";
+import { RadixDisclaimer } from "components/global/ui/RadixDisclaimer";
+import { HiPlus } from "react-icons/hi";
 
 export const meta = {
   title: "Tooltip",
   description: "Floating tooltips for displaying additional information."
 };
 
-<Todo>This page is still under construction. Please check back later.</Todo>
+<RadixDisclaimer
+  componentName="Tooltip"
+  radixComponentName="Tooltip"
+  radixURL="https://www.radix-ui.com/docs/primitives/components/tooltip"
+/>
 
-<Card data-uui="false" className="mt-size-4y bg-theme-pure/25 backdrop-blur-lg grid-pattern">
-  <Card.Content className="py-size-2y md:py-size-4y my-size-4y px-size-2x md:px-size-4x grid place-items-center">
-    <Tooltip.Root>
-      <Tooltip.Trigger>
-        <Button>Hover me</Button>
-      </Tooltip.Trigger>
-      <Tooltip.Content size="sm">
-        <Text>Here's a cookie 🍪</Text>
-      </Tooltip.Content>
-    </Tooltip.Root>
-  </Card.Content>
-</Card>
+<DocsComponent.Primary
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "The content of the modal",
+      value: "",
+      noEdit: true
+    }
+  ]}
+  initialCode={`
+() => (
+<Tooltip.Root>
+  <Tooltip.Trigger>
+    <Button className='rounded-full' icon={<HiPlus className='w-full h-full' />} />
+  </Tooltip.Trigger>
+  <Tooltip.Content>
+    Add to library
+  </Tooltip.Content>
+</Tooltip.Root>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Tooltip,
+    HiPlus
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text", "Tooltip"]
+    },
+    "react-icons/hi": {
+      named: ["HiPlus"]
+    }
+  }}
+/>
+
+## Anatomy
+
+<CodeBlock className="my-size-2y">
+  {`<Tooltip>
+  <Tooltip.Trigger> 
+    {/* ... */}
+  </Tooltip.Trigger>
+  <Tooltip.Content>
+    {/* ... */}
+  <Tooltip.Content>
+</Tooltip>`}
+</CodeBlock>
+
+## Examples
+
+### With Arrow Indicator
+
+To add an arrow indicator to the tooltip, add `arrowClassName='fill-theme-muted'` prop to `Tooltip.Content`.
+
+<DocsComponent.Example
+  initialCode={`
+() => (
+<Tooltip.Root>
+  <Tooltip.Trigger>
+    <Button className='rounded-full' icon={<HiPlus className='w-full h-full' />} />
+  </Tooltip.Trigger>
+  <Tooltip.Content arrowClassName='fill-theme-muted'>
+    Add to library
+  </Tooltip.Content>
+</Tooltip.Root>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Tooltip,
+    HiPlus
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text", "Tooltip"]
+    },
+    "react-icons/hi": {
+      named: ["HiPlus"]
+    }
+  }}
+/>
+
+You can also enable this globally by setting `tooltip.content_arrow: 'fill-theme-muted'` in your [`UniversalUIConfigProvider`](/docs/getting-started/customization).
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

@@ -5,12 +5,18 @@ import { Button, Input, Modal, Text } from "@parssa/universal-ui";
 import { Todo } from "components/global/ui/Todo";
 import { DocsComponent } from "components/docs/DocsComponent";
 import { CodeBlock } from "components/global/ui/CodeBlock";
-
+import { RadixDisclaimer } from "components/global/ui/RadixDisclaimer";
 
 export const meta = {
   title: "Modal",
   description: "A modal is a dialog that displays on top the page."
 };
+
+<RadixDisclaimer
+  componentName="Modal"
+  radixComponentName="Dialog"
+  radixURL="https://www.radix-ui.com/docs/primitives/components/dialog"
+/>
 
 <DocsComponent.Primary
   defaultProps={[
@@ -43,9 +49,9 @@ export const meta = {
 () => {
   const [open, setOpen] = useState(false);
 
-  return (
-    <>
-      <Button onClick={() => setOpen(true)}>Edit Profile</Button>
+return (
+<>
+<Button onClick={() => setOpen(true)}>Edit Profile</Button>
 
       <Modal open={open} onOpenChange={setOpen}>
         <Modal.Content>
@@ -71,16 +77,17 @@ export const meta = {
         </Modal.Content>
       </Modal>
     </>
-  );
+
+);
 }`}
-  scope={{
+scope={{
     Input,
     Button,
     Modal,
     Text,
     useState
   }}
-  imports={{
+imports={{
     "@parssa/universal-ui": {
       named: ["Input", "Button", "Modal", "Text"]
     },
@@ -90,7 +97,7 @@ export const meta = {
   }}
 />
 
-### Anatomy
+## Anatomy
 
 <CodeBlock className="mt-size-2y">
   {`<Modal open={open} onOpenChange={onOpenChange}>

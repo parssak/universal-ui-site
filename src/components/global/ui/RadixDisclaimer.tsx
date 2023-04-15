@@ -12,6 +12,8 @@ const LinkText = ({
     {...props}
     as="a"
     href={href}
+    target="_blank"
+    rel="noopener noreferrer"
     className={cx(
       // base
       "inline-block text-blue-500 dark:text-blue-400 ",
@@ -46,14 +48,14 @@ export const RadixDisclaimer = ({
   radixURL: string;
 }) => {
   return (
-    <Card {...props} theme="info" className="mt-size-4y">
+    <Card {...props} theme="info" className="mb-size-4y bg-theme-muted/20" size="sm">
       <Card.Content>
         <Text>
           <span className="font-medium">
-            {componentName} is built on the{" "}
+            {componentName} is built on top{" "}
             <LinkText href={radixURL}>RadixUI {radixComponentName}</LinkText> component.
           </span>{" "}
-          All RadixUI props are passed, & can be used in the same way.
+          All RadixUI props are passed, and can be used in the same way.
         </Text>
       </Card.Content>
     </Card>
