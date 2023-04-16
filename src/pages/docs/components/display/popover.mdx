@@ -18,7 +18,6 @@ export const meta = {
   radixURL="https://www.radix-ui.com/docs/primitives/components/popover"
 />
 
-
 <DocsComponent.Primary
   defaultProps={[
     {
@@ -110,17 +109,15 @@ To add an arrow indicator to the tooltip, add `arrowClassName='fill-transparent'
     Button,
     Card,
     Text,
-    Popover,
+    Popover
   }}
   imports={{
     "@parssa/universal-ui": {
       named: ["Input", "Button", "Card", "Text", "Popover"]
-    },
+    }
   }}
 />
 
 You can also enable this globally by setting `popover.content_arrow: 'fill-transparent'` in your [`UniversalUIConfigProvider`](/docs/getting-started/customization).
 
-
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;
-

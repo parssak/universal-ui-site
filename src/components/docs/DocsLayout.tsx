@@ -10,6 +10,7 @@ import Link from "next/link";
 import { renderToString } from "react-dom/server";
 import * as RadixTooltip from "@radix-ui/react-tooltip";
 import { useRouter } from "next/router";
+import { NAV_SECTIONS } from "./constants";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -40,6 +41,35 @@ const getHeadings = (source: string) => {
   }
 
   return [];
+};
+
+const getNavigateSections = (
+  url: string
+): {
+  next?: {
+    title: string;
+    href: string;
+  };
+  prev?: {
+    title: string;
+    href: string;
+  };
+} => {
+  const sections = NAV_SECTIONS.flatMap((section) => section.items);
+  const index = sections.findIndex((section) => section.href === url);
+  const prev = sections[index - 1];
+  const next = sections[index + 1];
+
+  return {
+    prev: prev && {
+      title: prev.title,
+      href: prev.href
+    },
+    next: next && {
+      title: next.title,
+      href: next.href
+    }
+  };
 };
 
 const extractChildrenFromHeadings = (children: any) => {
@@ -79,6 +109,8 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
   };
 
   const theme = routeThemeMap[router.pathname.split("/")[2]] || "info";
+
+  const { prev, next } = getNavigateSections(router.pathname);
 
   return (
     <div
@@ -124,7 +156,7 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
           className={`min-h-screen w-full subpixel-antialiased mx-auto pt-10 xl:max-w-none xl:ml-0 
           ${headings?.length > 0 ? "xl:mr-[16.5rem] max-w-3xl xl:w-auto" : ""}`}
         >
-          <ThemeProvider className="px-6 pb-12">{children}</ThemeProvider>
+          <ThemeProvider className="px-6 pb-10">{children}</ThemeProvider>
           {headings?.length > 0 && (
             <div className="fixed z-20 top-[3.8125rem] pointer-events-none bottom-0 right-[max(0px,calc(50%-45rem))] w-[16.5rem] py-10 overflow-y-auto hidden xl:block">
               <Text size="sm" variant="h6">
@@ -151,6 +183,40 @@ const DocsLayoutRoot = ({ children, ...props }: DivProps & {}) => {
               </ul>
             </div>
           )}
+        </div>
+
+        <div className="pb-10 px-6 mt-auto w-full xl:max-w-none xl:ml-0">
+          {/* navigate sections */}
+          <div className="flex justify-between gap-2">
+            <div className="flex-1 relative">
+              {prev && (
+                <Link href={prev.href} className="group hover:bg-theme-active block p-4 rounded-md border border-theme-muted">
+                  <span>
+                    <Text variant="h6" size="sm" className="text-theme-muted">
+                      Previous
+                    </Text>
+                  </span>
+                  <Text variant="h4" size="sm" className="text-theme-muted group-hover:text-theme-active">
+                    {prev.title}
+                  </Text>
+                </Link>
+              )}
+            </div>
+            <div className="flex-1 text-right relative">
+              {next && (
+                <Link href={next.href} className="group hover:bg-theme-active block p-4 rounded-md border border-theme-muted">
+                  <span>
+                    <Text variant="h6" size="sm" className="text-theme-muted">
+                      Next
+                    </Text>
+                  </span>
+                  <Text variant="h4" size="sm" className="text-theme-muted group-hover:text-theme-active">
+                    {next.title}
+                  </Text>
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
         <Footer className="mt-auto" />
       </div>

@@ -32,7 +32,7 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
           as="span"
           size="sm"
           className={cx(
-            "transition-all duration-100",
+            "transition-all duration-100 select-none",
             isActive ? "text-theme-active" : "opacity-80 group-hover:opacity-100 text-theme-active"
           )}
         >
