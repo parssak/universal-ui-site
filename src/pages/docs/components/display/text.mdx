@@ -1,0 +1,188 @@
+import React from "react";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Card, Text, Input, Button, Popover } from "@parssa/universal-ui";
+import { Todo } from "components/global/ui/Todo";
+import { CodeBlock } from "components/global/ui/CodeBlock";
+import { RadixDisclaimer } from "components/global/ui/RadixDisclaimer";
+
+export const meta = {
+  title: "Text",
+  description: "Useful for rendering any form of text."
+};
+
+<DocsComponent.Primary
+  componentName="Text"
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "The content of the modal",
+      value: "Welcome to Universal UI"
+    },
+    {
+      name: "variant",
+      type: PropTypes.String,
+      description: "Determines the styling of the text",
+      value: "body1",
+      options: ["body1", "body2", "h1", "h2", "h3", "h4", "h5", "h6", "kbd", "code"]
+    }
+  ]}
+  scope={{
+    Text
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Text"]
+    }
+  }}
+/>
+
+## Examples
+
+### Rendering variants as other elements
+
+Sometimes you want the styling of an `h1`, but you want to render it as a `p` or `span`. You can do this by passing the `as` prop.
+
+<DocsComponent.Example
+  initialCode={`
+() => (
+<div>
+  <Text variant='h1' as='p'>
+  h1 styling as a p
+</Text>
+<Text variant='h2' as='span'>
+  h2 styling as a span
+</Text>
+</div>
+)`}
+  scope={{
+    Text
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Text"]
+    }
+  }}
+/>
+
+### Sidebar
+
+<DocsComponent.Example
+  initialCode={`
+() => (
+<div className="w-72 bg-theme-pure p-size-2y border border-theme-base rounded-md">
+  <span
+    data-size="xs"
+    className="rounded-full flex items-center w-max bg-theme-inverted text-theme-inverted px-size-4x py-size-2y leading-size font-mono text-size font-semibold tracking-wider"
+  >
+    <span className="inline-block relative -left-2 w-2 h-2 bg-theme-pure rounded-full"></span>
+    IN PROGRESS
+  </span>
+
+  <Text variant="h4" className="flex items-center mt-size-2y gap-size-hx text-theme-active">
+    branch-name
+  </Text>
+  <Text variant="h6" className="flex items-center mt-size-qy gap-size-hx text-theme-muted">
+    commit-hash
+  </Text>
+  <Text size="sm" className="mt-size-4y text-theme-muted">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, architecto!
+  </Text>
+</div>
+)`}
+scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Popover
+  }}
+imports={{
+    "@parssa/universal-ui": {
+      named: ["Text"]
+    }
+  }}
+/>
+
+### Fake Article
+
+<DocsComponent.Example
+  initialCode={`
+() => (
+<div className="bg-theme-pure p-size-2y border border-theme-base rounded-md">
+  <Text variant="h1">This is a dummy article</Text>
+  <Text variant="h2" className="mt-6">
+    What is this about?
+  </Text>
+  <Text className="mt-4">
+    This article is essentially about nothing. It is a dummy article that is used to test the Text
+    component.
+  </Text>
+
+  <Text className="leading-loose">
+    To activate the{" "}
+    <Text variant="code" size={"sm"}>
+      Command Pallette
+    </Text>
+    , press{" "}
+    <Text variant="kbd" size={"sm"}>
+      ⌃⇧P
+    </Text>
+  </Text>
+
+  <Text variant="h3" className="mt-4">
+    How to use it
+  </Text>
+
+  <Text className="mt-2">
+    To use this component, you can simply import it from the{" "}
+    <Text variant="code" size={"sm"}>
+      @universal-ui/react
+    </Text>{" "}
+    package.
+  </Text>
+
+  <Text className="mt-1">
+    You can also use the{" "}
+    <Text variant="code" size={"sm"}>
+      Text
+    </Text>{" "}
+    component to render{" "}
+    <Text variant="code" size={"sm"}>
+      code
+    </Text>{" "}
+    and{" "}
+    <Text variant="kbd" size={"sm"}>
+      ⌘K
+    </Text>{" "}
+    keyboard shortcuts .
+  </Text>
+
+  <Text variant="h4" className="mt-4">
+    Smaller heading
+  </Text>
+  <Text variant="h5" className="mt-4">
+    Even Smaller heading
+  </Text>
+  <Text variant="h6" className="mt-4">
+    Smallest heading
+  </Text>
+</div>
+)`}
+scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Popover
+  }}
+imports={{
+    "@parssa/universal-ui": {
+      named: ["Text"]
+    }
+  }}
+/>
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

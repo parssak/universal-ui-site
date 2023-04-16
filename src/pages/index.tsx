@@ -11,7 +11,6 @@ export default function Home(props) {
       <BuildFeatures />
       <Primitives />
       <DarkMode />
-      
       <Footer />
     </div>
   );

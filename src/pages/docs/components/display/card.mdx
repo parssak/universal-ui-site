@@ -1,10 +1,11 @@
 import React from "react";
-import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout";
 import { DocsComponent } from "components/docs/DocsComponent";
 import { PropTypes } from "react-view";
-import { Card, Text, Input, Button } from "@parssa/universal-ui";
+import { Card, Text, Input, Button, Select, InputGroup } from "@parssa/universal-ui";
 import { Todo } from "components/global/ui/Todo";
 import { CodeBlock } from "components/global/ui/CodeBlock";
+import { FRUITS } from "components/docs/constants";
 
 export const meta = {
   title: "Card",
@@ -68,5 +69,72 @@ export const meta = {
   {/* (Full-width sections can go here) */}
 </Card>`}
 </CodeBlock>
+
+## Examples
+
+### Inputs inside
+
+Input elements such as [`Button`](/docs/components/inputs/button) and [`Select`](/docs/components/inputs/select) that render inside cards have slightly elevated borders to make them stand out from the card background.
+This can be prevented by adding `data-uui='false'` to the `<Card />` component.
+
+<DocsComponent.Example
+  initialCode={`
+() => (
+<div className='grid md:grid-cols-2 gap-2'>
+  <Card className='sm:w-96 md:w-[32rem]'>
+    <Card.Content>
+      <Text className='mb-size-y' variant="h4">Standard</Text>
+      <Text size='sm' className='mt-size-2y'>The borders are a bit more pronounced</Text>
+      <InputGroup className='mt-size-2y'>
+        <Button theme="brand">Save changes</Button>
+        <Select>
+          <Select.Trigger />
+          <Select.Panel>
+            {FRUITS.map((fruit) => (
+              <Select.Item value={fruit} key={fruit} className="capitalize">
+                {fruit}
+              </Select.Item>
+            ))}
+          </Select.Panel>
+        </Select>
+      </InputGroup>
+    </Card.Content>
+  </Card>
+  <Card data-uui='false' className='sm:w-96 md:w-[32rem]'>
+    <Card.Content>
+      <Text className='mb-size-y' variant="h4">With data-uui=false</Text>
+      <Text size='sm' className='mt-size-2y'>Borders are more subtle, making it a bit more muddy.</Text>
+      <InputGroup className='mt-size-2y'>
+        <Button theme="brand">Save changes</Button>
+        <Select>
+          <Select.Trigger />
+          <Select.Panel>
+            {FRUITS.map((fruit) => (
+              <Select.Item value={fruit} key={fruit} className="capitalize">
+                {fruit}
+              </Select.Item>
+            ))}
+          </Select.Panel>
+        </Select>
+      </InputGroup>
+    </Card.Content>
+  </Card>
+</div>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Select,
+    InputGroup,
+    FRUITS
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text", "Select", "InputGroup"]
+    }
+  }}
+/>
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

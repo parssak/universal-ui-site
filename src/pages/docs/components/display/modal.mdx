@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PropTypes } from "react-view";
-import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout";
 import { Button, Input, Modal, Text } from "@parssa/universal-ui";
 import { Todo } from "components/global/ui/Todo";
 import { DocsComponent } from "components/docs/DocsComponent";
@@ -9,7 +9,7 @@ import { RadixDisclaimer } from "components/global/ui/RadixDisclaimer";
 
 export const meta = {
   title: "Modal",
-  description: "A modal is a dialog that displays on top the page."
+  description: "Dialog that displays on top the page."
 };
 
 <RadixDisclaimer
@@ -50,6 +50,7 @@ export const meta = {
   const [open, setOpen] = useState(false);
 
 return (
+
 <>
 <Button onClick={() => setOpen(true)}>Edit Profile</Button>
 

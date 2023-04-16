@@ -1,9 +1,9 @@
-import { DocsMDXLayout } from "components/docs/DocsMDXLayout.tsx";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout";
 import { DocsComponent } from "components/docs/DocsComponent";
 import { PropTypes } from "react-view";
 import { Input, Select, InputGroup } from "@parssa/universal-ui";
 import * as Icon from "react-icons/hi";
-import { FRUITS } from "components/docs/constants.ts";
+import { FRUITS } from "components/docs/constants";
 
 export const meta = {
   title: "Select",
@@ -87,7 +87,6 @@ export const meta = {
 
         <Select>
           <Select.Trigger
-            
             trailingIcon={<Icon.HiChevronDown className="w-full h-full" />}
            />
           <Select.Panel>
@@ -100,12 +99,13 @@ export const meta = {
         </Select>
       </>
     `}
-  scope={{
+
+scope={{
     Select,
     Icon,
     FRUITS
   }}
-  imports={{
+imports={{
     "@parssa/universal-ui": {
       named: ["Select"]
     },
