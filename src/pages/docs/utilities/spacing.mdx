@@ -1,0 +1,93 @@
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout";
+import { Card, Text, Button, Tooltip, ThemeProvider } from "@parssa/universal-ui";
+import { themes } from "components/docs/constants";
+import { Callout } from "components/global/ui/Callout";
+import { CodeBlock } from "components/global/ui/CodeBlock";
+
+export const meta = {
+  title: "Sizing",
+  description: "Sensible sizing classes that scale given data-attributes"
+};
+
+<Callout theme="warning">
+  <strong className="font-medium text-theme-base">
+    These classes are not replacement for the given TailwindCSS sizes like `p-4`, `text-2xl`, etc.
+  </strong>
+  They are just a way to write classes that scale based on the `data-size` attribute.
+</Callout>
+
+Elements in Universal UI scale their padding, font-size, gap, etc... based on the data-attribute `data-size`.
+
+Elements expose a `size` prop that can be used to set the size of the element.
+
+For all sizing attributes, such as `p-`, `m-`, `space-x-`, `text-`, `gap-`, etc... you can add `-size-{AMOUNT}` to the end of the class.
+
+<CodeBlock className='mt-size-2y mb-size-4y'>
+ {`<div data-size="sm">
+  {/* all content inside of here will be smaller */}
+  <div className="px-size-2x py-size-2y">Padded Section</div>
+</div>`}
+</CodeBlock>
+
+Using `text-size` will make the font size respect the current size. This is commonly paired with `leading-size` to make the line-height smaller as well.
+
+<CodeBlock className='mt-size-2y mb-size-4y'>
+ {`<div data-size="sm">
+  <p className="text-size">This text is smaller</p>
+  <p className="text-size leading-size">This text is smaller and has a smaller line-height</p>
+</div>`}
+</CodeBlock>
+
+The `body1` and `body2` props in [`<Text />`](/docs/components/display/text) also have `text-size` and `leading-size` applied by default. 
+
+{/* <div className='grid md:grid-cols-2 gap-4 p-4'>
+  <Card size="md">
+    <Card.Content>
+      <Text className='font-medium'>Small</Text>
+      <div className='grid grid-cols-2 gap-2'>
+        <Text className='font-medium'>Small</Text>
+        <div>
+          <div className='w-size-x h-size-x bg-red-500' />
+        </div>
+      </div>
+    </Card.Content>
+  </Card>
+</div> */}
+
+{/* <div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='sm'>
+  <div className='w-size-qx h-size-qx bg-red-500' />
+  <div className='w-size-hx h-size-hx bg-red-500' />
+  <div className='w-size-x h-size-x bg-red-500' />
+  <div className='w-size-2x h-size-2x bg-red-500' />
+  <div className='w-size-4x h-size-4x bg-red-500' />
+  <div className='w-size-8x h-size-8x bg-red-500' />
+</div>
+
+<div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='md'>
+  <div className='w-size-qx h-size-qx bg-red-500' />
+  <div className='w-size-hx h-size-hx bg-red-500' />
+  <div className='w-size-x h-size-x bg-red-500' />
+  <div className='w-size-2x h-size-2x bg-red-500' />
+  <div className='w-size-4x h-size-4x bg-red-500' />
+  <div className='w-size-8x h-size-8x bg-red-500' />
+</div>
+
+<div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='lg'>
+  <div className='w-size-qx h-size-qx bg-red-500' />
+  <div className='w-size-hx h-size-hx bg-red-500' />
+  <div className='w-size-x h-size-x bg-red-500' />
+  <div className='w-size-2x h-size-2x bg-red-500' />
+  <div className='w-size-4x h-size-4x bg-red-500' />
+  <div className='w-size-8x h-size-8x bg-red-500' />
+</div>
+
+<div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='xl'>
+  <div className='w-size-qx h-size-qx bg-red-500' />
+  <div className='w-size-hx h-size-hx bg-red-500' />
+  <div className='w-size-x h-size-x bg-red-500' />
+  <div className='w-size-2x h-size-2x bg-red-500' />
+  <div className='w-size-4x h-size-4x bg-red-500' />
+  <div className='w-size-8x h-size-8x bg-red-500' />
+</div> */}
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;

@@ -27,9 +27,7 @@ const components = {
   h4: (props) => <Text {...props} variant="h4" />,
   h5: (props) => <Text {...props} variant="h5" />,
   h6: (props) => <Text {...props} variant="h6" />,
-  p: (props) => (
-    <Text {...props} variant="p" className="mt-size-x mdx-p-tag text-theme-muted" />
-  ),
+  p: (props) => <Text {...props} variant="p" className="mt-size-x mdx-p-tag text-theme-muted" />,
   a: (props) => (
     <Text
       {...props}
@@ -66,12 +64,22 @@ const components = {
   ),
   kbd: (props) => <Text {...props} variant="kbd" />,
   pre: (props) => <CodeBlock {...props} className="mt-size-2y mb-size-4y" />,
-  hr: (props) => <hr {...props} className="my-8 text-theme-muted border-theme-muted" />
+  hr: (props) => <hr {...props} className="my-8 text-theme-muted border-theme-muted" />,
+  table: (props) => (
+    <table {...props} className="w-full table-auto border-collapse border border-theme-muted" />
+  ),
+  th: (props) => (
+    <th {...props} className="px-4 py-2 text-left border border-theme-muted bg-theme-muted" />
+  ),
+  td: (props) => (
+    <td {...props} className="px-4 py-2 text-left border border-theme-muted bg-theme-muted" />
+  ),
+  ul: (props) => <ul {...props} className="list-disc list-inside" />,
+  ol: (props) => <ol {...props} className="list-decimal list-inside" />
 };
 
 export const MDXProvider = ({ children }: { children: React.ReactNode }) => (
   <Provider components={components}>
     <>{children}</>
-
   </Provider>
 );

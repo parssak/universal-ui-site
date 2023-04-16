@@ -8,13 +8,19 @@ import "styles/index.css";
 
 import { SidebarProvider } from "hooks/useSidebar";
 import { MDXProvider } from "components/global/ui/MDXProvider";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false);
+  const { pathname } = useRouter();
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
+
+  React.useEffect(() => {
+    setTimeout(() => document.body.scrollTo(0, 0), 0);
+  }, [pathname]);
 
   return (
     <>
@@ -63,7 +69,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 return "";
               },
               "tooltip.content": "backdrop-blur-sm",
-              "select.panel": "z-[60]",
+              "select.panel": "z-[60]"
             }
           }}
         >

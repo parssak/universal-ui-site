@@ -16,6 +16,7 @@ body {
   overflow: auto;
 }
 
+
 body {
   @apply dark:bg-black tracking-[-0.011em];
 }
