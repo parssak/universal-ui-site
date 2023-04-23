@@ -57,6 +57,10 @@ export const NAV_SECTIONS = [
         href: "/docs/components/display/dialog"
       },
       {
+        title: "Tabs",
+        href: "/docs/components/display/tabs"
+      },
+      {
         title: "Text",
         href: "/docs/components/display/text"
       },

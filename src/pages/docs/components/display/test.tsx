@@ -289,7 +289,7 @@ const TestPage = () => {
           }
         }}
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3  p-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 p-6">
           <Card>
             <Card.Content className="h-full flex flex-col">
               <Text variant="h4">Notifications</Text>

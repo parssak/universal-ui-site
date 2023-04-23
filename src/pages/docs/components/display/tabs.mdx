@@ -1,0 +1,86 @@
+import React from "react";
+import { DocsMDXLayout } from "components/docs/DocsMDXLayout";
+import { DocsComponent } from "components/docs/DocsComponent";
+import { PropTypes } from "react-view";
+import { Card, Text, Input, Button, Popover, Tabs, Checkbox } from "@parssa/universal-ui";
+import { Todo } from "components/global/ui/Todo";
+import { CodeBlock } from "components/global/ui/CodeBlock";
+import { RadixDisclaimer } from "components/global/ui/RadixDisclaimer";
+
+export const meta = {
+  title: "Tabs",
+  description: "Sectioned content with tabs"
+};
+
+<RadixDisclaimer
+  componentName="Tabs"
+  radixComponentName="Tabs"
+  radixURL="https://www.radix-ui.com/docs/primitives/components/tabs"
+/>
+
+<DocsComponent.Primary
+  defaultProps={[
+    {
+      name: "children",
+      type: PropTypes.ReactNode,
+      description: "The content of the modal",
+      value: "",
+      noEdit: true
+    }
+  ]}
+  initialCode={`
+() => (
+<Card className='sm:w-96 md:w-[32rem]'>
+  <Tabs defaultValue="account">
+    <Tabs.List>
+      <Tabs.Trigger value="account">Account</Tabs.Trigger>
+      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+    </Tabs.List>
+    <Tabs.Content className='p-size-x w-full' value="account">
+      <Text variant='h4'>Acccount</Text>
+      <Text className='mb-size-x'>Manage your account preferences.</Text>
+      <label className='mt-size-4y'>
+        <Text size='sm' className='mb-size-y'>Name</Text>
+        <Input className='w-full' defaultValue='John Doe' />
+      </label>
+    </Tabs.Content>
+    <Tabs.Content className='p-size-x w-full' value="settings">
+      <Text variant='h4'>Settings</Text>
+      <Text className='mb-size-x'>Manage your notification preferences.</Text>
+      <label className='flex items-center gap-size-x mt-4'>
+        <Checkbox />
+        <Text>Enable notifications</Text>
+      </label>
+      
+    </Tabs.Content>
+  </Tabs>
+</Card>
+)`}
+  scope={{
+    Input,
+    Button,
+    Card,
+    Text,
+    Tabs,
+    Checkbox
+  }}
+  imports={{
+    "@parssa/universal-ui": {
+      named: ["Input", "Button", "Card", "Text", "Tabs", "Checkbox"]
+    }
+  }}
+/>
+
+## Anatomy
+
+<CodeBlock className="my-size-2y">
+  {`<Tabs>
+  <Tabs.List> 
+    <Tabs.Trigger>{/* ... */}</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content>{/* ... */}</Tabs.Content>
+</Tabs>`}
+</CodeBlock>
+
+
+export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;
