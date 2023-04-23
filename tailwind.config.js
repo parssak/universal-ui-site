@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: [
     "./src/components/**/*.{ts,tsx,js,jsx}",
@@ -24,6 +26,14 @@ module.exports = {
         spring: "cubic-bezier(.175,.885,.32,1.275)"
       }
     },
+    // universalUI: {
+    //   themes: [
+    //     {
+    //       name: "brand",
+    //       colors: colors.purple
+    //     }
+    //   ]
+    // }
   },
   variants: {},
   plugins: [require("@parssa/universal-ui/src/plugin")]
