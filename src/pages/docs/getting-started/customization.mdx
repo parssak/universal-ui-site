@@ -41,12 +41,15 @@ This is useful when needing to override the behavior of a component based on the
 Universal UI provides a robust [tailwind.config.js](https://tailwindcss.com/docs/configuration) plugin that allows you to customize the look and feel of Universal UI by overriding the default colors and spacing.
 
 ```js
+// You can use the default tailwind colors, or define your own
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   theme: {
     universalUI: {
       themes: [
         {
-          name: "brand",
+          name: "brand", // Custom brand colors, from uicolors.app
           colors: {
             50: "#effcfc",
             100: "#d7f5f6",
@@ -60,6 +63,10 @@ module.exports = {
             900: "#234b56",
             950: "#12303a"
           }
+        },
+        {
+          name: "error", // Replacing error color with Tailwind red
+          colors: colors.red
         }
       ]
     }

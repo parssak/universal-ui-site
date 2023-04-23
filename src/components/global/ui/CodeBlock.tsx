@@ -33,7 +33,8 @@ export const CodeBlock = ({ children, ...props }: DivProps & {}) => {
       {...props}
       theme={copied ? "success" : "neutral"}
       className={cx(
-        "relative overflow-hidden transition-all bg-theme-pure w-full",
+        "relative overflow-hidden bg-theme-pure w-full",
+        copied ? 'transition-all' : '',
         props.className
       )}
     >

@@ -24,7 +24,7 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
       <Link
         href={item.href}
         className={cx(
-          "block pl-size-2x py-size-hy rounded group transition-colors duration-100",
+          "block pl-size-2x py-size-hy rounded group hover:transition-colors duration-100",
           isActive ? "bg-theme-active " : "border-transparent  hover:bg-theme-active/50"
         )}
       >
@@ -32,7 +32,7 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
           as="span"
           size="sm"
           className={cx(
-            "transition-all duration-100 select-none",
+            "group-hover:transition-all duration-100 select-none",
             isActive ? "text-theme-active" : "opacity-80 group-hover:opacity-100 text-theme-active"
           )}
         >

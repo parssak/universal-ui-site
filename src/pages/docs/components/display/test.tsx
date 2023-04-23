@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  Checkbox,
   Dialog,
   Input,
   InputGroup,
@@ -293,6 +294,10 @@ const TestPage = () => {
             <Card.Content className="h-full flex flex-col">
               <Text variant="h4">Notifications</Text>
               <Text className="text-theme-muted">Choose what you want to be notified about.</Text>
+              <label className="flex items-center gap-2 mt-2">
+                <Checkbox />
+                <Text>Accept all cookies</Text>
+              </label>
               <div className="my-auto py-size-x">
                 <Select>
                   <Select.Trigger className="w-full" />
