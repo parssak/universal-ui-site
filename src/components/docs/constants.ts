@@ -3,6 +3,7 @@ interface NavSection {
   items: {
     title: string;
     href: string;
+    dateAdded?: string;
   }[];
 }
 
@@ -58,7 +59,8 @@ export const NAV_SECTIONS = [
       },
       {
         title: "Tabs",
-        href: "/docs/components/display/tabs"
+        href: "/docs/components/display/tabs",
+        dateAdded: "2023-04-24T14:38:17.691Z"
       },
       {
         title: "Text",

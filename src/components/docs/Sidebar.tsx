@@ -7,7 +7,7 @@ import { NAV_SECTIONS } from "./constants";
 
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
-const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] }) => {
+const NavItem = ({ item }: { item: (typeof NAV_SECTIONS)[number]["items"][number] }) => {
   const router = useRouter();
 
   const isActive = router.asPath.split("#")[0] === item.href.split("#")[0];
@@ -19,12 +19,21 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
     return "warning";
   };
 
+  const expiryMs = 14 * 24 * 60 * 60 * 1000; /** 14 DAYS */
+
+  const isNew = () => {
+    if (!item.dateAdded) return false;
+    const now = new Date().getTime();
+    const dateAdded = new Date(item.dateAdded).getTime();
+    return now - dateAdded < expiryMs;
+  };
+
   return (
     <ThemeProvider theme={getTheme()}>
       <Link
         href={item.href}
         className={cx(
-          "block pl-size-2x py-size-hy rounded group hover:transition-colors duration-100",
+          "flex items-center justify-between pl-size-2x pr-size-hy py-size-hy rounded group hover:transition-colors duration-100",
           isActive ? "bg-theme-active " : "border-transparent  hover:bg-theme-active/50"
         )}
       >
@@ -38,6 +47,16 @@ const NavItem = ({ item }: { item: typeof NAV_SECTIONS[number]["items"][number] 
         >
           {item.title}
         </Text>
+        {isNew() && (
+          <div
+            data-size="xs"
+            className={`px-size-2x py-size-y text-size font-mono font-medium border-theme-active rounded ${
+              isActive ? "bg-theme-muted" : "bg-theme-muted"
+            }`}
+          >
+            NEW
+          </div>
+        )}
       </Link>
     </ThemeProvider>
   );
