@@ -3,6 +3,7 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 import { Text, ThemeProvider, UniversalUIConfigProvider } from "@parssa/universal-ui";
 import { Nav } from "components/global/layout/Nav";
+import { Analytics } from "@vercel/analytics/react";
 
 import "styles/index.css";
 
@@ -84,6 +85,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </div>
         </UniversalUIConfigProvider>
       </div>
+      <Analytics />
     </>
   );
 }
