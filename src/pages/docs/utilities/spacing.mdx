@@ -22,8 +22,8 @@ Elements expose a `size` prop that can be used to set the size of the element.
 
 For all sizing attributes, such as `p-`, `m-`, `space-x-`, `text-`, `gap-`, etc... you can add `-size-{AMOUNT}` to the end of the class.
 
-<CodeBlock className='mt-size-2y mb-size-4y'>
- {`<div data-size="sm">
+<CodeBlock className="mt-size-2y mb-size-4y">
+  {`<div data-size="sm">
   {/* all content inside of here will be smaller */}
   <div className="px-size-2x py-size-2y">Padded Section</div>
 </div>`}
@@ -31,63 +31,53 @@ For all sizing attributes, such as `p-`, `m-`, `space-x-`, `text-`, `gap-`, etc.
 
 Using `text-size` will make the font size respect the current size. This is commonly paired with `leading-size` to make the line-height smaller as well.
 
-<CodeBlock className='mt-size-2y mb-size-4y'>
- {`<div data-size="sm">
+<CodeBlock className="mt-size-2y mb-size-4y">
+  {`<div data-size="sm">
   <p className="text-size">This text is smaller</p>
   <p className="text-size leading-size">This text is smaller and has a smaller line-height</p>
 </div>`}
 </CodeBlock>
 
-The `body1` and `body2` props in [`<Text />`](/docs/components/display/text) also have `text-size` and `leading-size` applied by default. 
+The `body1` and `body2` props in [`<Text />`](/docs/components/display/text) also have `text-size` and `leading-size` applied by default.
 
-{/* <div className='grid md:grid-cols-2 gap-4 p-4'>
-  <Card size="md">
-    <Card.Content>
-      <Text className='font-medium'>Small</Text>
-      <div className='grid grid-cols-2 gap-2'>
-        <Text className='font-medium'>Small</Text>
-        <div>
-          <div className='w-size-x h-size-x bg-red-500' />
-        </div>
-      </div>
-    </Card.Content>
-  </Card>
-</div> */}
+## Using the variables
 
-{/* <div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='sm'>
-  <div className='w-size-qx h-size-qx bg-red-500' />
-  <div className='w-size-hx h-size-hx bg-red-500' />
-  <div className='w-size-x h-size-x bg-red-500' />
-  <div className='w-size-2x h-size-2x bg-red-500' />
-  <div className='w-size-4x h-size-4x bg-red-500' />
-  <div className='w-size-8x h-size-8x bg-red-500' />
+The following CSS variables are exposed by Universal UI, which listen to the nearest `data-size` attribute.
+
+```css
+--size-text (font-size) Used in text-size
+--size-line (line-height) Used in spacing, line-height
+
+## Spacing Multipliers
+--size-x   (Default x-padding for inputs)
+--size-y   (Default y-padding for inputs)
+--size-2x
+--size-2y
+--size-4x
+--size-4y
+--size-8x
+--size-8y
+--size-hx (Half x)
+--size-hy (Half y)
+--size-qx (Quarter x)
+--size-qy (Quarter y)
+```
+
+These can be used in your own CSS, or in custom Tailwind classes. You can even use them in calc().
+
+```
+<div className='flex items-center' data-size='lg'>
+  <div className='w-[var(--size-text)] h-[var(--size-text)] bg-blue-500 mr-2' />
+  <p className='text-size'>Hello World</p>
+</div>
+```
+
+<div className='flex items-center' data-size='lg'>
+  <div className='w-[var(--size-text)] h-[var(--size-text)] bg-blue-500 mr-2' />
+  <p className='text-size'>Hello World</p>
 </div>
 
-<div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='md'>
-  <div className='w-size-qx h-size-qx bg-red-500' />
-  <div className='w-size-hx h-size-hx bg-red-500' />
-  <div className='w-size-x h-size-x bg-red-500' />
-  <div className='w-size-2x h-size-2x bg-red-500' />
-  <div className='w-size-4x h-size-4x bg-red-500' />
-  <div className='w-size-8x h-size-8x bg-red-500' />
-</div>
-
-<div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='lg'>
-  <div className='w-size-qx h-size-qx bg-red-500' />
-  <div className='w-size-hx h-size-hx bg-red-500' />
-  <div className='w-size-x h-size-x bg-red-500' />
-  <div className='w-size-2x h-size-2x bg-red-500' />
-  <div className='w-size-4x h-size-4x bg-red-500' />
-  <div className='w-size-8x h-size-8x bg-red-500' />
-</div>
-
-<div className='flex items-center gap-size-x w-full justify-between mb-size-x' data-size='xl'>
-  <div className='w-size-qx h-size-qx bg-red-500' />
-  <div className='w-size-hx h-size-hx bg-red-500' />
-  <div className='w-size-x h-size-x bg-red-500' />
-  <div className='w-size-2x h-size-2x bg-red-500' />
-  <div className='w-size-4x h-size-4x bg-red-500' />
-  <div className='w-size-8x h-size-8x bg-red-500' />
-</div> */}
+It's recommended to use the provided CSS variables when building components, so that they scale with the rest of the UI.
 
 export default ({ children }) => <DocsMDXLayout meta={meta}>{children}</DocsMDXLayout>;
+

@@ -68,7 +68,7 @@ export const meta = {
 
 ### With Icons
 
-You can change the trailingIcon of the `Select.Trigger` to change the icon.
+You can change the `trailingIcon` prop of the `Select.Trigger` to change the icon.
 
 <DocsComponent.Example
   initialCode={`() => 
@@ -115,9 +115,7 @@ imports={{
   }}
 />
 
-You can use the `leadingIcon` and `trailingIcon` props to add icons
-
-These props accept any ReactNode, so you can use any icon library you want. If the icons are not
+`trailingIcon` accepts any `ReactNode`, so you can use any icon library you want. If the icons are not
 being sized correctly, make sure there is no implicit `width/height` props on the icon, and try
 adding `w-full h-full`.
 
