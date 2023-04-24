@@ -50,8 +50,9 @@ const NavItem = ({ item }: { item: (typeof NAV_SECTIONS)[number]["items"][number
         {isNew() && (
           <div
             data-size="xs"
-            className={`px-size-2x py-size-y text-size font-mono font-medium border-theme-active rounded ${
-              isActive ? "bg-theme-muted" : "bg-theme-muted"
+            data-theme={isActive ? undefined : 'warning'}
+            className={`text-theme-active px-size-2x py-size-y text-size font-mono font-medium border-theme-active rounded  ${
+              isActive ? "bg-theme-muted" : "bg-theme-active"
             }`}
           >
             NEW
